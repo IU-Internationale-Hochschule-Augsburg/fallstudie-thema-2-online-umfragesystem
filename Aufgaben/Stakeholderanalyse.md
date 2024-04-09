@@ -8,6 +8,7 @@
 + Universitäten/Hochschulen
 + Administratoren und Entwickler (Programmierer, Produkt- und Projektleiter, Designer, ...)
 
+---------------------
 
 #### 2. Bewerten der Stakeholder
 | influence on stakeholders            | impact on stakeholders               |
