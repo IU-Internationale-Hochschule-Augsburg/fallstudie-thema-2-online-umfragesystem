@@ -54,4 +54,4 @@
 + Forschende & Universitäten/Hochschulen
 
 #### 8. Stakeholder Map
-![Stakeholder Map](/fallstudie-thema-2-online-umfragesystem/Aufgaben/Stakeholder Map.jpg)
+![Stakeholder Map]("Stakeholder Map.jpg")
