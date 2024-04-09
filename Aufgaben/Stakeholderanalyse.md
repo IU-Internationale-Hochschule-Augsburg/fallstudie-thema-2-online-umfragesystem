@@ -1,3 +1,5 @@
+***Diese Stakeholder-Analyse wurde von uns gemeinsam in einem Meeting erarbeitet!***
+
 ### Stakeholder-Analyse
 
 #### 1. Identifikation der Interessensgruppen
