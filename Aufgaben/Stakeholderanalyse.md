@@ -1,6 +1,6 @@
-#### Stakeholder-Analyse
+### Stakeholder-Analyse
 
-##### 1. Identifikation der Interessensgruppen
+#### 1. Identifikation der Interessensgruppen
 + Forschende (Studenten, Schüler, lehrende Personen, ...)
 + Probanden (Stundenten, Schüler, konrekte Zielgruppen, ...)
 + Unternehmen
@@ -9,7 +9,7 @@
 + Administratoren und Entwickler (Programmierer, Produkt- und Projektleiter, Designer, ...)
 
 
-##### 2. Bewerten der Stakeholder
+#### 2. Bewerten der Stakeholder
 | influence on stakeholders            | impact on stakeholders               |
 |--------------------------------------|--------------------------------------|
 | + Forschende (hoch)                  | + Forschende (hoch)                  |
@@ -20,14 +20,14 @@
 | + Admins/Entwickler (niedrig)        | + Admins/Entwickler (hoch)           |
 
 
-##### 3. Identifikation der Beziehungen
+#### 3. Identifikation der Beziehungen
 + Forschende <-> Probanden
 + Auftraggeber/Kunde <-> Entwickler/Administratoren
 + Forschende <-> Universitäten/Hochschulen
 + Forschende <-> Unternehmen
 
 
-##### 4. Identifikation der Interessen
+#### 4. Identifikation der Interessen
 + Forschende: Interesse an einfacher Umfrageverwaltung, das Tool soll diverse Auswertungsmöglichkeiten zur Verfügung stellen
 + Probanden: Umfrage ist auf jedem System nutzbar (Web, Handy, Tablet), Performance
 + Unternehmen: Ergebnisse, Auswertungen, Statistik
@@ -36,7 +36,7 @@
 + Administratoren und Entwickler: Modularität klare Anforderungen
 
 
-##### 5. Priorisierung
+#### 5. Priorisierung
 1.	Forschende
 2.	Auftraggeber/Kunde
 3.	Unternehmen
@@ -45,12 +45,13 @@
 6.	Probanden
 
 
-##### 6. Identifikation der Konfliktpotenziale
+#### 6. Identifikation der Konfliktpotenziale
 + Forschende <-> Auftraggeber/Kunde
 
 
-##### 7. Identifizieren der Win-win Potenziale
+#### 7. Identifizieren der Win-win Potenziale
 + Unternehmen & Forschende
 + Forschende & Universitäten/Hochschulen
 
 #### 8. Stakeholder Map
+![Stakeholder Map](/fallstudie-thema-2-online-umfragesystem/Aufgaben/Stakeholder Map.jpg)
