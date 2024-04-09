@@ -54,4 +54,4 @@
 + Forschende & Universitäten/Hochschulen
 
 #### 8. Stakeholder Map
-![Stakeholder Map](Stakeholder_Map.jpg)
+![Stakeholder Map](Stakeholder%20Map.jpg)
