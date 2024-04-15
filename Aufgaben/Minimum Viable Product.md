@@ -17,7 +17,7 @@ Weitere Features aus dem Storyboard möchten wir dann nach und nach hinzufügen 
 Darüber hinaus möchten wir ein benutzerfreundliches System zur Verfügung stellen, mit dem Umfragen einfach erstellt werden
 können. 
 
-#### 3. Benutzeroberfläche inkl. FUnktionalitäten
+#### 3. Benutzeroberfläche inkl. Funktionalitäten
 Forschenden-Ansicht:
 ![Benutzeroberfläche Forschender](MVP%20Benutzeroberfläche%20Forschender.jpg)
 
