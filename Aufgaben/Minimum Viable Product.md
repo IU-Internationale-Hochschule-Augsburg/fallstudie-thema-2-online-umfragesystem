@@ -33,3 +33,8 @@ Für Feinheiten oder spezielle Features kommt evtl. React oder JS in Frage.
 #### 5. Nächste Schritte
 In den nächsten 1-2 Sprints möchten wir unser MVP implementieren und die Grundfunktionalität schaffen.
 Parallel möchten wir dann mit dem Testing anfangen.
+
+#### Ergebnis vom 19.04.2024
+Wir haben uns vorerst für mein Schema entschieden. Timons war nicht falsch, nur komplizierter 💚.
+
+Für unser definiertes Minimum Viable Product (MVP) (siehe .md-Datei im Aufgaben-Ordner auf dem Main-Branch) ist die Datenbankstruktur vorerst hinreichend (siehe Überlegung im Kommentar oben darüber). Wir nehmen vorerst an, dass man das Datenbankschema in Zukunft reengieeren muss.
