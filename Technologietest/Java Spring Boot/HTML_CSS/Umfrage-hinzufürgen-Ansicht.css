@@ -5,18 +5,31 @@ body {
         "footer footer";
     grid-template-columns: auto auto;
     grid-template-rows: 100px 1fr 100px;
-    background-color: #9fa9a3;
+    background-color: #86af49;
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px;
 
 }
+
+
+/*Bereich für einfache Farbverwaltung*/
+
+.header,.content,.footer{
+    background-color: #d5e1df;
+}
+
+.optbutton,.forumlarabsenden{
+    background-color: #b5e7a0;
+}
+.optbutton:hover{background: #e3eaa7}
+
+
 
 .header {
     grid-area: header;
     display: flex;
     align-items: center;
     font-size: 28px;
-    background-color: #f0f0f0;
     border-radius: 8px;
     padding: 15px;
     z-index: 1;
@@ -30,7 +43,6 @@ body {
 .content {
     grid-area: content;
     display: flex;
-    background-color: #f0f0f0;
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 10px;
@@ -42,9 +54,7 @@ body {
 .footer {
     grid-area: footer;
     display: flex;
-    background-color: #f0f0f0;
     border-radius: 8px;
-    font-size: 10px;
     padding: 15px;
     font-size: 28px;
     box-sizing: border-box;
@@ -53,6 +63,10 @@ body {
     flex-wrap: wrap-reverse;
     justify-content: flex-end;
 }
+
+
+
+
 
 .col-25 {
     width: 25%;
@@ -80,7 +94,6 @@ body {
         width: 100%;
         margin-bottom: 5px;
     }
-
 }
 
 .forumlarreihe {
@@ -91,11 +104,9 @@ body {
     box-sizing: border-box;
     margin-top: 9px;
 
-
 }
 
 .forumlarabsenden {
-    background-color: #c5d5c5; /* Green */
     border: none;
     color: black;
     padding: 20px;
@@ -115,7 +126,6 @@ body {
 }
 
 .optbutton {
-    background-color: #c5d5c5; /* Green */
     border: none;
     color: black;
     padding: 15px;
@@ -129,7 +139,7 @@ body {
 
 }
 
-.optbutton:hover{background: #e3e0cc}
+
 
 .tabelletext {
     td:nth-child(2) {
