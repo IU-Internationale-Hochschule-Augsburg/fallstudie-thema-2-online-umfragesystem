@@ -1,7 +1,5 @@
 ### Resources
 
-Resources
-
 perplexity (2024). perplexity. https://www.perplexity.ai/
 
 OpenAI (2024). ChatGPT3.5. https://chat.openai.com/
