@@ -1,0 +1,147 @@
+body {
+    min-height: 100vh;
+    grid-template-areas: "header header"
+        "content content"
+        "footer footer";
+    grid-template-columns: auto auto;
+    grid-template-rows: 100px 1fr 100px;
+    background-color: #86af49;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+}
+
+
+/*Bereich für einfache Farbverwaltung*/
+.header,.content,.footer{
+    background-color: #d5e1df;
+}
+
+.optbutton,.formularabsenden{
+    background-color: #b5e7a0;
+}
+.optbutton:hover{background: #e3eaa7}
+
+
+
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 1;
+    box-sizing: border-box;
+    max-height: 100px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.content {
+    grid-area: content;
+    display: flex;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 28px;
+    min-height: 100px;
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 28px;
+    box-sizing: border-box;
+    max-height: 200px;
+    width: 100%;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+}
+
+.col-25 {
+    width: 25%;
+}
+
+.col-75 {
+    width: 75%;
+    flex-shrink: 3;
+}
+
+.textfeld {
+    padding: 12px 12px 12px 12px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+@media screen and (max-width: 760px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+.formularreihe {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 9px;
+}
+
+.formularabsenden {
+    border: none;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 250px;
+}
+
+.formularabsenden:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.optbutton {
+    border: none;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+/*Den Code musste ich etwas anpassen, da er in IntelliJ Fehler geworfen hat*/
+.tabelletext {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabelletext td:nth-child(2) {
+    width: 270px;
+}
+
+.tabelletext th,
+.tabelletext td {
+    padding: 6px;
+    border-bottom: 1px solid #ccc;
+}
+
+.tabelletext th {
+    text-align: left;
+}
