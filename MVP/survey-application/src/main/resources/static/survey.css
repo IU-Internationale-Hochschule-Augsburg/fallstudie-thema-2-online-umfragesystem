@@ -12,15 +12,17 @@ body {
 
 
 /*Bereich für einfache Farbverwaltung*/
-.header,.content,.footer{
+.header, .content, .footer {
     background-color: #d5e1df;
 }
 
-.optbutton,.formularabsenden{
+.optbutton, .formularabsenden {
     background-color: #b5e7a0;
 }
-.optbutton:hover{background: #e3eaa7}
 
+.optbutton:hover {
+    background: #e3eaa7
+}
 
 
 .header {
