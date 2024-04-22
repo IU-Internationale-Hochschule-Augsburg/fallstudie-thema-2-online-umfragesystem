@@ -1,3 +1,5 @@
+<!-- Umfrage-hinzufügen-Ansicht -->
+
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
@@ -64,9 +66,11 @@
     </form>
 </div>
 
-<!-- Abbrechen- und Speichern-Buttons -->
+<!-- Abbrechen- und Speichern-Buttons inkl. Action -->
 <div class="footer">
-    <button class="formularabsenden">Abbrechen</button>
+    <form method="post" action="/survey-admin">
+        <button type="submit" class="formularabsenden">Abbrechen</button>
+    </form>
 
     <form method="post" action="/survey-save">
         <button type="submit" class="formularabsenden">Speichern</button>

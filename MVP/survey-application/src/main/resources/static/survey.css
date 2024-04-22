@@ -13,15 +13,17 @@ body {
 
 /*Bereich für einfache Farbverwaltung*/
 
-.header,.content,.footer{
+.header, .content, .footer {
     background-color: #f0f0f0;
 }
 
-.optbutton,.formularabsenden{
+.optbutton, .formularabsenden {
     background-color: #c5d5c5;
 }
-.optbutton:hover{background: #e3e0cc}
 
+.optbutton:hover {
+    background: #e3e0cc
+}
 
 
 .header {
@@ -136,6 +138,7 @@ body {
 }
 
 .tabelletext {
+
 td:nth-child(2) {
     width: 270px;
 }
@@ -144,15 +147,22 @@ th, td {
     padding: 6px;
     border-bottom: 1px solid #ccc;
 }
+
 th {
     text-align: left;
 }
-border-collapse: collapse;
-width: 100%
+
+border-collapse: collapse
+
+;
+width:
+
+100
+%
 
 }
 
-.containerFlex{
+.containerFlex {
     display: flex;
     box-sizing: border-box;
 }
