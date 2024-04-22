@@ -1,5 +1,8 @@
 ### Entwicklung bzw. Verlauf des Datenbankschemas
-***Issue #15 und #46***
+***Issue #15, #46, #64 und #66***
+
+**Wir haben uns vorerst für alinas Variante entschieden, da wir nach dem Motto "Keep it simple" gehen. Timons ist also nicht falsch, nur
+komplizierter.**
 
 Erste Version:
 ![Erste Version](Datenbankschema%20erste%20Version.png)
@@ -41,3 +44,26 @@ unterschiedlichen Rollen/Rechten.
 Mein Vorschlag: Ich persönlich würde erst einmal mit den vier Tabellen anfangen. Wenn wir beim Implementieren merken,
 dass die nicht ausreichen oder wir gewisse Daten nicht bekommen, kann man immer noch Tabellen hinzufügen. Wir können
 nicht alles ins kleinste Detail planen, lieber fangen wir einfach Mal an und probieren es aus :-).
+
+**Erklärung:**
++ Ein User kann an mehreren Umfragen teilnehmen (1:n)
++ Eine Umfrage kann mehrere Fragen haben (1:n)
++ Eine Frage kann mehrere Antworten haben (1:n)
++ Ein User kann mehrere Fragen beantworten (1:n)
++ Eine Antwort wird von einem User gegeben (n:1) => wichtig hierfür ist die User-ID in der Antwort-Tabelle
+
+Die Idee für die Frage und Antwort-Tabelle ist, dass wir in der Fragetabelle alle Antwortoptionen und in der Antworttabelle alle
+tatsächlichen Antworten durch den User speichern.
+
+Wir limitieren die Anzahl der Checkboxen und die der Radiobutton. Wahrscheinlich hat der Admin-User, der die Umfragen erstellt, 10-12
+Checkboxen und Radiobuttons bei der Erstellung einer Frage zur Verfügung. Somit verhindern wir, dass Antwortoptionen gespammt werden. Für
+den Fragetyp gibt es 10-12 Spalten in der Fragen-Tabelle und nur eine Spalte in der Antwort-Tabelle, da es bei Radiobutton (Single-Choice)
+nur eine Antwortmöglichkeit gibt.
+
+Je nach Fragetyp belegen wir dann entsprechende Tabellen. Die Spalten der andern Fragetypen bleiben einfach frei.
+
+So könnte dann eine befüllte Antwort-Tabelle aussehen:
+![grafik](https://github.com/IU-Internationale-Hochschule-Augsburg/fallstudie-thema-2-online-umfragesystem/assets/166111939/10c3b781-4587-4031-ab71-e4b946956034)
+
+Zukunftsaussicht: Wenn es einen Login gibt, dann könnte man die User-Tabelle umbauen und eine zusätzliche Spalte "Rolle" hinzufügen. Dort
+unterscheiden wir dann beispielsweise zwischen "Admin" (= Umfrageersteller/Forschender) und "Teilnehmer" (= Umfrageteilnehmer/Proband).
