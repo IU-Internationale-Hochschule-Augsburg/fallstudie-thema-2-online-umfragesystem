@@ -139,26 +139,21 @@ body {
 
 .tabelletext {
 
-td:nth-child(2) {
-    width: 270px;
-}
+    td:nth-child(2) {
+        width: 270px;
+    }
 
-th, td {
-    padding: 6px;
-    border-bottom: 1px solid #ccc;
-}
+    th, td {
+        padding: 6px;
+        border-bottom: 1px solid #ccc;
+    }
 
-th {
-    text-align: left;
-}
+    th {
+        text-align: left;
+    }
 
-border-collapse: collapse
-
-;
-width:
-
-100
-%
+    border-collapse: collapse;
+    width: 100%
 
 }
 

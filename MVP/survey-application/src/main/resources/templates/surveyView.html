@@ -10,6 +10,7 @@
     <link th:href="@{/survey.css}" th:rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet"/>
+    <link href="/MVP/survey-application/src/main/resources/static/survey.css" rel="stylesheet" type="text/css">
 
     <title>Umfrageansicht</title>
 </head>
@@ -28,7 +29,7 @@
 
 
 <div class="content">
-    <form action="#" th:action="@{/survey-admin}" th:object="${surveyView}" method="post">
+    <form action="#" th:action="@{/survey-admin}" th:object="${surveyView}" method="post" style="width: 100%">
         <table class="tabelletext">
             <!--Projekte-überschrift-->
             <thead>
@@ -39,12 +40,12 @@
 
             <tbody style="padding: 10px">
             <!--dynamische Loop über die Umfragen-->
-            <tr th:each="survey, surveyStat : *{surveys}">
+            <tr style="width: 100%" th:each="survey, surveyStat : *{surveys}">
                 <!--Titel der Umfrage-->
                 <td th:text="${survey.title}"></td>
 
                 <!--Buttons-->
-                <td style="text-align: right">
+                <td class="col-75" style="text-align: right">
                     <button class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
