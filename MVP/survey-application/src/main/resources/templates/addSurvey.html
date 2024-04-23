@@ -1,3 +1,5 @@
+<!-- Umfrage-hinzufügen-Ansicht -->
+
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
@@ -12,65 +14,68 @@
 </head>
 
 <body>
-    <!-- Titel der Seite -->
-    <div class="header">
-        <h3>Neu Umfrage erstellen</h3>
-    </div>
+<!-- Titel der Seite -->
+<div class="header">
+    <h3>Neu Umfrage erstellen</h3>
+</div>
 
-    <div class="content">
-        <form style="width: 100%">
-            <!-- erste Zeile: Umfragetitel -->
-            <div class="formularreihe">
-                <!-- "Titel der Umfrage" -->
-                <div class="col-25">
-                    <label>Titel der Umfrage:</label>
-                </div>
-
-                <!-- Platzhalter und Textfeld für den Umfragetitel -->
-                <div class="col-75">
-                    <input placeholder="Geben Sie einen Titel ein" class="textfeld">
-                </div>
+<div class="content">
+    <form style="width: 100%">
+        <!-- erste Zeile: Umfragetitel -->
+        <div class="formularreihe">
+            <!-- "Titel der Umfrage" -->
+            <div class="col-25">
+                <label>Titel der Umfrage:</label>
             </div>
 
-            <!-- zweite Zeile: Laufzeit -->
-            <div class="formularreihe" style="align-items: center; height: 100px">
-                <!-- "Laufzeit der Umfrage" -->
-                <div class="col-25">
-                    <label>Laufzeit der Umfrage:</label>
-                </div>
+            <!-- Platzhalter und Textfeld für den Umfragetitel -->
+            <div class="col-75">
+                <input placeholder="Geben Sie einen Titel ein" class="textfeld">
+            </div>
+        </div>
 
-                <!-- Start- und Enddatum Felder-->
-                <div class="col-75">
-                    <label>Startdatum: </label>
-                    <input type="date" style="font-size: 21px;padding: 0;">
-                    <label>Enddatum: </label>
-                    <input type="date" style="font-size: 21px;padding: 0">
-                </div>
+        <!-- zweite Zeile: Laufzeit -->
+        <div class="formularreihe" style="align-items: center; height: 100px">
+            <!-- "Laufzeit der Umfrage" -->
+            <div class="col-25">
+                <label>Laufzeit der Umfrage:</label>
             </div>
 
-            <!-- dritte Zeile: Beschreibung -->
-            <div class="formularreihe">
-                <!-- "Beschreibung" -->
-                <div class="col-25">
-                    <label>Beschreibung:</label>
-                </div>
-
-                <!-- Textfeld für die Beschreibung -->
-                <div class="col-75">
-                    <textarea placeholder="Formulieren Sie eine Beschreibung" class="textfeld" style="height: 200px"></textarea>
-                </div>
+            <!-- Start- und Enddatum Felder-->
+            <div class="col-75">
+                <label>Startdatum: </label>
+                <input type="date" style="font-size: 21px;padding: 0;">
+                <label>Enddatum: </label>
+                <input type="date" style="font-size: 21px;padding: 0">
             </div>
-        </form>
-    </div>
+        </div>
 
-    <!-- Abbrechen- und Speichern-Buttons -->
-    <div class="footer">
-        <button class="formularabsenden">Abbrechen</button>
-        <!-- hier habe ich noch type="submit" hinzugefügt" -->
-        <form method="post" action="/survey-save">
-            <button class="formularabsenden">Speichern</button>
-        </form>
-    </div>
+        <!-- dritte Zeile: Beschreibung -->
+        <div class="formularreihe">
+            <!-- "Beschreibung" -->
+            <div class="col-25">
+                <label>Beschreibung:</label>
+            </div>
+
+            <!-- Textfeld für die Beschreibung -->
+            <div class="col-75">
+                <textarea placeholder="Formulieren Sie eine Beschreibung" class="textfeld"
+                          style="height: 200px"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Abbrechen- und Speichern-Buttons inkl. Action -->
+<div class="footer">
+    <form method="post" action="/survey-admin">
+        <button type="submit" class="formularabsenden">Abbrechen</button>
+    </form>
+
+    <form method="post" action="/survey-save">
+        <button type="submit" class="formularabsenden">Speichern</button>
+    </form>
+</div>
 </body>
 
 </html>

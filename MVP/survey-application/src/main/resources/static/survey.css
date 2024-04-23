@@ -5,22 +5,25 @@ body {
         "footer footer";
     grid-template-columns: auto auto;
     grid-template-rows: 100px 1fr 100px;
-    background-color: #86af49;
+    background-color: #9fa9a3;
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px;
-}
 
+}
 
 /*Bereich für einfache Farbverwaltung*/
-.header,.content,.footer{
-    background-color: #d5e1df;
+
+.header, .content, .footer {
+    background-color: #f0f0f0;
 }
 
-.optbutton,.formularabsenden{
-    background-color: #b5e7a0;
+.optbutton, .formularabsenden {
+    background-color: #c5d5c5;
 }
-.optbutton:hover{background: #e3eaa7}
 
+.optbutton:hover {
+    background: #e3e0cc
+}
 
 
 .header {
@@ -35,6 +38,7 @@ body {
     max-height: 100px;
     overflow: hidden;
     margin-bottom: 10px;
+
 }
 
 .content {
@@ -45,6 +49,7 @@ body {
     margin-bottom: 10px;
     font-size: 28px;
     min-height: 100px;
+
 }
 
 .footer {
@@ -60,6 +65,7 @@ body {
     justify-content: flex-end;
 }
 
+
 .col-25 {
     width: 25%;
 }
@@ -67,6 +73,7 @@ body {
 .col-75 {
     width: 75%;
     flex-shrink: 3;
+
 }
 
 .textfeld {
@@ -77,6 +84,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+
 }
 
 @media screen and (max-width: 760px) {
@@ -93,6 +101,7 @@ body {
     padding: 10px;
     box-sizing: border-box;
     margin-top: 9px;
+
 }
 
 .formularabsenden {
@@ -107,6 +116,7 @@ body {
     cursor: pointer;
     border-radius: 12px;
     width: 250px;
+
 }
 
 .formularabsenden:hover {
@@ -124,24 +134,104 @@ body {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
+
 }
 
-/*Den Code musste ich etwas anpassen, da er in IntelliJ Fehler geworfen hat*/
 .tabelletext {
-    border-collapse: collapse;
-    width: 100%;
-}
 
-.tabelletext td:nth-child(2) {
+td:nth-child(2) {
     width: 270px;
 }
 
-.tabelletext th,
-.tabelletext td {
+th, td {
     padding: 6px;
     border-bottom: 1px solid #ccc;
 }
 
-.tabelletext th {
+th {
     text-align: left;
 }
+
+border-collapse: collapse
+
+;
+width:
+
+100
+%
+
+}
+
+.containerFlex {
+    display: flex;
+    box-sizing: border-box;
+}
+
+
+/* Kopie von https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Kopie ENDE https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
