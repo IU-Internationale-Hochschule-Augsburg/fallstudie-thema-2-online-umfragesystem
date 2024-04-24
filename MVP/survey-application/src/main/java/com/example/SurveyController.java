@@ -42,10 +42,10 @@ public class SurveyController {
 	@GetMapping("/survey-admin")
 	public String getSurveyAdmin(Model model) {
 		SurveyView surveys = new SurveyView();
-		surveys.getSurveys().add(new com.example.Survey("Testumfrage 1"));
-		surveys.getSurveys().add(new com.example.Survey("Testumfrage 2"));
-		surveys.getSurveys().add(new com.example.Survey("Testumfrage 3"));
-		surveys.getSurveys().add(new com.example.Survey("Testumfrage 4"));
+		surveys.getSurveys().add(new Survey("Testumfrage 1"));
+		surveys.getSurveys().add(new Survey("Testumfrage 2"));
+		surveys.getSurveys().add(new Survey("Testumfrage 3"));
+		surveys.getSurveys().add(new Survey("Testumfrage 4"));
 		model.addAttribute("surveyView", surveys);
 		return "surveyView";
 	}

@@ -1,53 +1,36 @@
 package com.example.entity;
+
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
 @Entity
 @Table
+@Data
 public class Survey {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long userId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long surveyId;
+
     private String title;
 
     private Date startDate;
 
     private Date endDate;
 
+    private String description;
+
     //Dieses Attribut ist noch aus dem Technologietest übrig
     //private String textInput;
 
 
-
-    protected Survey(){}
-
-    public Long getSurveyId() {
-        return surveyId;
+    public Survey() {
     }
 
-    public Long getUserId() {
-        return userId;
+    public Survey(String title) {
+        this.title = title;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    /*public Survey(String textInput) {
-        this.textInput = textInput;
-    }*/
-
-    /*public String getTextInput() {
-        return textInput;
-    }*/
 }

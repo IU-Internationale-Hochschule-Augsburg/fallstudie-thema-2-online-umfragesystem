@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.entity.Survey;
 import lombok.Data;
 
 import java.util.ArrayList;
