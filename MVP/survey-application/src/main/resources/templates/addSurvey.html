@@ -20,7 +20,7 @@
 </div>
 
 <div class="content">
-    <form style="width: 100%">
+    <form style="width: 100%" action="#" th:action="@{/survey-save}" th:object="${survey}" method="post">
         <!-- erste Zeile: Umfragetitel -->
         <div class="formularreihe">
             <!-- "Titel der Umfrage" -->
@@ -30,7 +30,7 @@
 
             <!-- Platzhalter und Textfeld für den Umfragetitel -->
             <div class="col-75">
-                <input placeholder="Geben Sie einen Titel ein" class="textfeld">
+                    <input type="text" th:field="*{title}" name="title" placeholder="Geben Sie einen Titel ein" class="textfeld">
             </div>
         </div>
 
@@ -44,9 +44,9 @@
             <!-- Start- und Enddatum Felder-->
             <div class="col-75">
                 <label>Startdatum: </label>
-                <input type="date" style="font-size: 21px;padding: 0;">
+                <input type="date" style="font-size: 21px;padding: 0;" name="startdate">
                 <label>Enddatum: </label>
-                <input type="date" style="font-size: 21px;padding: 0">
+                <input type="date" style="font-size: 21px;padding: 0" name="enddate">
             </div>
         </div>
 

@@ -84,9 +84,12 @@
 
 <!-- Abbrechen und Speichern button --> <!-- hier müssen noch Actions versehen werden -->
 <div class="footer">
-    <button class="formularabsenden">Abbrechen</button>
-
-    <button type="submit" class="formularabsenden">Speichern</button> <!-- hier bekomme ich eine Parser-Exception in Spring Boot wegen 2x form: form="myform" form="myForm2">Speichern</button> -->
+    <form method="post" action="/questions-view">
+        <button class="formularabsenden">Abbrechen</button>
+    </form>
+    <form method="post" action="/questions-view">
+        <button type="submit" class="formularabsenden">Speichern</button> <!-- hier bekomme ich eine Parser-Exception in Spring Boot wegen 2x form: form="myform" form="myForm2">Speichern</button> -->
+    </form>
 </div>
 
 </body>
