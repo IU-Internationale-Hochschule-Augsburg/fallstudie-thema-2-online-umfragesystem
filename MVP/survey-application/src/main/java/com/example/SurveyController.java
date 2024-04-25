@@ -65,6 +65,13 @@ public class SurveyController {
 		return "addQuestion";
 	}
 
+	//GetMapping Methode für den Screen Fragen-Ansicht
+	@GetMapping("/questions-view")
+	public String loadQuestionsView(Model model) {
+		model.addAttribute("questionsView", new SurveyView());
+		return "questionsView";
+	}
+
 	// Mit einem Klick auf den Speichern-Button leiten wir um zu /survey-save, wo die Daten entsprechend in der
 	// Datenbank gespeichert werden
 	@PostMapping("/survey-save")
