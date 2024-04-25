@@ -61,6 +61,7 @@ public class SurveyController {
 	// Datenbank gespeichert werden
 	@PostMapping("/survey-save")
 	public String saveSurvey(Model model) {
+		//hier noch die Daten in die Datenbank schreiben
 		return "redirect:/survey-admin";
 	}
 
