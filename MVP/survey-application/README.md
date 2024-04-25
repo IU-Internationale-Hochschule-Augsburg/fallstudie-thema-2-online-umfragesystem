@@ -18,6 +18,8 @@ stackoverflow (2017). How does flex-wrap work with align-self, align-items and a
 
 stackovervlow (2022). Use ThymeLeaf to create multiple text input boxes. https://stackoverflow.com/questions/73983451/use-thymeleaf-to-create-multiple-text-input-boxes
 
-W3Schools (2024). CSS Tutorial. https://www.w3schools.com/css/default.asp
+W3Schools (2024a). CSS Tutorial. https://www.w3schools.com/css/default.asp
 
-W3Schools (2024). HTML Tutorial. https://www.w3schools.com/html/default.asp
+W3Schools (2024b). HTML Tutorial. https://www.w3schools.com/html/default.asp
+
+W3Schools (2024c). Custom Radio Buttons. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio
