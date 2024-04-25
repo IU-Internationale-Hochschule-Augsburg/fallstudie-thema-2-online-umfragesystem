@@ -1,0 +1,43 @@
+package com.example.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+@Entity
+@Table
+@Data
+public class Question {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long questionId;
+
+    private Long userId;
+
+    private String questionType;
+
+    private String radiobutton1;
+    private String radiobutton2;
+    private String radiobutton3;
+    private String radiobutton4;
+    private String radiobutton5;
+    private String radiobutton6;
+    private String radiobutton7;
+    private String radiobutton8;
+    private String radiobutton9;
+    private String radiobutton10;
+
+    private String checkbox1;
+    private String checkbox2;
+    private String checkbox3;
+    private String checkbox4;
+    private String checkbox5;
+    private String checkbox6;
+    private String checkbox7;
+    private String checkbox8;
+    private String checkbox9;
+    private String checkbox10;
+
+    private String textinput;
+
+    public Question() {
+    }
+}
