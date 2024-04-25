@@ -3,6 +3,7 @@ package com.example.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -17,9 +18,9 @@ public class Survey {
 
     private String title;
 
-    private Date startDate;
+    private LocalDate startDate;
 
-    private Date endDate;
+    private LocalDate endDate;
 
     private String description;
 
@@ -32,5 +33,12 @@ public class Survey {
 
     public Survey(String title) {
         this.title = title;
+    }
+
+    public Survey(String title, LocalDate startDate, LocalDate endDate, String description) {
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
     }
 }

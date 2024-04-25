@@ -20,7 +20,7 @@
 </div>
 
 <div class="content">
-    <form style="width: 100%" action="#" th:action="@{/survey-save}" th:object="${survey}" method="post">
+    <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-save}" th:object="${survey}" method="post">
         <!-- erste Zeile: Umfragetitel -->
         <div class="formularreihe">
             <!-- "Titel der Umfrage" -->
@@ -30,7 +30,7 @@
 
             <!-- Platzhalter und Textfeld für den Umfragetitel -->
             <div class="col-75">
-                    <input type="text" th:field="*{title}" name="title" placeholder="Geben Sie einen Titel ein" class="textfeld">
+                    <input type="text" th:field="*{title}" name="title" id="title" placeholder="Geben Sie einen Titel ein" class="textfeld">
             </div>
         </div>
 
@@ -44,9 +44,9 @@
             <!-- Start- und Enddatum Felder-->
             <div class="col-75">
                 <label>Startdatum: </label>
-                <input type="date" style="font-size: 21px;padding: 0;" name="startdate">
+                <input type="date" th:field="*{startdate}" name="startdate" id="startdate" style="font-size: 21px;padding: 0;">
                 <label>Enddatum: </label>
-                <input type="date" style="font-size: 21px;padding: 0" name="enddate">
+                <input type="date" th:field="*{enddate}" name="enddate" id="enddate" style="font-size: 21px;padding: 0">
             </div>
         </div>
 
@@ -59,7 +59,7 @@
 
             <!-- Textfeld für die Beschreibung -->
             <div class="col-75">
-                <textarea placeholder="Formulieren Sie eine Beschreibung" class="textfeld"
+                <textarea th:field="*{description}" name="description" id="description" placeholder="Formulieren Sie eine Beschreibung" class="textfeld"
                           style="height: 200px"></textarea>
             </div>
         </div>
@@ -72,9 +72,8 @@
         <button type="submit" class="formularabsenden">Abbrechen</button>
     </form>
 
-    <form method="post" action="/survey-save">
-        <button type="submit" class="formularabsenden">Speichern</button>
-    </form>
+    <button type="submit" form="addSurveyForm" class="formularabsenden">Speichern</button>
+
 </div>
 </body>
 

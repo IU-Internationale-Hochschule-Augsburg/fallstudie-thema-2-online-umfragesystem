@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,7 +45,9 @@ public class SurveyController {
 	}*/
 
 
-	// GetMapping Methode für die Umfrageansicht => Erzeugen des Screens auf localhost:8080
+
+	// GetMapping Methode für die Umfrageansicht, Erzeugen des Screens auf localhost:8080
+	// Aktuell werden die Testumfragen statisch reinkopiert
 	@GetMapping("/survey-admin")
 	public String getSurveyAdmin(Model model) {
 		SurveyView surveys = new SurveyView();
@@ -56,50 +59,48 @@ public class SurveyController {
 		return "surveyView";
 	}
 
-	// GetMapping Methode für die Umfrage-hinzufügen-Ansicht => Erzeugen des Screens auf localhost:8080
+	// GetMapping Methode für die Umfrage-hinzufügen-Ansicht, Erzeugen des Screens auf localhost:8080
 	@GetMapping("/add-survey")
 	public String loadAddSurveyView(Model model) {
-		Survey survey = new Survey();
-		survey.setTitle("Testtitle");
-		model.addAttribute("survey", survey);
+		SurveyForm surveyForm = new SurveyForm();
+		model.addAttribute("survey", surveyForm);
 		return "addSurvey";
 	}
 
-	//GetMapping Methode für den Screen Frage hinzufügen
+	//GetMapping Methode für den Screen Frage-hinzufügen, Laden der Frage-hinzufügen-Ansicht
 	@GetMapping("/add-question")
 	public String loadAddQuestion(Model model) {
 		model.addAttribute("addQuestion", new SurveyView());
 		return "addQuestion";
 	}
 
-	//GetMapping Methode für den Screen Fragen-Ansicht
+	//GetMapping Methode für den Screen Fragen-Ansicht, Laden der Fragen-Ansicht
 	@GetMapping("/questions-view")
 	public String loadQuestionsView(Model model) {
 		model.addAttribute("questionsView", new SurveyView());
 		return "questionsView";
 	}
 
-	// Mit einem Klick auf den Speichern-Button leiten wir um zu /survey-save, wo die Daten entsprechend in der
-	// Datenbank gespeichert werden
-	//Diese Methode funktioniert noch nicht, die Daten werden nicht in die Datenbank geschrieben
+
+
+	// Mit einem Klick auf den Speichern-Button in der Umfrage-hinzufügen-Ansicht leiten wir um zu /survey-save,
+	// wo die Daten entsprechend in der Datenbank gespeichert werden. Anschließend kehren wir zurück in die Umfragen-Ansicht.
 	@PostMapping("/survey-save")
-	public String saveSurvey(@ModelAttribute Survey survey, Model model) {
-		String title = survey.getTitle();
-		System.out.println(title);
-		var survey1 = new Survey(title);
-		//var survey1 = new Survey("Testtitel 1");
-		surveyRepository.save(survey1);
-		model.addAttribute("survey", survey1);
-		return "questionsView";
+	public String saveSurvey(@ModelAttribute SurveyForm surveyForm, Model model) {
+		var survey = new Survey(surveyForm.getTitle(), surveyForm.getStartdate(), surveyForm.getEnddate(), surveyForm.getDescription());
+		surveyRepository.save(survey);
+		model.addAttribute("survey", surveyForm);
+		return "redirect:/survey-admin";
 	}
 
-	// Mit einem Klick auf den Speichern-Button leiten wir zurück zur Umfrageansicht (ohne Datensicherung)
+	// Mit einem Klick auf den Abbrechen-Button leiten wir zurück zur Umfrageansicht (ohne Datensicherung)
 	@PostMapping("/survey-admin")
 	public String loadAddSurveyViewAgain(Model model) {
 		model.addAttribute("addSurvey", new SurveyView());
 		return "redirect:/survey-admin";
 	}
 
+	// Aktuelle Funktionalität für die beiden Button in der Frage-hinzufügen-Ansicht
 	@PostMapping("/questions-view")
 	public String loadQuestionViewAgain(Model model) {
 		model.addAttribute("addQuestion", new SurveyView());
