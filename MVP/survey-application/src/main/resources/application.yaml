@@ -10,3 +10,5 @@ spring:
   jpa:
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
+  banner:
+    location: banner/banner.txt
