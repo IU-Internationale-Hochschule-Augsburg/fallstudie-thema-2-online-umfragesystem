@@ -2,26 +2,21 @@ package com.example;
 
 import com.example.entity.Survey;
 import com.example.repository.SurveyRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class SurveyController {
 
-	private final SurveyRepository surveyRepository;
+    private final SurveyRepository surveyRepository;
 
-	//GetMapping Methode noch aus dem Technologietest
+    //GetMapping Methode noch aus dem Technologietest
 	/*@GetMapping("/survey")
 	public String getSurveyForm(Model model) {
 		InputForm textInputs = new InputForm();
@@ -45,65 +40,70 @@ public class SurveyController {
 	}*/
 
 
+    // GetMapping method for the survey view, generating the screen on localhost:8080
+    // Currently, test surveys are statically inserted
+    @GetMapping("/survey-admin")
+    public String getSurveyAdmin(Model model) {
+        SurveyView surveys = new SurveyView();
+        surveys.getSurveys().add(new Survey("Testumfrage 1"));
+        surveys.getSurveys().add(new Survey("Testumfrage 2"));
+        surveys.getSurveys().add(new Survey("Testumfrage 3"));
+        surveys.getSurveys().add(new Survey("Testumfrage 4"));
+        model.addAttribute("surveyView", surveys);
+        return "surveyView";
+    }
 
-	// GetMapping Methode für die Umfrageansicht, Erzeugen des Screens auf localhost:8080
-	// Aktuell werden die Testumfragen statisch reinkopiert
-	@GetMapping("/survey-admin")
-	public String getSurveyAdmin(Model model) {
-		SurveyView surveys = new SurveyView();
-		surveys.getSurveys().add(new Survey("Testumfrage 1"));
-		surveys.getSurveys().add(new Survey("Testumfrage 2"));
-		surveys.getSurveys().add(new Survey("Testumfrage 3"));
-		surveys.getSurveys().add(new Survey("Testumfrage 4"));
-		model.addAttribute("surveyView", surveys);
-		return "surveyView";
-	}
+    // GetMapping method for the survey-add view, generating the screen on localhost:8080
+    @GetMapping("/add-survey")
+    public String loadAddSurveyView(Model model) {
+        SurveyForm surveyForm = new SurveyForm();
+        model.addAttribute("survey", surveyForm);
+        return "addSurvey";
+    }
 
-	// GetMapping Methode für die Umfrage-hinzufügen-Ansicht, Erzeugen des Screens auf localhost:8080
-	@GetMapping("/add-survey")
-	public String loadAddSurveyView(Model model) {
-		SurveyForm surveyForm = new SurveyForm();
-		model.addAttribute("survey", surveyForm);
-		return "addSurvey";
-	}
+    // GetMapping method for the Add-Question screen, loading the Add-Question view
+    @GetMapping("/add-question")
+    public String loadAddQuestion(Model model) {
+        model.addAttribute("addQuestion", new SurveyView());
+        return "addQuestion";
+    }
 
-	//GetMapping Methode für den Screen Frage-hinzufügen, Laden der Frage-hinzufügen-Ansicht
-	@GetMapping("/add-question")
-	public String loadAddQuestion(Model model) {
-		model.addAttribute("addQuestion", new SurveyView());
-		return "addQuestion";
-	}
+    // GetMapping method for the Questions screen, loading the Questions view
+    @GetMapping("/questions-view")
+    public String loadQuestionsView(Model model) {
+        model.addAttribute("questionsView", new SurveyView());
+        return "questionsView";
+    }
 
-	//GetMapping Methode für den Screen Fragen-Ansicht, Laden der Fragen-Ansicht
-	@GetMapping("/questions-view")
-	public String loadQuestionsView(Model model) {
-		model.addAttribute("questionsView", new SurveyView());
-		return "questionsView";
-	}
+    // GetMapping method for the edit-Button, currently loading the add-survey screen
+    // Later, it's a similar screen, but filled with data from the database
+    @GetMapping("/survey-edit")
+    public String loadEditView(Model model) {
+        model.addAttribute("surveyEdit", new SurveyView());
+        return  "redirect:/add-survey";
+    }
 
+    // Upon clicking the Save button in the survey-add view, we redirect to /survey-save,
+    // where the data is saved accordingly in the database. Afterwards, we return to the surveys view.
+    @PostMapping("/survey-save")
+    public String saveSurvey(@ModelAttribute SurveyForm surveyForm, Model model) {
+        var survey = new Survey(surveyForm.getTitle(), surveyForm.getStartdate(), surveyForm.getEnddate(), surveyForm.getDescription());
+        surveyRepository.save(survey);
+        model.addAttribute("survey", surveyForm);
+        return "redirect:/survey-admin";
+    }
 
+    // Upon clicking the Cancel button, we redirect back to the survey view (without saving data)
+    @PostMapping("/survey-admin")
+    public String loadAddSurveyViewAgain(Model model) {
+        model.addAttribute("addSurvey", new SurveyView());
+        return "redirect:/survey-admin";
+    }
 
-	// Mit einem Klick auf den Speichern-Button in der Umfrage-hinzufügen-Ansicht leiten wir um zu /survey-save,
-	// wo die Daten entsprechend in der Datenbank gespeichert werden. Anschließend kehren wir zurück in die Umfragen-Ansicht.
-	@PostMapping("/survey-save")
-	public String saveSurvey(@ModelAttribute SurveyForm surveyForm, Model model) {
-		var survey = new Survey(surveyForm.getTitle(), surveyForm.getStartdate(), surveyForm.getEnddate(), surveyForm.getDescription());
-		surveyRepository.save(survey);
-		model.addAttribute("survey", surveyForm);
-		return "redirect:/survey-admin";
-	}
-
-	// Mit einem Klick auf den Abbrechen-Button leiten wir zurück zur Umfrageansicht (ohne Datensicherung)
-	@PostMapping("/survey-admin")
-	public String loadAddSurveyViewAgain(Model model) {
-		model.addAttribute("addSurvey", new SurveyView());
-		return "redirect:/survey-admin";
-	}
-
-	// Aktuelle Funktionalität für die beiden Button in der Frage-hinzufügen-Ansicht
-	@PostMapping("/questions-view")
-	public String loadQuestionViewAgain(Model model) {
-		model.addAttribute("addQuestion", new SurveyView());
-		return "redirect:/questions-view";
-	}
+    // Current functionality for the two buttons in the Add-Question view
+    @PostMapping("/questions-view")
+    public String loadQuestionViewAgain(Model model) {
+        model.addAttribute("addQuestion", new SurveyView());
+        return "redirect:/questions-view";
+    }
 }

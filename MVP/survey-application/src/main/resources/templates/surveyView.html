@@ -29,7 +29,7 @@
 
 
 <div class="content">
-    <form action="#" th:action="@{/add-survey}" th:object="${surveyView}" method="get" id="surveyViewForm" style="width: 100%">
+    <form action="#" th:action="@{/survey-edit}" th:object="${surveyView}" method="get" id="surveyViewForm" style="width: 100%">
         <table class="tabelletext">
             <!--Projekte-überschrift-->
             <thead>
@@ -46,16 +46,17 @@
 
                 <!--Buttons-->
                 <td class="col-75" style="text-align: right">
-                    <button class="optbutton">
+                    <button type="submit" class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
-                    <button class="optbutton" form="surveyViewForm">
+                    <button type="submit" class="optbutton" form="surveyViewForm">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-                    <button class="optbutton">
+                    <button type="submit" class="optbutton">
                         <span class="material-symbols-outlined">monitoring</span>
                     </button>
-                    <button class="optbutton"><span class="material-symbols-outlined">settings</span>
+                    <button type="submit" class="optbutton">
+                        <span class="material-symbols-outlined">settings</span>
                     </button>
                 </td>
 
