@@ -72,7 +72,26 @@ public class SurveyController {
 
     @GetMapping("/button-question-handler")
     public String buttonQuestionHandler(@RequestParam("buttonQuestionHandler") String buttonQuestionHandler, Model model) {
-        return "";
+        String questionId = "";
+        QuestionsView questionsView = new QuestionsView();
+
+        // if statement for button handling
+        // delete button - it's still not working correctly
+        if (buttonQuestionHandler.startsWith(",delete_")) {
+            questionId = buttonQuestionHandler.substring(8);
+            /*var question = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
+            questionsView = getQuestionsView(Long.toString(question.getSurveyId()));*/
+            deleteQuestion(questionId);
+        // edit button
+        } else if (buttonQuestionHandler.startsWith(",edit_")) {
+            questionId = buttonQuestionHandler.substring(6);
+        }
+
+        /*var question = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
+        QuestionsView questionsView = getQuestionsView(Long.toString(question.getSurveyId()));*/
+        model.addAttribute("questionsView", questionsView);
+
+        return "questionsView";
     }
 
     //GetMapping for handling the buttons in the survey view (survey-admin)
@@ -87,27 +106,16 @@ public class SurveyController {
             surveyId = buttonHandler.substring(8);
             // invocation of the service method to delete the survey with the corresponding ID from the database
             deleteSurvey(surveyId);
-        // edit button
+            // edit button
         } else if (buttonHandler.startsWith(",edit_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(6);
-            // With the surveyID, the corresponding survey is searched for.
-            // If it exists, it is saved in the 'survey' variable; otherwise, a NoSuchElementException is thrown
-            var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
 
-            // Setting the ID and title of the survey in questionView
-            QuestionsView questionsView = new QuestionsView();
-            questionsView.setSurveyId(survey.getSurveyId());
-            questionsView.setTitle(survey.getTitle());
-
-            // The surveyID is also used to search in the questionRepository, as the surveyID is also present in the
-            // Question table. Then, the Question is set accordingly
-            var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
-            questionsView.setQuestions(questions);
+            QuestionsView questionsView = getQuestionsView(surveyId);
 
             model.addAttribute("questionsView", questionsView);
             return "questionsView";
-        // settings button
+            // settings button
         } else if (buttonHandler.startsWith(",settings_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(10);
@@ -120,6 +128,23 @@ public class SurveyController {
             return "surveySettings";
         }
         return "redirect:/survey-admin";
+    }
+
+    private QuestionsView getQuestionsView(String surveyId) {
+        // With the surveyID, the corresponding survey is searched for.
+        // If it exists, it is saved in the 'survey' variable; otherwise, a NoSuchElementException is thrown
+        var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+
+        // Setting the ID and title of the survey in questionView
+        QuestionsView questionsView = new QuestionsView();
+        questionsView.setSurveyId(survey.getSurveyId());
+        questionsView.setTitle(survey.getTitle());
+
+        // The surveyID is also used to search in the questionRepository, as the surveyID is also present in the
+        // Question table. Then, the Question is set accordingly
+        var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
+        questionsView.setQuestions(questions);
+        return questionsView;
     }
 
     // Upon clicking the Save button in the survey-add view, we redirect to /survey-save,
@@ -153,5 +178,9 @@ public class SurveyController {
     // service method for button handling (delete data from database)
     private void deleteSurvey(String id) {
         surveyRepository.deleteById(Long.parseLong(id));
+    }
+
+    private void deleteQuestion(String id) {
+        questionRepository.deleteById(Long.parseLong(id));
     }
 }
