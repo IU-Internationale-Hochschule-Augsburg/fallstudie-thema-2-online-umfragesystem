@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.entity.Survey;
+import com.example.repository.QuestionRepository;
 import com.example.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SurveyController {
 
     private final SurveyRepository surveyRepository;
+    private final QuestionRepository questionRepository;
 
     //GetMapping Methode noch aus dem Technologietest
 	/*@GetMapping("/survey")
@@ -45,10 +48,8 @@ public class SurveyController {
     @GetMapping("/survey-admin")
     public String getSurveyAdmin(Model model) {
         SurveyView surveys = new SurveyView();
-        surveys.getSurveys().add(new Survey("Testumfrage 1"));
-        surveys.getSurveys().add(new Survey("Testumfrage 2"));
-        surveys.getSurveys().add(new Survey("Testumfrage 3"));
-        surveys.getSurveys().add(new Survey("Testumfrage 4"));
+        surveyRepository.findAll().forEach(survey -> surveys.getSurveys().add(survey));
+
         model.addAttribute("surveyView", surveys);
         return "surveyView";
     }
@@ -75,12 +76,29 @@ public class SurveyController {
         return "questionsView";
     }
 
-    // GetMapping method for the edit-Button, currently loading the add-survey screen
-    // Later, it's a similar screen, but filled with data from the database
-    @GetMapping("/survey-edit")
-    public String loadEditView(Model model) {
-        model.addAttribute("surveyEdit", new SurveyView());
-        return  "redirect:/add-survey";
+    //GetMapping for handling the buttons in the survey view (survey-admin)
+    @GetMapping("button-handler")
+    public String buttonHandler(@RequestParam("buttonHandler") String buttonHandler, Model model) {
+        String surveyId;
+        if (buttonHandler.startsWith(",delete_")) {
+            surveyId = buttonHandler.substring(8);
+            deleteSurvey(surveyId);
+        } else if (buttonHandler.startsWith(",edit_")) {
+            surveyId = buttonHandler.substring(6);
+            QuestionsView questionsView = new QuestionsView();
+            var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+            questionsView.setSurveyId(survey.getSurveyId());
+            questionsView.setTitle(survey.getTitle());
+            var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
+            questionsView.setQuestions(questions);
+            model.addAttribute("questionView", questionsView);
+        } else if (buttonHandler.startsWith(",settings_")) {
+            surveyId = buttonHandler.substring(10);
+            var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+            model.addAttribute("survey", survey);
+            return "surveySettings";
+        }
+        return "redirect:/survey-admin";
     }
 
     // Upon clicking the Save button in the survey-add view, we redirect to /survey-save,
@@ -105,5 +123,11 @@ public class SurveyController {
     public String loadQuestionViewAgain(Model model) {
         model.addAttribute("addQuestion", new SurveyView());
         return "redirect:/questions-view";
+    }
+
+
+    // service method for button handling (delete)
+    private void deleteSurvey(String id) {
+        surveyRepository.deleteById(Long.parseLong(id));
     }
 }

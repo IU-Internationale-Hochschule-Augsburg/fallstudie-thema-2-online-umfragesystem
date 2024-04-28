@@ -10,9 +10,11 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long questionId;
 
-    private Long userId;
+    private Long surveyId;
 
     private String questionType;
+
+    private String questionText;
 
     private String radiobutton1;
     private String radiobutton2;
@@ -35,8 +37,6 @@ public class Question {
     private String checkbox8;
     private String checkbox9;
     private String checkbox10;
-
-    private String textinput;
 
     public Question() {
     }

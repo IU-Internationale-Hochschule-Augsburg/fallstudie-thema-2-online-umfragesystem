@@ -1,0 +1,83 @@
+<!-- Umfrage-hinzufügen-Ansicht -->
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link th:href="@{/survey.css}" th:rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          rel="stylesheet">
+
+    <title>Umfrage Settings</title>
+</head>
+
+<body>
+<!-- Titel der Seite -->
+<div class="header">
+    <h3>Umfrage Einstellungen editieren</h3>
+</div>
+
+<div class="content">
+    <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-admin}" th:object="${survey}" method="post">
+        <!-- hidden input field to store which button was clicked -->
+        <input type="hidden" name="surveyId" th:value="*{surveyId}" />
+
+        <!-- erste Zeile: Umfragetitel -->
+        <div class="formularreihe">
+            <!-- "Titel der Umfrage" -->
+            <div class="col-25">
+                <label>Titel der Umfrage:</label>
+            </div>
+
+            <!-- Platzhalter und Textfeld für den Umfragetitel -->
+            <div class="col-75">
+                <input type="text" th:field="*{title}" name="title" id="title" class="textfeld">
+            </div>
+        </div>
+
+        <!-- zweite Zeile: Laufzeit -->
+        <div class="formularreihe" style="align-items: center; height: 100px">
+            <!-- "Laufzeit der Umfrage" -->
+            <div class="col-25">
+                <label>Laufzeit der Umfrage:</label>
+            </div>
+
+            <!-- Start- und Enddatum Felder-->
+            <div class="col-75">
+                <label>Startdatum: </label>
+                <input type="date" th:field="${survey.startDate}" th:value="${survey.startDate}" name="startDate" id="startDate" style="font-size: 21px;padding: 0;">
+                <label>Enddatum: </label>
+                <input type="date" th:field="${survey.endDate}" name="endDate" id="endDate" style="font-size: 21px;padding: 0">
+            </div>
+        </div>
+
+        <!-- dritte Zeile: Beschreibung -->
+        <div class="formularreihe">
+            <!-- "Beschreibung" -->
+            <div class="col-25">
+                <label>Beschreibung:</label>
+            </div>
+
+            <!-- Textfeld für die Beschreibung -->
+            <div class="col-75">
+                <textarea th:field="*{description}" name="description" id="description" class="textfeld"
+                          style="height: 200px"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Abbrechen- und Speichern-Buttons inkl. Action -->
+<div class="footer">
+    <form method="post" action="/survey-admin">
+        <button type="submit" class="formularabsenden">Abbrechen</button>
+    </form>
+
+    <button type="submit" form="addSurveyForm" class="formularabsenden">Speichern</button>
+
+</div>
+</body>
+
+</html>

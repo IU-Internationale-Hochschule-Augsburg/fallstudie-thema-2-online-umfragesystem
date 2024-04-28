@@ -19,7 +19,7 @@
 <div class="header">
     <!--Username-->
     <div class="col-75">
-        <h3>"User Name"</h3>
+        <h3>Admin User</h3>
     </div>
     <!--Button für die Optionen/Einstellungen neben dem Usernamen-->
     <div class="col-25" style="text-align: right;padding: 6px">
@@ -29,7 +29,7 @@
 
 
 <div class="content">
-    <form action="#" th:action="@{/survey-edit}" th:object="${surveyView}" method="get" id="surveyViewForm" style="width: 100%">
+    <form action="#" th:action="@{/button-handler}" th:object="${surveyView}" method="get" id="surveyViewForm" style="width: 100%">
         <table class="tabelletext">
             <!--Projekte-überschrift-->
             <thead>
@@ -39,23 +39,28 @@
             </thead>
 
             <tbody style="padding: 10px">
-            <!--dynamische Loop über die Umfragen-->
+
+            <!-- hidden input field to store which button was clicked -->
+            <input type="hidden" name="buttonHandler" th:value="${buttonHandler}" />
+
+            <!--dynamic loop over the surveys-->
             <tr style="width: 100%" th:each="survey, surveyStat : *{surveys}">
                 <!--Titel der Umfrage-->
                 <td th:text="${survey.title}"></td>
 
+
                 <!--Buttons-->
                 <td class="col-75" style="text-align: right">
-                    <button type="submit" class="optbutton">
+                    <button type="submit" name="buttonHandler" th:value="'delete_' + ${survey.surveyId}" class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
-                    <button type="submit" class="optbutton" form="surveyViewForm">
+                    <button type="submit" name="buttonHandler" th:value="'edit_' + ${survey.surveyId}" class="optbutton">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-                    <button type="submit" class="optbutton">
+                    <button type="submit" name="buttonHandler" th:value="'monitoring_' + ${survey.surveyId}" class="optbutton">
                         <span class="material-symbols-outlined">monitoring</span>
                     </button>
-                    <button type="submit" class="optbutton">
+                    <button type="submit" name="buttonHandler" th:value="'settings_' + ${survey.surveyId}" class="optbutton">
                         <span class="material-symbols-outlined">settings</span>
                     </button>
                 </td>
