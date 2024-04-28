@@ -70,11 +70,9 @@ public class SurveyController {
         return "addQuestion";
     }
 
-    // GetMapping method for the Questions screen, loading the Questions view
-    @GetMapping("/questions-view")
-    public String loadQuestionsView(Model model) {
-        model.addAttribute("questionsView", new SurveyView());
-        return "questionsView";
+    @GetMapping("/button-question-handler")
+    public String buttonQuestionHandler(@RequestParam("buttonQuestionHandler") String buttonQuestionHandler, Model model) {
+        return "";
     }
 
     //GetMapping for handling the buttons in the survey view (survey-admin)
@@ -106,7 +104,9 @@ public class SurveyController {
             // Question table. Then, the Question is set accordingly
             var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
             questionsView.setQuestions(questions);
-            model.addAttribute("questionView", questionsView);
+
+            model.addAttribute("questionsView", questionsView);
+            return "questionsView";
         // settings button
         } else if (buttonHandler.startsWith(",settings_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label

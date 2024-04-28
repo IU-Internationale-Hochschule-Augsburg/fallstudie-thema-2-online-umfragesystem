@@ -20,6 +20,7 @@
 </div>
 
 <div class="content">
+    <form action="#" th:action="@{/button-question-handler}" th:object="${questionsView}" method="get" style="width: 100%">
     <table class="tabelletext">
         <!-- Heading: Questions -->
         <thead>
@@ -29,45 +30,29 @@
         </thead>
         <tbody style="padding: 10px">
 
+        <!-- hidden input field to store which button was clicked -->
+        <input type="hidden" name="buttonQuestionHandler" th:value="${buttonQuestionHandler}" />
+
         <!-- This needs to be dynamized -->
-        <tr>
-            <td>Frage 1</td>
+        <tr th:each="question, questionStat : *{questions}">
+            <td th:text="${question.questionText}"></td>
             <td style="text-align: right">
-                <button class="optbutton">
+                <!-- hidden input field to store the surveyId -->
+                <input type="hidden" name="surveyId" th:value="${question.surveyId}" />
+
+                <button type="submit" class="optbutton" name="buttonQuestionHandler" th:value="'delete_' + ${question.questionId}">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
-                <button class="optbutton">
+
+                <button type="submit" class="optbutton" name="buttonQuestionHandler" th:value="'edit_' + ${question.questionId}">
                     <span class="material-symbols-outlined">edit</span>
                 </button>
             </td>
         </tr>
-        <tr>
-            <td class="text">Frage 2
-            </td>
-            <td style="text-align: right">
-                <button class="optbutton">
-                    <span class="material-symbols-outlined">delete</span>
-                </button>
-                <button class="optbutton">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="text">Frage 3</td>
-            <td style="text-align: right">
-                <button class="optbutton">
-                    <span class="material-symbols-outlined">delete</span>
-                </button>
-                <button class="optbutton">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-            </td>
-        </tr>
-        <!-- Up to here -->
         </tbody>
         <tfoot></tfoot>
     </table>
+    </form>
 </div>
 
 <!-- Cancel and Save Buttons -->
