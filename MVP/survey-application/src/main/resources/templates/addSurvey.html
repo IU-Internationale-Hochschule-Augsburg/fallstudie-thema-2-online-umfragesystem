@@ -1,4 +1,4 @@
-<!-- Umfrage-hinzufügen-Ansicht -->
+<!-- Add-question-view -->
 
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
@@ -14,34 +14,34 @@
 </head>
 
 <body>
-<!-- Titel der Seite -->
+<!-- Page title -->
 <div class="header">
     <h3>Neue Umfrage erstellen</h3>
 </div>
 
 <div class="content">
     <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-save}" th:object="${survey}" method="post">
-        <!-- erste Zeile: Umfragetitel -->
+        <!-- First row: Survey title -->
         <div class="formularreihe">
-            <!-- "Titel der Umfrage" -->
+            <!-- Survey title -->
             <div class="col-25">
                 <label>Titel der Umfrage:</label>
             </div>
 
-            <!-- Platzhalter und Textfeld für den Umfragetitel -->
+            <!-- Placeholder and text field for the survey title -->
             <div class="col-75">
                     <input type="text" th:field="*{title}" name="title" id="title" placeholder="Geben Sie einen Titel ein" class="textfeld">
             </div>
         </div>
 
-        <!-- zweite Zeile: Laufzeit -->
+        <!-- Second row: Duration -->
         <div class="formularreihe" style="align-items: center; height: 100px">
-            <!-- "Laufzeit der Umfrage" -->
+            <!-- Title "Laufzeit der Umfrage" -->
             <div class="col-25">
                 <label>Laufzeit der Umfrage:</label>
             </div>
 
-            <!-- Start- und Enddatum Felder-->
+            <!-- Start and End date fields -->
             <div class="col-75">
                 <label>Startdatum: </label>
                 <input type="date" th:field="*{startdate}" name="startdate" id="startdate" style="font-size: 21px;padding: 0;">
@@ -50,14 +50,14 @@
             </div>
         </div>
 
-        <!-- dritte Zeile: Beschreibung -->
+        <!-- Third row: Description -->
         <div class="formularreihe">
-            <!-- "Beschreibung" -->
+            <!-- Title "Beschreibung" -->
             <div class="col-25">
                 <label>Beschreibung:</label>
             </div>
 
-            <!-- Textfeld für die Beschreibung -->
+            <!-- Text field for the description -->
             <div class="col-75">
                 <textarea th:field="*{description}" name="description" id="description" placeholder="Formulieren Sie eine Beschreibung" class="textfeld"
                           style="height: 200px"></textarea>
@@ -66,7 +66,7 @@
     </form>
 </div>
 
-<!-- Abbrechen- und Speichern-Buttons inkl. Action -->
+<!-- Cancel and Save buttons including actions -->
 <div class="footer">
     <form method="post" action="/survey-admin">
         <button type="submit" class="formularabsenden">Abbrechen</button>

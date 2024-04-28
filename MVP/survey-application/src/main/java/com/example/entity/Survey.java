@@ -24,15 +24,7 @@ public class Survey {
 
     private String description;
 
-    //Dieses Attribut ist noch aus dem Technologietest übrig
-    //private String textInput;
-
-
     public Survey() {
-    }
-
-    public Survey(String title) {
-        this.title = title;
     }
 
     public Survey(String title, LocalDate startDate, LocalDate endDate, String description) {

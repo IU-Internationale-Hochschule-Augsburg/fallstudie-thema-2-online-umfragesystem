@@ -16,6 +16,7 @@ public class Question {
 
     private String questionText;
 
+    // Saving the answer options for the Radiobutton question type
     private String radiobutton1;
     private String radiobutton2;
     private String radiobutton3;
@@ -27,6 +28,7 @@ public class Question {
     private String radiobutton9;
     private String radiobutton10;
 
+    // Saving the answer options for the Checkbox question type
     private String checkbox1;
     private String checkbox2;
     private String checkbox3;

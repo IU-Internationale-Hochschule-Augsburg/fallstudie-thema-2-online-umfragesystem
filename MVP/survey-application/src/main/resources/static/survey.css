@@ -11,7 +11,7 @@ body {
 
 }
 
-/*Bereich für einfache Farbverwaltung*/
+/* Section for basic color management */
 
 .header, .content, .footer {
     background-color: #f0f0f0;
@@ -163,7 +163,7 @@ body {
 }
 
 
-/* Kopie von https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
+/* A copy of https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
 
 .container {
     display: block;
@@ -229,4 +229,4 @@ body {
     background: white;
 }
 
-/* Kopie ENDE https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
+/* copy end of https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */

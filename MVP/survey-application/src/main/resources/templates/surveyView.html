@@ -1,8 +1,7 @@
-<!-- Umfrageansicht -->
+<!-- Survey-view -->
 
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-<!--<html lang="en">-->
 
 <head>
     <meta charset="UTF-8">
@@ -10,18 +9,17 @@
     <link th:href="@{/survey.css}" th:rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet"/>
-    <!---<link href="/MVP/survey-application/src/main/resources/static/survey.css" rel="stylesheet" type="text/css">
--->
+
     <title>Umfrageansicht</title>
 </head>
 
 <body>
 <div class="header">
-    <!--Username-->
+    <!-- Username -->
     <div class="col-75">
         <h3>Admin User</h3>
     </div>
-    <!--Button für die Optionen/Einstellungen neben dem Usernamen-->
+    <!-- Button for options/settings next to the username -->
     <div class="col-25" style="text-align: right;padding: 6px">
         <button class="optbutton"><span class="material-symbols-outlined">settings</span></button>
     </div>
@@ -31,7 +29,7 @@
 <div class="content">
     <form action="#" th:action="@{/button-handler}" th:object="${surveyView}" method="get" id="surveyViewForm" style="width: 100%">
         <table class="tabelletext">
-            <!--Projekte-überschrift-->
+            <!-- Projects heading -->
             <thead>
             <tr>
                 <th style="border-bottom: 0"><b style="font-size: 30px">Projekte</b></th>
@@ -43,13 +41,13 @@
             <!-- hidden input field to store which button was clicked -->
             <input type="hidden" name="buttonHandler" th:value="${buttonHandler}" />
 
-            <!--dynamic loop over the surveys-->
+            <!-- dynamic loop over the surveys -->
             <tr style="width: 100%" th:each="survey, surveyStat : *{surveys}">
-                <!--Titel der Umfrage-->
+                <!-- Survey title -->
                 <td th:text="${survey.title}"></td>
 
 
-                <!--Buttons-->
+                <!-- buttons -->
                 <td class="col-75" style="text-align: right">
                     <button type="submit" name="buttonHandler" th:value="'delete_' + ${survey.surveyId}" class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
@@ -74,7 +72,6 @@
 </div>
 
 <div class="footer">
-    <!-- hier habe ich noch die beiden forms hinzugefügt" -->
     <form method="get" action="/add-survey">
         <button class="formularabsenden">+ Umfrage hinzufügen</button>
     </form>

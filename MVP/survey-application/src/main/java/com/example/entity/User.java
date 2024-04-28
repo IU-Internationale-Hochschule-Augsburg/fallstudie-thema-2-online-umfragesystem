@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-// Umbenannt, da "User" reserviert ist
+// Renamed because 'User' is reserved
 @Table(name = "SurveyUser")
 @Data
 public class User {
@@ -18,7 +18,7 @@ public class User {
 
     private String email;
 
-    // Bisher Klartext, ist noch nicht sicher
+    // So far plaintext, still not certain
     private String password;
 
     public User(){}

@@ -15,6 +15,7 @@ public class Answer {
 
     private Long userId;
 
+    // In contrast to the Question table, only saving the actual answers
     private String radiobutton;
 
     private String checkbox1;
