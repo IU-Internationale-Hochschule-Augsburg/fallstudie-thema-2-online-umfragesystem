@@ -82,7 +82,7 @@ public class SurveyController {
             /*var question = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
             questionsView = getQuestionsView(Long.toString(question.getSurveyId()));*/
             deleteQuestion(questionId);
-        // edit button
+            // edit button
         } else if (buttonQuestionHandler.startsWith(",edit_")) {
             questionId = buttonQuestionHandler.substring(6);
         }
@@ -151,12 +151,25 @@ public class SurveyController {
     // where the data is saved accordingly in the database. Afterwards, we return to the surveys view.
     @PostMapping("/survey-save")
     public String saveSurvey(@ModelAttribute SurveyForm surveyForm, Model model) {
-        // fetching the survey data from the SurveyForm
-        var survey = new Survey(surveyForm.getTitle(), surveyForm.getStartdate(), surveyForm.getEnddate(), surveyForm.getDescription());
-
+        Survey survey;
+        // check if the survey already exists in the database
+        if (surveyForm.getSurveyId() != null) {
+            // if yes, then we retrieve the current survey with the ID
+            survey = surveyRepository.findById(surveyForm.getSurveyId()).orElseThrow();
+            // Resetting all attributes again
+            survey.setTitle(surveyForm.getTitle());
+            survey.setStartDate(surveyForm.getStartdate());
+            survey.setEndDate(surveyForm.getEnddate());
+            survey.setDescription(surveyForm.getDescription());
+        } else {
+            // if the survey does not exist yet, it is newly created and saved
+            // fetching the survey data from the SurveyForm
+            survey = new Survey(surveyForm.getTitle(), surveyForm.getStartdate(), surveyForm.getEnddate(), surveyForm.getDescription());
+        }
         // writing the data into the database
         surveyRepository.save(survey);
         model.addAttribute("survey", surveyForm);
+        // return to the survey-view
         return "redirect:/survey-admin";
     }
 

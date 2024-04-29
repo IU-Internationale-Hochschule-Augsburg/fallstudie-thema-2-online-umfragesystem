@@ -20,7 +20,7 @@
 </div>
 
 <div class="content">
-    <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-admin}" th:object="${survey}" method="post">
+    <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-save}" th:object="${survey}" method="post">
         <!-- hidden input field to store which button was clicked -->
         <input type="hidden" name="surveyId" th:value="*{surveyId}" />
 
