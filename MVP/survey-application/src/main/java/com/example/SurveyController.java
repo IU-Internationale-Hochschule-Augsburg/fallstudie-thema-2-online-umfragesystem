@@ -19,30 +19,6 @@ public class SurveyController {
     private final SurveyRepository surveyRepository;
     private final QuestionRepository questionRepository;
 
-    //GetMapping Methode noch aus dem Technologietest
-	/*@GetMapping("/survey")
-	public String getSurveyForm(Model model) {
-		InputForm textInputs = new InputForm();
-		textInputs.getTextInputs().add(new TextInput("Test1"));
-		textInputs.getTextInputs().add(new TextInput("Test2"));
-		model.addAttribute("inputForm", textInputs);
-		return "textinputs";
-	}
-
-	//PostMapping Methode noch aus dem Technologietest
-	@PostMapping("/survey")
-	@Transactional
-	public String SurveyForm(@ModelAttribute("textinputs") InputForm inputForm, Model model) {
-
-		for(int i = 0; i < inputForm.getTextInputs().size(); i++) {
-			var umfrage = new Survey(inputForm.getTextInputs().get(i).getContent());
-			surveyRepository.save(umfrage);
-		}
-		model.addAttribute("inputForm", inputForm);
-		return "result";
-	}*/
-
-
     // GetMapping method for the survey view, generating the screen on localhost:8080
     @GetMapping("/survey-admin")
     public String getSurveyAdmin(Model model) {
@@ -72,25 +48,21 @@ public class SurveyController {
 
     @GetMapping("/button-question-handler")
     public String buttonQuestionHandler(@RequestParam("buttonQuestionHandler") String buttonQuestionHandler, Model model) {
-        String questionId = "";
+        String questionId;
         QuestionsView questionsView = new QuestionsView();
 
         // if statement for button handling
         // delete button - it's still not working correctly
         if (buttonQuestionHandler.startsWith(",delete_")) {
             questionId = buttonQuestionHandler.substring(8);
-            /*var question = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
-            questionsView = getQuestionsView(Long.toString(question.getSurveyId()));*/
             deleteQuestion(questionId);
             // edit button
         } else if (buttonQuestionHandler.startsWith(",edit_")) {
             questionId = buttonQuestionHandler.substring(6);
+            return "addQuestion";
         }
-
-        /*var question = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
-        QuestionsView questionsView = getQuestionsView(Long.toString(question.getSurveyId()));*/
+        questionsView.getQuestions().forEach(question -> questionsView.getQuestions().add(question));
         model.addAttribute("questionsView", questionsView);
-
         return "questionsView";
     }
 
@@ -130,6 +102,7 @@ public class SurveyController {
         return "redirect:/survey-admin";
     }
 
+
     private QuestionsView getQuestionsView(String surveyId) {
         // With the surveyID, the corresponding survey is searched for.
         // If it exists, it is saved in the 'survey' variable; otherwise, a NoSuchElementException is thrown
@@ -146,6 +119,7 @@ public class SurveyController {
         questionsView.setQuestions(questions);
         return questionsView;
     }
+
 
     // Upon clicking the Save button in the survey-add view, we redirect to /survey-save,
     // where the data is saved accordingly in the database. Afterwards, we return to the surveys view.
@@ -188,6 +162,7 @@ public class SurveyController {
     }
 
 
+
     // service method for button handling (delete data from database)
     private void deleteSurvey(String id) {
         surveyRepository.deleteById(Long.parseLong(id));
@@ -201,6 +176,7 @@ public class SurveyController {
     }
 
     private void deleteQuestion(String id) {
-        questionRepository.deleteById(Long.parseLong(id));
+        var selectedQuestion = questionRepository.findById(Long.parseLong(id));
+        questionRepository.deleteById(selectedQuestion.get().getQuestionId());
     }
 }
