@@ -191,6 +191,13 @@ public class SurveyController {
     // service method for button handling (delete data from database)
     private void deleteSurvey(String id) {
         surveyRepository.deleteById(Long.parseLong(id));
+
+        // delete questions in loop
+        // when a survey is deleted, its associated questions should also be deleted
+        var selectedQuestions = questionRepository.findBySurveyId(Long.parseLong(id));
+        for(int i = 0; i < selectedQuestions.size(); i++) {
+            questionRepository.deleteById(selectedQuestions.get(i).getQuestionId());
+        }
     }
 
     private void deleteQuestion(String id) {

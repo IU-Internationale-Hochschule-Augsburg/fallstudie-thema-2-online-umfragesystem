@@ -6,14 +6,14 @@ INSERT INTO SURVEY (END_DATE, START_DATE, SURVEY_ID, DESCRIPTION, TITLE)
 VALUES ('2024-06-30', '2024-05-03', 10002, 'Das ist eine weitere Testumfrage', 'Testumfrage 2');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, RADIOBUTTON1, RADIOBUTTON2)
-VALUES (1, 1, 'Wie alt bist Du?', 'Radiobutton', '<18', '>=18');
+VALUES (1, 10001, 'Wie alt bist Du?', 'Radiobutton', '<18', '>=18');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE)
-VALUES (2, 1, 'Wie heißt Du?', 'Textinput');
+VALUES (2, 10001, 'Wie heißt Du?', 'Textinput');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, CHECKBOX1, CHECKBOX2, CHECKBOX3)
-VALUES (3, 1, 'Welche Farben sind Deine Lieblingsfarben?', 'Checkbox', 'gelb', 'blau', 'rot');
+VALUES (3, 10001, 'Welche Farben sind Deine Lieblingsfarben?', 'Checkbox', 'gelb', 'blau', 'rot');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, CHECKBOX1, CHECKBOX2, CHECKBOX3, CHECKBOX4)
-VALUES (4, 2, 'Wie lautet Deine Lieblingsprogrammiersprache?', 'Checkbox', 'Java', 'C', 'OCaml', 'C++');
+VALUES (4, 10002, 'Wie lautet Deine Lieblingsprogrammiersprache?', 'Checkbox', 'Java', 'C', 'OCaml', 'C++');
 
