@@ -15,7 +15,6 @@ public class SurveyForm implements Serializable {
 
     private String description;
 
-    //added
     private Long surveyId;
 
     public SurveyForm() {

@@ -84,12 +84,9 @@
 
 <!-- Cancel and Save buttons --> <!-- Actions need to be added here -->
 <div class="footer">
-    <form method="post" action="/questions-view">
         <button class="formularabsenden">Abbrechen</button>
-    </form>
-    <form method="post" action="/questions-view">
+
         <button type="submit" class="formularabsenden">Speichern</button> <!-- I'm getting a parser exception in Spring Boot because of having form attributes twice: form="myform" form="myForm2">Speichern</button> -->
-    </form>
 </div>
 
 </body>

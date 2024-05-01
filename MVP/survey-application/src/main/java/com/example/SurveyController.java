@@ -1,7 +1,6 @@
 package com.example;
 
 import com.example.entity.Survey;
-import com.example.repository.QuestionRepository;
 import com.example.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SurveyController {
 
     private final SurveyRepository surveyRepository;
-    private final QuestionRepository questionRepository;
+    private final QuestionService questionService;
+    private final SurveyService surveyService;
 
     // GetMapping method for the survey view, generating the screen on localhost:8080
     @GetMapping("/survey-admin")
@@ -39,35 +39,8 @@ public class SurveyController {
         return "addSurvey";
     }
 
-    // GetMapping method for the Add-Question screen, loading the Add-Question view
-    @GetMapping("/add-question")
-    public String loadAddQuestion(Model model) {
-        model.addAttribute("addQuestion", new SurveyView());
-        return "addQuestion";
-    }
-
-    @GetMapping("/button-question-handler")
-    public String buttonQuestionHandler(@RequestParam("buttonQuestionHandler") String buttonQuestionHandler, Model model) {
-        String questionId;
-        QuestionsView questionsView = new QuestionsView();
-
-        // if statement for button handling
-        // delete button - it's still not working correctly
-        if (buttonQuestionHandler.startsWith(",delete_")) {
-            questionId = buttonQuestionHandler.substring(8);
-            deleteQuestion(questionId);
-            // edit button
-        } else if (buttonQuestionHandler.startsWith(",edit_")) {
-            questionId = buttonQuestionHandler.substring(6);
-            return "addQuestion";
-        }
-        questionsView.getQuestions().forEach(question -> questionsView.getQuestions().add(question));
-        model.addAttribute("questionsView", questionsView);
-        return "questionsView";
-    }
-
     //GetMapping for handling the buttons in the survey view (survey-admin)
-    @GetMapping("button-handler")
+    @GetMapping("button-survey-handler")
     public String buttonHandler(@RequestParam("buttonHandler") String buttonHandler, Model model) {
         String surveyId;
 
@@ -77,13 +50,12 @@ public class SurveyController {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(8);
             // invocation of the service method to delete the survey with the corresponding ID from the database
-            deleteSurvey(surveyId);
+            surveyService.deleteSurvey(surveyId);
             // edit button
         } else if (buttonHandler.startsWith(",edit_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(6);
-
-            QuestionsView questionsView = getQuestionsView(surveyId);
+            QuestionsView questionsView = questionService.getQuestionsView(surveyId);
 
             model.addAttribute("questionsView", questionsView);
             return "questionsView";
@@ -103,26 +75,8 @@ public class SurveyController {
     }
 
 
-    private QuestionsView getQuestionsView(String surveyId) {
-        // With the surveyID, the corresponding survey is searched for.
-        // If it exists, it is saved in the 'survey' variable; otherwise, a NoSuchElementException is thrown
-        var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
-
-        // Setting the ID and title of the survey in questionView
-        QuestionsView questionsView = new QuestionsView();
-        questionsView.setSurveyId(survey.getSurveyId());
-        questionsView.setTitle(survey.getTitle());
-
-        // The surveyID is also used to search in the questionRepository, as the surveyID is also present in the
-        // Question table. Then, the Question is set accordingly
-        var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
-        questionsView.setQuestions(questions);
-        return questionsView;
-    }
-
-
     // Upon clicking the Save button in the survey-add view, we redirect to /survey-save,
-    // where the data is saved accordingly in the database. Afterwards, we return to the surveys view.
+    // where the data is saved accordingly in the database. Afterward, we return to the surveys view.
     @PostMapping("/survey-save")
     public String saveSurvey(@ModelAttribute SurveyForm surveyForm, Model model) {
         Survey survey;
@@ -152,31 +106,5 @@ public class SurveyController {
     public String loadAddSurveyViewAgain(Model model) {
         model.addAttribute("addSurvey", new SurveyView());
         return "redirect:/survey-admin";
-    }
-
-    // Current functionality for the two buttons in the Add-Question view
-    @PostMapping("/questions-view")
-    public String loadQuestionViewAgain(Model model) {
-        model.addAttribute("addQuestion", new SurveyView());
-        return "redirect:/questions-view";
-    }
-
-
-
-    // service method for button handling (delete data from database)
-    private void deleteSurvey(String id) {
-        surveyRepository.deleteById(Long.parseLong(id));
-
-        // delete questions in loop
-        // when a survey is deleted, its associated questions should also be deleted
-        var selectedQuestions = questionRepository.findBySurveyId(Long.parseLong(id));
-        for(int i = 0; i < selectedQuestions.size(); i++) {
-            questionRepository.deleteById(selectedQuestions.get(i).getQuestionId());
-        }
-    }
-
-    private void deleteQuestion(String id) {
-        var selectedQuestion = questionRepository.findById(Long.parseLong(id));
-        questionRepository.deleteById(selectedQuestion.get().getQuestionId());
     }
 }
