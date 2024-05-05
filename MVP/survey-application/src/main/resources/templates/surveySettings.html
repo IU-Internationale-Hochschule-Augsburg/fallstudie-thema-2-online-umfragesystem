@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet">
 
+    <!--
+    <link rel="stylesheet" href="../static/survey.css" >
+-->
+
     <title>Umfrage Settings</title>
 </head>
 
@@ -20,20 +24,21 @@
 </div>
 
 <div class="content">
-    <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-save}" th:object="${survey}" method="post">
+    <form style="width: 100%" id="addSurveyForm" action="#" th:action="@{/survey-save}" th:object="${survey}"
+          method="post">
         <!-- hidden input field to store which button was clicked -->
-        <input type="hidden" name="surveyId" th:value="*{surveyId}" />
+        <input type="hidden" name="surveyId" th:value="*{surveyId}"/>
 
         <!-- First row: Survey title -->
         <div class="formularreihe">
             <!-- Title "Titel der Umfrage" -->
             <div class="col-25">
-                <label>Titel der Umfrage:</label>
+                <label for="title">Titel der Umfrage:</label>
             </div>
 
             <!-- Placeholder and text field for the survey title -->
             <div class="col-75">
-                <input type="text" th:field="*{title}" name="title" id="title" class="textfeld">
+                <input type="text" th:field="*{title}" name="title" id="title" class="textfeld" required autofocus>
             </div>
         </div>
 
@@ -46,10 +51,12 @@
 
             <!-- Start and End date fields -->
             <div class="col-75">
-                <label>Startdatum: </label>
-                <input type="date" th:field="${survey.startDate}" th:value="${survey.startDate}" name="startDate" id="startDate" style="font-size: 21px;padding: 0;">
-                <label>Enddatum: </label>
-                <input type="date" th:field="${survey.endDate}" name="endDate" id="endDate" style="font-size: 21px;padding: 0">
+                <label for="startDate">Startdatum: </label>
+                <input type="date" th:field="${survey.startDate}" th:value="${survey.startDate}" name="startDate"
+                       id="startDate" style="font-size: 21px;padding: 0;" required max="2026-01-01" min="2024-05-05">
+                <label for="endDate">Enddatum: </label>
+                <input type="date" th:field="${survey.endDate}" name="endDate" id="endDate"
+                       style="font-size: 21px;padding: 0" required max="2026-01-01" min="2024-05-05">
             </div>
         </div>
 
@@ -57,7 +64,7 @@
         <div class="formularreihe">
             <!-- Title "Beschreibung" -->
             <div class="col-25">
-                <label>Beschreibung:</label>
+                <label for="description">Beschreibung:</label>
             </div>
 
             <!-- Text field for the description -->

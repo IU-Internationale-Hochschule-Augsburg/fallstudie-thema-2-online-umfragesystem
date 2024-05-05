@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet">
 
+<!-- <link rel="stylesheet" href="../static/survey.css" >-->
+
     <title>Frage hinzufügen</title>
 </head>
 
@@ -30,14 +32,14 @@
                     <label for="bezeichnung">Bezeichnung Frage:</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" placeholder="Frage" class="textfeld" id="bezeichnung">
+                    <input type="text" placeholder="Frage" class="textfeld" id="bezeichnung" autofocus required>
                 </div>
             </div>
         </form>
     </div>
 
     <!-- Three radiobuttons for selecting the question type -->
-    <div class="containerFlex" style="margin-bottom: 10px">
+    <div class="containerFlex" style="margin-bottom: 10px; justify-content: space-between">
         <!-- Radiobuttons -->
         <form class="formularreihe" style="width: auto" id="myForm2">
             <label class="container">Radio Button
