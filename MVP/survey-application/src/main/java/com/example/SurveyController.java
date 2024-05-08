@@ -45,25 +45,20 @@ public class SurveyController {
         String surveyId;
 
         // if statement for button handling
-        // delete button
         if (buttonHandler.startsWith(",delete_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(8);
             // invocation of the service method to delete the survey with the corresponding ID from the database
             surveyService.deleteSurvey(surveyId);
-            // edit button
         } else if (buttonHandler.startsWith(",edit_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(6);
             QuestionsView questionsView = questionService.getQuestionsView(surveyId);
-
             model.addAttribute("questionsView", questionsView);
             return "questionsView";
-            // settings button
         } else if (buttonHandler.startsWith(",settings_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(10);
-
             // With the surveyID, the corresponding survey is searched for.
             // If it exists, it is saved in the 'survey' variable; otherwise, a NoSuchElementException is thrown
             var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();

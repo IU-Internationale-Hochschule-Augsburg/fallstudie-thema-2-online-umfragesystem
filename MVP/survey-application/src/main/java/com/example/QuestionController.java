@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -17,8 +19,17 @@ public class QuestionController {
     // GetMapping method for the Add-Question screen, loading the Add-Question view
     @GetMapping("/add-question")
     public String loadAddQuestion(Model model) {
-        model.addAttribute("addQuestion", new SurveyView());
+        model.addAttribute("addQuestion", new QuestionsView());
         return "addQuestion";
+    }
+
+    // the dynamic generation of the question views is still missing here!!
+    @GetMapping("/questions-view")
+    public String loadQuestionsView(Model model) {
+        QuestionsView questions = new QuestionsView();
+        // the dynamic generation of the question views is still missing here
+        model.addAttribute("questionsView", questions);
+        return "questionsView";
     }
 
     @GetMapping("/button-question-handler")
@@ -39,6 +50,37 @@ public class QuestionController {
             return "addQuestion";
         }
         return "questionsView";
+    }
+
+    // Not completed POST mapping function
+    @PostMapping("/question-save")
+    public String saveQuestion(@ModelAttribute QuestionForm questionForm, Model model) {
+        Question question = null;
+
+        if (questionForm.getQuestionId() != null) {
+            question = questionRepository.findById(questionForm.getQuestionId()).orElseThrow();
+            question.setQuestionText(questionForm.getQuestionText());
+            // more needs to be added here!
+        } else {
+            // here, we need to further enhance by dynamically adjusting to the varying number of answer options
+            if (questionForm.getQuestionType().equals("radiobutton")) {
+                question = new Question(questionForm.getQuestionText(), questionForm.getQuestionType(), questionForm.getRadiobutton1(), questionForm.getRadiobutton2());
+            } else if (questionForm.getQuestionType().equals("checkbox")) {
+                question = new Question(questionForm.getQuestionText(), questionForm.getQuestionType(), questionForm.getCheckbox1(), questionForm.getCheckbox2());
+            } else if (questionForm.getQuestionType().equals("open text response")) {
+                question = new Question(questionForm.getQuestionText(), questionForm.getQuestionType());
+            }
+        }
+        questionRepository.save(question);
+        model.addAttribute("question", questionForm);
+        return "redirect:/questions-view";
+    }
+
+    // Upon clicking the Cancel button, we redirect back to the questions view (without saving data)
+    @PostMapping("/questions-view")
+    public String loadAddSurveyViewAgain(Model model) {
+        model.addAttribute("questionsView", new QuestionsView());
+        return "redirect:/questions-view";
     }
 
     private void addQuestionViewToModel(Model model, String questionId) {
