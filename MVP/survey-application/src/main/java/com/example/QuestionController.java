@@ -55,7 +55,7 @@ public class QuestionController {
 
     // Not completed POST mapping function
     @PostMapping("/question-save")
-    public String saveQuestion(@ModelAttribute QuestionForm questionForm, Model model) {
+    public String saveQuestion(@ModelAttribute SingleQuestionView questionForm, Model model) {
         Question question;
 
         question = new Question(questionForm.getQuestionType(), questionForm.getQuestionText());
