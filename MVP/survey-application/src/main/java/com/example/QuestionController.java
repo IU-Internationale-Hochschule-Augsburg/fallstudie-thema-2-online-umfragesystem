@@ -19,7 +19,8 @@ public class QuestionController {
     // GetMapping method for the Add-Question screen, loading the Add-Question view
     @GetMapping("/add-question")
     public String loadAddQuestion(Model model) {
-        model.addAttribute("addQuestion", new QuestionsView());
+        SingleQuestionView answerOptions = new SingleQuestionView();
+        model.addAttribute("addQuestion", answerOptions);
         return "addQuestion";
     }
 
@@ -55,22 +56,10 @@ public class QuestionController {
     // Not completed POST mapping function
     @PostMapping("/question-save")
     public String saveQuestion(@ModelAttribute QuestionForm questionForm, Model model) {
-        Question question = null;
+        Question question;
 
-        if (questionForm.getQuestionId() != null) {
-            question = questionRepository.findById(questionForm.getQuestionId()).orElseThrow();
-            question.setQuestionText(questionForm.getQuestionText());
-            // more needs to be added here!
-        } else {
-            // here, we need to further enhance by dynamically adjusting to the varying number of answer options
-            if (questionForm.getQuestionType().equals("radiobutton")) {
-                question = new Question(questionForm.getQuestionText(), questionForm.getQuestionType(), questionForm.getRadiobutton1(), questionForm.getRadiobutton2());
-            } else if (questionForm.getQuestionType().equals("checkbox")) {
-                question = new Question(questionForm.getQuestionText(), questionForm.getQuestionType(), questionForm.getCheckbox1(), questionForm.getCheckbox2());
-            } else if (questionForm.getQuestionType().equals("open text response")) {
-                question = new Question(questionForm.getQuestionText(), questionForm.getQuestionType());
-            }
-        }
+        question = new Question(questionForm.getQuestionType(), questionForm.getQuestionText());
+
         questionRepository.save(question);
         model.addAttribute("question", questionForm);
         return "redirect:/questions-view";
