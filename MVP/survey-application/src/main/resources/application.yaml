@@ -12,3 +12,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
   banner:
     location: banner/banner.txt
+server:
+  error:
+    whitelabel:
+      enabled: false
