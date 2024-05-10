@@ -16,6 +16,8 @@ Spring Community (2024c). Building a RESTful Web Service. https://spring.io/guid
 
 Spring Community (2024d). Accessing Data with JPA. https://spring.io/guides/gs/accessing-data-jpa.
 
+Spring Community (2024e). Testing the Web Layer. https://spring.io/guides/gs/testing-web
+
 stackoverflow (2017). How does flex-wrap work with align-self, align-items and align-content?. https://stackoverflow.com/questions/42613359/how-does-flex-wrap-work-with-align-self-align-items-and-align-content
 
 stackoverflow (2022). Use ThymeLeaf to create multiple text input boxes. https://stackoverflow.com/questions/73983451/use-thymeleaf-to-create-multiple-text-input-boxes
