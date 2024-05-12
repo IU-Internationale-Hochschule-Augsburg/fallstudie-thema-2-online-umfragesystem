@@ -36,7 +36,7 @@
 
             <!-- Placeholder and text field for the survey title -->
             <div class="col-75">
-                <input type="text" th:field="*{title}" name="title" id="title" class="textfeld" required autofocus>
+                <input type="text" th:field="*{title}" name="title" id="title" class="textfeld" required autofocus maxlength="256">
             </div>
         </div>
 
@@ -68,7 +68,7 @@
             <!-- Text field for the description -->
             <div class="col-75">
                 <textarea th:field="*{description}" name="description" id="description" class="textfeld"
-                          style="height: 200px"></textarea>
+                          style="height: 200px" maxlength="1024"></textarea>
             </div>
         </div>
     </form>
