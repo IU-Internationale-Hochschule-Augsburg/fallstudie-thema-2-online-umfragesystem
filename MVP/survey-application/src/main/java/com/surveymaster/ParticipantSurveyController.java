@@ -1,4 +1,4 @@
-package com.example;
+package com.surveymaster;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

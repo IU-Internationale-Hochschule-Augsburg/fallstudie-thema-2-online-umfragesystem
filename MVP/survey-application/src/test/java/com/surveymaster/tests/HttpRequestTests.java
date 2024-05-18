@@ -1,4 +1,4 @@
-package com.example.tests;
+package com.surveymaster.tests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

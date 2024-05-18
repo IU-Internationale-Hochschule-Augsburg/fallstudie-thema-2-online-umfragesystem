@@ -1,7 +1,7 @@
-package com.example;
+package com.surveymaster;
 
-import com.example.repository.QuestionRepository;
-import com.example.repository.SurveyRepository;
+import com.surveymaster.repository.QuestionRepository;
+import com.surveymaster.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

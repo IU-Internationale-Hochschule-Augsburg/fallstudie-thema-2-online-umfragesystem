@@ -1,6 +1,6 @@
-package com.example;
+package com.surveymaster;
 
-import com.example.entity.Survey;
+import com.surveymaster.entity.Survey;
 import lombok.Data;
 
 import java.util.ArrayList;

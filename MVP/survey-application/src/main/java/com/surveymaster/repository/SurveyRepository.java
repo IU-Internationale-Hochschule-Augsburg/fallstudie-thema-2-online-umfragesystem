@@ -1,6 +1,6 @@
-package com.example.repository;
+package com.surveymaster.repository;
 
-import com.example.entity.Survey;
+import com.surveymaster.entity.Survey;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

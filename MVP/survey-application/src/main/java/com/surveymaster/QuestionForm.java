@@ -1,13 +1,12 @@
-package com.example.entity;
+package com.surveymaster;
 
-import jakarta.persistence.*;
 import lombok.Data;
-@Entity
-@Table
+
+import java.io.Serializable;
+
 @Data
-public class Question {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+public class QuestionForm implements Serializable {
     private Long questionId;
 
     private Long surveyId;
@@ -40,19 +39,6 @@ public class Question {
     private String checkbox9;
     private String checkbox10;
 
-    public Question() {
-    }
-
-    public Question(String questionType, String questionText, String radiobutton1, String radiobutton2) {
-        this.questionType = questionType;
-        this.questionText = questionText;
-        this.radiobutton1 = radiobutton1;
-        this.radiobutton2 = radiobutton2;
-    }
-
-    public Question(Long surveyId, String questionType, String questionText) {
-        this.surveyId = surveyId;
-        this.questionType = questionType;
-        this.questionText = questionText;
+    public QuestionForm() {
     }
 }

@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.surveymaster.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
