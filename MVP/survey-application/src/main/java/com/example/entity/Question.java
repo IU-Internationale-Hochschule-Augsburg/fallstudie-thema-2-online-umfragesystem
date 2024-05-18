@@ -50,7 +50,8 @@ public class Question {
         this.radiobutton2 = radiobutton2;
     }
 
-    public Question(String questionType, String questionText) {
+    public Question(Long surveyId, String questionType, String questionText) {
+        this.surveyId = surveyId;
         this.questionType = questionType;
         this.questionText = questionText;
     }

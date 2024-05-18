@@ -9,9 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet">
 
-
     <!-- <link rel="stylesheet" href="../static/survey.css" > -->
-
 
     <title>Fragebogenansicht</title>
 </head>
@@ -20,7 +18,7 @@
 
 <!-- Page title -->
 <div class="header">
-    <h3>"Titel Umfrage"</h3>
+    <h3 th:text="${questionsView.title}"></h3>
 </div>
 
 <div class="content">
@@ -62,9 +60,13 @@
     </form>
 </div>
 
+
 <!-- Cancel and Save Buttons -->
 <div class="footer">
-    <form method="get" action="/add-question">
+    <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}">
+        <!-- hidden input field to store the surveyId -->
+        <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
+
         <button class="formularabsenden">+ Frage hinzufügen</button>
     </form>
     <button class="formularabsenden">+ Abschnitt hinzufügen</button>

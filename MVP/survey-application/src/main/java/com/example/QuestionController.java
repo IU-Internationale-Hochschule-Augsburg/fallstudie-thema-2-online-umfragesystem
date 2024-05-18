@@ -5,10 +5,7 @@ import com.example.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,19 +14,20 @@ public class QuestionController {
     private final QuestionService questionService;
 
     // GetMapping method for the Add-Question screen, loading the Add-Question view
-    @GetMapping("/add-question")
-    public String loadAddQuestion(Model model) {
-        SingleQuestionView answerOptions = new SingleQuestionView();
-        model.addAttribute("addQuestion", answerOptions);
+    @PostMapping("/add-question")
+    public String loadAddQuestion(@RequestParam("surveyId") String surveyId, Model model) {
+        SingleQuestionView singleQuestion = new SingleQuestionView();
+        singleQuestion.setSurveyId(Long.parseLong(surveyId));
+        model.addAttribute("addQuestion", singleQuestion);
         return "addQuestion";
     }
 
     // the dynamic generation of the question views is still missing here!!
     @GetMapping("/questions-view")
-    public String loadQuestionsView(Model model) {
-        QuestionsView questions = new QuestionsView();
+    public String loadQuestionsView(@RequestParam("surveyId") String surveyId, Model model) {
+        QuestionsView questionsView = questionService.getQuestionsView(surveyId);
         // the dynamic generation of the question views is still missing here
-        model.addAttribute("questionsView", questions);
+        model.addAttribute("questionsView", questionsView);
         return "questionsView";
     }
 
@@ -58,11 +56,11 @@ public class QuestionController {
     public String saveQuestion(@ModelAttribute SingleQuestionView questionForm, Model model) {
         Question question;
 
-        question = new Question(questionForm.getQuestionType(), questionForm.getQuestionText());
+        question = new Question(questionForm.getSurveyId(), questionForm.getQuestionType(), questionForm.getQuestionText());
 
         questionRepository.save(question);
         model.addAttribute("question", questionForm);
-        return "redirect:/questions-view";
+        return "redirect:/questions-view?surveyId=" + questionForm.surveyId;
     }
 
     // Upon clicking the Cancel button, we redirect back to the questions view (without saving data)
