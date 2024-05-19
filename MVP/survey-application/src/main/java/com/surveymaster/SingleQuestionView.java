@@ -2,9 +2,6 @@ package com.surveymaster;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 
 public class SingleQuestionView {
@@ -19,5 +16,15 @@ public class SingleQuestionView {
 
     String description;
 
-    List<String> answerOptions = new ArrayList<>();
+    String answerOption1;
+    String answerOption2;
+    String answerOption3;
+    String answerOption4;
+    String answerOption5;
+    String answerOption6;
+    String answerOption7;
+    String answerOption8;
+    String answerOption9;
+    String answerOption10;
+
 }

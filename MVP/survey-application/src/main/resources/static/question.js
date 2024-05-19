@@ -11,63 +11,152 @@ function goBack() {
 
 function updateQuestionType(qType) {
     // to remember radio buttons by default
-    var addAnswerButton = document.getElementById('addAnswerButton');
     var answerOptionsDiv = document.getElementById('answerOptions');
+    document.getElementById('questionType').value = document.querySelector('input[type=radio]:checked').value;
 
-    var selectedRadiobutton = document.querySelector('input[type=radio]:checked').value;
-    document.getElementById('questionType').value = selectedRadiobutton;
-
-    // hide the +Answer button if the type is free text. Otherwise, by default, display one answer option
+    // hide the answeroptions if the type is open text response. Otherwise, by default, display all 10 options
     if(qType === 'radiobutton' || qType === 'checkbox') {
-        addAnswerButton.style.display = 'block';
-
-        if(answerCount === 0) {
-            answerCount = 1;
-        }
+        answerOptionsDiv.style.display = 'block';
     } else {
-        addAnswerButton.style.display = 'none';
-        while(answerOptionsDiv.firstChild) {
-            answerOptionsDiv.removeChild(answerOptionsDiv.firstChild);
+        clearAnswerOptions()
+        answerOptionsDiv.style.display = 'none';
+    }
+}
+
+function clearAnswerOptions() {
+    const antwortOptionen = document.getElementById('answerOptions');
+    const fragetypRadios = document.getElementsByName('questionType');
+
+    let fragetypChecked = false;
+    for (let i = 0; i < fragetypRadios.length; i++) {
+        if (fragetypRadios[i].checked) {
+            fragetypChecked = true;
+            break;
         }
-        answerCount = 0;
+    }
+
+    if (fragetypChecked) {
+        antwortOptionen.innerHTML = '';
+    } else {
+        antwortOptionen.innerHTML = `
+            <div id="answer1">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption1">Antwortoption 1: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption1" th:field="*{answerOption1}"
+                               placeholder="Geben Sie eine Antwortoption ein" required>
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer2">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption2">Antwortoption 2: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption2" th:field="*{answerOption2}"
+                               placeholder="Geben Sie eine Antwortoption ein" required>
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer3">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption3">Antwortoption 3: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption3" th:field="*{answerOption3}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer4">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption4">Antwortoption 4: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption4" th:field="*{answerOption4}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer5">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption5">Antwortoption 5: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption5" th:field="*{answerOption5}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer6">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption6">Antwortoption 6: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption6" th:field="*{answerOption6}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer7">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption7">Antwortoption 7: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption7" th:field="*{answerOption7}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+            <div id="answer8">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption8">Antwortoption 8: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption8" th:field="*{answerOption8}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer9">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption9">Antwortoption 9: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption9" th:field="*{answerOption9}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+
+            <div id="answer10">
+                <div class="containerFlex" style="border-bottom: solid 1px black; padding-top: 2px; padding-bottom: 8px; padding-left: 10px; margin-bottom: 12px;">
+                    <label style="width: 25%; display: flex; align-items: center" for="antwortOption10">Antwortoption 10: </label>
+
+                    <!-- Input field -->
+                    <div class="col-75">
+                        <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption10" th:field="*{answerOption10}"
+                               placeholder="Geben Sie eine Antwortoption ein">
+                    </div>
+                </div>
+            </div>
+        `;
     }
 }
-
-var answerCount = 1;
-
-// function to add an answer option; the function copies the answer options template
-function addAnswerOption() {
-    // if-clause to limit the number of options that can be added. You can create a maximum of 10 options
-    if(answerCount < 11) {
-        // clone the answer options template
-        var tempElement = document.getElementById('answerOptionTemplate');
-        var temp = tempElement.cloneNode(true);
-        temp.id = 'answerOption' + answerCount;
-        temp.style.display = 'block';
-
-        // change label
-        var label = temp.querySelector('label');
-        label.innerText = 'Antwortoption ' + answerCount + ' ';
-        document.getElementById('answerOptions').appendChild(temp);
-
-        answerCount++;
-    }
-}
-
-// function to delete the selected answer option
-function deleteAnswerOption(button) {
-    // if clause to limit the delete function
-    if (answerCount > 3) {
-        var answerDiv = button.parentElement.parentElement;
-        answerDiv.remove();
-        answerCount--;
-    }
-}
-
-// if the +Answer button is clicked a new screen should load
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('addAnswerButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        window.location.href = '/answers-view';
-    });
-});

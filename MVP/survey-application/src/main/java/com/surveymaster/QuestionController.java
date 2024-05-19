@@ -42,10 +42,12 @@ public class QuestionController {
             questionService.deleteQuestion(questionId);
             questionsView = questionService.getQuestionsView(String.valueOf(selectedQuestion.getSurveyId()));
             model.addAttribute("questionsView", questionsView);
-        } else if (buttonQuestionHandler.startsWith(",edit_")) {
-            questionId = buttonQuestionHandler.substring(6);
+        } else if (buttonQuestionHandler.startsWith(",settings_")) {
+            questionId = buttonQuestionHandler.substring(10);
             addQuestionViewToModel(model, questionId);
-            return "addQuestion";
+            var question = questionRepository.findById(Long.parseLong((questionId))).orElseThrow();
+            model.addAttribute("question", question);
+            return "questionSettings";
         }
         return "questionsView";
     }
@@ -55,8 +57,30 @@ public class QuestionController {
     public String saveQuestion(@ModelAttribute SingleQuestionView questionForm, Model model) {
         Question question;
 
-        question = new Question(questionForm.getSurveyId(), questionForm.getQuestionType(), questionForm.getQuestionText());
+        if (questionForm.getQuestionId() == null) {
+            question = new Question(questionForm.getSurveyId(), questionForm.getQuestionType(), questionForm.getQuestionText(),
+                    questionForm.getDescription(), questionForm.getAnswerOption1(), questionForm.getAnswerOption2(),
+                    questionForm.getAnswerOption3(), questionForm.getAnswerOption4(), questionForm.getAnswerOption5(),
+                    questionForm.getAnswerOption6(), questionForm.getAnswerOption7(), questionForm.getAnswerOption8(),
+                    questionForm.getAnswerOption9(), questionForm.getAnswerOption10());
+        } else {
+            question = questionRepository.findById(questionForm.getQuestionId()).orElseThrow();
 
+            question.setSurveyId(questionForm.getSurveyId());
+            question.setQuestionText(questionForm.getQuestionText());
+            question.setQuestionType(questionForm.getQuestionType());
+            question.setDescription(questionForm.getDescription());
+            question.setAnswerOption1(questionForm.getAnswerOption1());
+            question.setAnswerOption1(questionForm.getAnswerOption2());
+            question.setAnswerOption1(questionForm.getAnswerOption3());
+            question.setAnswerOption1(questionForm.getAnswerOption4());
+            question.setAnswerOption1(questionForm.getAnswerOption5());
+            question.setAnswerOption1(questionForm.getAnswerOption6());
+            question.setAnswerOption1(questionForm.getAnswerOption7());
+            question.setAnswerOption1(questionForm.getAnswerOption8());
+            question.setAnswerOption1(questionForm.getAnswerOption9());
+            question.setAnswerOption1(questionForm.getAnswerOption10());
+        }
         questionRepository.save(question);
         model.addAttribute("question", questionForm);
         return "redirect:/questions-view?surveyId=" + questionForm.surveyId;

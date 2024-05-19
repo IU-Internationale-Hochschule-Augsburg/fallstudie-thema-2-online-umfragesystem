@@ -36,7 +36,6 @@
             <!-- hidden input field to store which button was clicked -->
             <input type="hidden" name="buttonQuestionHandler" th:value="${buttonQuestionHandler}"/>
 
-            <!-- This needs to be dynamized -->
             <tr th:each="question, questionStat : *{questions}">
                 <td th:text="${question.questionText}"></td>
                 <td style="text-align: right">
@@ -48,14 +47,18 @@
                         <span class="material-symbols-outlined">delete</span>
                     </button>
 
+                   <!--
                     <button type="submit" class="optbutton" name="buttonQuestionHandler"
                             th:value="'edit_' + ${question.questionId}">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-                    <button type="submit" name="buttonHandler" th:value="'settings_' + ${question.questionId}"
-                            class="optbutton">
+                    -->
+
+                    <button type="submit"  class="optbutton" name="buttonQuestionHandler"
+                            th:value="'settings_' + ${question.questionId}">
                         <span class="material-symbols-outlined">settings</span>
                     </button>
+
                 </td>
             </tr>
             </tbody>
