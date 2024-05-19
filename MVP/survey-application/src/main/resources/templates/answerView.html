@@ -9,15 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="../static/survey.css" > -->
+    <link rel="stylesheet" href="../static/survey.css">
 
-    <title>Fragebogenansicht</title>
+    <title>Antwortenansicht</title>
 </head>
 
 <body>
 
 <!-- Page title -->
 <div class="header">
+
+    <!--@ALINA hier muss dynamisch der Name der Frage stehen-->
+
     <h3 th:text="${questionsView.title}"></h3>
 </div>
 
@@ -28,7 +31,7 @@
             <!-- Heading: Questions -->
             <thead>
             <tr>
-                <th style="border-bottom: 0"><b style="font-size: 30px">Fragen</b></th>
+                <th style="border-bottom: 0"><b style="font-size: 30px">Antworten</b></th>
             </tr>
             </thead>
             <tbody style="padding: 10px">
@@ -52,15 +55,6 @@
                             th:value="'edit_' + ${question.questionId}">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-
-<!--
-                  @ALINA  Neuer Button für Einstellung, ich weiß nicht ob suervey.surveyid passt?
--->
-
-                    <button type="submit" name="buttonHandler" th:value="'settings_' + ${survey.surveyId}"
-                            class="optbutton">
-                        <span class="material-symbols-outlined">settings</span>
-                    </button>
                 </td>
             </tr>
             </tbody>
@@ -71,14 +65,11 @@
 
 
 <!-- Cancel and Save Buttons -->
-<div class="footer">
-    <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}">
-        <!-- hidden input field to store the surveyId -->
-        <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
 
-        <button class="formularabsenden">+ Frage hinzufügen</button>
-    </form>
-    <button class="formularabsenden">+ Abschnitt hinzufügen</button>
+<div class="footer">
+
+    <button class="formularabsenden">+ Antwort</button>
+
 </div>
 
 </body>
