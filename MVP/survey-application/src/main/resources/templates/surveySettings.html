@@ -60,10 +60,10 @@
             <!-- Start and End date fields -->
             <div class="col-75">
                 <label for="startDate">Startdatum: </label>
-                <input type="date" th:field="${survey.startDate}" th:value="${survey.startDate}" oninput="formatDate(this)" name="startDate"
-                       id="startdate" style="font-size: 21px;padding: 0;" required>
+                <input type="date" th:field="${survey.startDate}" th:value="*{{startDate}}" name="startDate" id="startdate"
+                       style="font-size: 21px;padding: 0;" onclick="setStartdateAndLimit()" required>
                 <label for="endDate">Enddatum: </label>
-                <input type="date" th:field="${survey.endDate}" name="endDate" id="enddate"
+                <input type="date" th:field="${survey.endDate}" th:value="*{{endDate}}" name="endDate" id="enddate"
                        style="font-size: 21px;padding: 0" onclick="setEnddateAndLimit()" required>
             </div>
         </div>
