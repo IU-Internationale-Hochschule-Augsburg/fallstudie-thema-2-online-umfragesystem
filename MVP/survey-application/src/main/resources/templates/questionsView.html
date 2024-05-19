@@ -52,12 +52,7 @@
                             th:value="'edit_' + ${question.questionId}">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-
-<!--
-                  @ALINA  Neuer Button für Einstellung, ich weiß nicht ob suervey.surveyid passt?
--->
-
-                    <button type="submit" name="buttonHandler" th:value="'settings_' + ${survey.surveyId}"
+                    <button type="submit" name="buttonHandler" th:value="'settings_' + ${question.questionId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">settings</span>
                     </button>

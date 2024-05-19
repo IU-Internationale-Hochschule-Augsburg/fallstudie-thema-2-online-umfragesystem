@@ -17,5 +17,7 @@ public class SingleQuestionView {
 
     String questionType;
 
+    String description;
+
     List<String> answerOptions = new ArrayList<>();
 }

@@ -63,3 +63,11 @@ function deleteAnswerOption(button) {
         answerCount--;
     }
 }
+
+// if the +Answer button is clicked a new screen should load
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('addAnswerButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = '/answers-view';
+    });
+});

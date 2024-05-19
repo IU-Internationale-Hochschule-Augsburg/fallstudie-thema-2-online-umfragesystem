@@ -16,6 +16,8 @@ public class Question {
 
     private String questionText;
 
+    private String description;
+
     // Saving the answer options for the Radiobutton question type
     private String radiobutton1;
     private String radiobutton2;

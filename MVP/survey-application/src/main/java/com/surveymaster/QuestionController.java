@@ -22,11 +22,10 @@ public class QuestionController {
         return "addQuestion";
     }
 
-    // the dynamic generation of the question views is still missing here!!
+    // GetMapping method for the question-view, to load the view after saving a new question
     @GetMapping("/questions-view")
     public String loadQuestionsView(@RequestParam("surveyId") String surveyId, Model model) {
         QuestionsView questionsView = questionService.getQuestionsView(surveyId);
-        // the dynamic generation of the question views is still missing here
         model.addAttribute("questionsView", questionsView);
         return "questionsView";
     }
@@ -51,7 +50,7 @@ public class QuestionController {
         return "questionsView";
     }
 
-    // Not completed POST mapping function
+    // Not completed POST mapping function for saving question data
     @PostMapping("/question-save")
     public String saveQuestion(@ModelAttribute SingleQuestionView questionForm, Model model) {
         Question question;
