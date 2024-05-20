@@ -50,14 +50,6 @@
                             th:value="'edit_' + ${question.questionId}">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
-
-                    <!--
-                    <button type="submit"  class="optbutton" name="buttonQuestionHandler"
-                            th:value="'settings_' + ${question.questionId}">
-                        <span class="material-symbols-outlined">settings</span>
-                    </button>
-                    -->
-
                 </td>
             </tr>
             </tbody>
@@ -69,11 +61,15 @@
 
 <!-- Cancel and Save Buttons -->
 <div class="footer">
-    <div class="col-25">
-        <button class="optbutton" title="Zurück">
-    <span class="material-symbols-outlined">arrow_back</span>
-        </button>
-    </div>
+
+        <div class="col-25">
+            <form method="get" action="#" th:action="@{/survey-admin}">
+            <button class="optbutton" title="Zurück">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            </form>
+        </div>
+
         <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}" class="col-75" style="text-align: right;">
             <!-- hidden input field to store the surveyId -->
             <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
