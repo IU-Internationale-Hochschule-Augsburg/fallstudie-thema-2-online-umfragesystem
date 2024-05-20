@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="../static/survey.css" > -->
+    <link rel="stylesheet" href="../static/survey.css">
 
     <title>Fragebogenansicht</title>
 </head>
@@ -69,13 +69,19 @@
 
 <!-- Cancel and Save Buttons -->
 <div class="footer">
-    <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}">
-        <!-- hidden input field to store the surveyId -->
-        <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
+    <div class="col-25">
+        <button class="optbutton" title="Zurück">
+    <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+    </div>
+        <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}" class="col-75" style="text-align: right;">
+            <!-- hidden input field to store the surveyId -->
+            <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
 
-        <button class="formularabsenden">+ Frage hinzufügen</button>
-    </form>
-    <button class="formularabsenden">+ Abschnitt hinzufügen</button>
+            <button class="formularabsenden">+ Frage hinzufügen</button>
+            <button class="formularabsenden">+ Abschnitt hinzufügen</button>
+        </form>
+
 </div>
 
 </body>
