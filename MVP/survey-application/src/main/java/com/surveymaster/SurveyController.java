@@ -81,13 +81,13 @@ public class SurveyController {
             survey = surveyRepository.findById(surveyForm.getSurveyId()).orElseThrow();
             // Resetting all attributes again
             survey.setTitle(surveyForm.getTitle());
-            survey.setStartDate(surveyForm.getStartdate());
-            survey.setEndDate(surveyForm.getEnddate());
+            survey.setStartDate(surveyForm.getStartDate());
+            survey.setEndDate(surveyForm.getEndDate());
             survey.setDescription(surveyForm.getDescription());
         } else {
             // if the survey does not exist yet, it is newly created and saved
             // fetching the survey data from the SurveyForm
-            survey = new Survey(surveyForm.getTitle(), surveyForm.getStartdate(), surveyForm.getEnddate(), surveyForm.getDescription());
+            survey = new Survey(surveyForm.getTitle(), surveyForm.getStartDate(), surveyForm.getEndDate(), surveyForm.getDescription());
         }
         // writing the data into the database
         surveyRepository.save(survey);

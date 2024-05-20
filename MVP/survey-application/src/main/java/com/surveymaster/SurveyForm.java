@@ -9,9 +9,9 @@ import java.time.LocalDate;
 public class SurveyForm implements Serializable {
     private String title;
 
-    private LocalDate startdate;
+    private LocalDate startDate;
 
-    private LocalDate enddate;
+    private LocalDate endDate;
 
     private String description;
 
