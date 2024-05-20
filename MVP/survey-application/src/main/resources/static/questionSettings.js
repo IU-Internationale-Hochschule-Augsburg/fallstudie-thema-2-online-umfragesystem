@@ -57,7 +57,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption1" th:field="*{answerOption1}" th:value="*{answerOption1}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption1" th:field="*{answerOption1}"
                            placeholder="Geben Sie eine Antwortoption ein" required>
                 </div>
             </div>
@@ -69,7 +69,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption2" th:field="*{answerOption2}" th:value="*{answerOption2}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption2" th:field="*{answerOption2}"
                            placeholder="Geben Sie eine Antwortoption ein" required>
                 </div>
             </div>
@@ -81,7 +81,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption3" th:field="*{answerOption3}" th:value="*{answerOption3}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption3" th:field="*{answerOption3}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -93,7 +93,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption4" th:field="*{answerOption4}" th:value="*{answerOption4}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption4" th:field="*{answerOption4}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -105,7 +105,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption5" th:field="*{answerOption5}" th:value="*{answerOption5}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption5" th:field="*{answerOption5}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -117,7 +117,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption6" th:field="*{answerOption6}" th:value="*{answerOption6}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption6" th:field="*{answerOption6}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -129,7 +129,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption7" th:field="*{answerOption7}" th:value="*{answerOption7}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption7" th:field="*{answerOption7}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -140,7 +140,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption8" th:field="*{answerOption8}" th:value="*{answerOption8}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption8" th:field="*{answerOption8}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -152,7 +152,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption9" th:field="*{answerOption9}" th:value="*{answerOption9}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption9" th:field="*{answerOption9}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>
@@ -164,7 +164,7 @@ function clearAnswerOptions() {
 
                 <!-- Input field -->
                 <div class="col-75">
-                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption10" th:field="*{answerOption10}" th:value="*{answerOption10}"
+                    <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption10" th:field="*{answerOption10}"
                            placeholder="Geben Sie eine Antwortoption ein">
                 </div>
             </div>

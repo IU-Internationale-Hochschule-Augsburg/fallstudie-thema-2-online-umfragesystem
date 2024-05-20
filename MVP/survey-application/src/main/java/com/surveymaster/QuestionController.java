@@ -42,8 +42,8 @@ public class QuestionController {
             questionService.deleteQuestion(questionId);
             questionsView = questionService.getQuestionsView(String.valueOf(selectedQuestion.getSurveyId()));
             model.addAttribute("questionsView", questionsView);
-        } else if (buttonQuestionHandler.startsWith(",settings_")) {
-            questionId = buttonQuestionHandler.substring(10);
+        } else if (buttonQuestionHandler.startsWith(",edit_")) {
+            questionId = buttonQuestionHandler.substring(6);
             addQuestionViewToModel(model, questionId);
             var question = questionRepository.findById(Long.parseLong((questionId))).orElseThrow();
             model.addAttribute("question", question);
@@ -71,15 +71,15 @@ public class QuestionController {
             question.setQuestionType(questionForm.getQuestionType());
             question.setDescription(questionForm.getDescription());
             question.setAnswerOption1(questionForm.getAnswerOption1());
-            question.setAnswerOption1(questionForm.getAnswerOption2());
-            question.setAnswerOption1(questionForm.getAnswerOption3());
-            question.setAnswerOption1(questionForm.getAnswerOption4());
-            question.setAnswerOption1(questionForm.getAnswerOption5());
-            question.setAnswerOption1(questionForm.getAnswerOption6());
-            question.setAnswerOption1(questionForm.getAnswerOption7());
-            question.setAnswerOption1(questionForm.getAnswerOption8());
-            question.setAnswerOption1(questionForm.getAnswerOption9());
-            question.setAnswerOption1(questionForm.getAnswerOption10());
+            question.setAnswerOption2(questionForm.getAnswerOption2());
+            question.setAnswerOption3(questionForm.getAnswerOption3());
+            question.setAnswerOption4(questionForm.getAnswerOption4());
+            question.setAnswerOption5(questionForm.getAnswerOption5());
+            question.setAnswerOption6(questionForm.getAnswerOption6());
+            question.setAnswerOption7(questionForm.getAnswerOption7());
+            question.setAnswerOption8(questionForm.getAnswerOption8());
+            question.setAnswerOption9(questionForm.getAnswerOption9());
+            question.setAnswerOption10(questionForm.getAnswerOption10());
         }
         questionRepository.save(question);
         model.addAttribute("question", questionForm);
