@@ -62,22 +62,22 @@
 <!-- Cancel and Save Buttons -->
 <div class="footer">
 
-        <div class="col-25">
-            <form method="get" action="#" th:action="@{/survey-admin}">
-            <button class="optbutton" title="Zurück">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            </form>
-        </div>
-
-        <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}" class="col-75" style="text-align: right;">
-            <!-- hidden input field to store the surveyId -->
-            <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
-
-            <button class="formularabsenden">+ Frage hinzufügen</button>
-            <button class="formularabsenden">+ Abschnitt hinzufügen</button>
+    <div class="col-25">
+        <form method="get" action="#" th:action="@{/survey-admin}">
+        <button class="optbutton" title="Zurück">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
         </form>
+    </div>
 
+    <form method="post" action="#" th:object="${questionsView}" th:action="@{/add-question}" class="col-75" style="text-align: right;">
+        <!-- hidden input field to store the surveyId -->
+        <input type="hidden" name="surveyId" th:value="${questionsView.surveyId}"/>
+
+        <button class="formularabsenden">+ Frage hinzufügen</button>
+        <!-- Button to add a section. This might be a future feature -->
+        <button class="formularabsenden" disabled>+ Abschnitt hinzufügen</button>
+    </form>
 </div>
 
 </body>

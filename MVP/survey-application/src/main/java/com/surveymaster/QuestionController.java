@@ -4,6 +4,7 @@ import com.surveymaster.entity.Question;
 import com.surveymaster.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,6 +54,7 @@ public class QuestionController {
     }
 
     // Not completed POST mapping function for saving question data
+    @Transactional
     @PostMapping("/question-save")
     public String saveQuestion(@ModelAttribute SingleQuestionView questionForm, Model model) {
         Question question;

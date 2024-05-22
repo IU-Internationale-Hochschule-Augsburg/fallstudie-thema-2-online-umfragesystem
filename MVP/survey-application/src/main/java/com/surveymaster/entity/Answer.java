@@ -15,19 +15,17 @@ public class Answer {
 
     private Long userId;
 
-    // In contrast to the Question table, only saving the actual answers
-    private String radiobutton;
-
-    private String checkbox1;
-    private String checkbox2;
-    private String checkbox3;
-    private String checkbox4;
-    private String checkbox5;
-    private String checkbox6;
-    private String checkbox7;
-    private String checkbox8;
-    private String checkbox9;
-    private String checkbox10;
+    // We store the checked state of the answer options in the database using the characters 'Y' for yes and 'N' for no
+    private char answerOption1;
+    private char answerOption2;
+    private char answerOption3;
+    private char answerOption4;
+    private char answerOption5;
+    private char answerOption6;
+    private char answerOption7;
+    private char answerOption8;
+    private char answerOption9;
+    private char answerOption10;
 
     private String textinput;
 

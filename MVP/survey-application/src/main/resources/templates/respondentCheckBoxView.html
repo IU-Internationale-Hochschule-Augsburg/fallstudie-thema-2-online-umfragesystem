@@ -17,39 +17,37 @@
 
 
 <div class="header">
-    <h3>"Titel Umfrage"</h3>
+    <form id="surveyTitle" style="padding: 6px" th:object="${survey1}" method="get">
+        <h3 th:text="${survey1.title}"></h3>
+    </form>
 </div>
 
 <div class="content" style="flex-direction: column;">
     <div style="margin-bottom: 10px; padding: 6px; width: 100%">
-        <b style="font-size: 30px">"Frage"</b>
+        <b style="font-size: 30px" th:text="${question1.questionText}"></b>
     </div>
 
 
-    <form id="checkboxForm" style="padding: 6px"> <!-- action="#" th:action="@{/save-response}" th:object="${question1}" method="post"> -->
+    <form id="checkboxForm" style="padding: 6px" action="#" th:action="@{/save-response}" th:object="${question1}"  method="post">
 
-        <label class="container2">One <!-- th:text="${question1.answerOption1}"> -->
-            <input type="checkbox">
-            <span class="checkmark2"></span>
-        </label>
-        <label class="container2">Two <!-- th:text="${question1.answerOption2}"> -->
-            <input type="checkbox">
-            <span class="checkmark2"></span>
-        </label>
-        <label class="container2">Three <!-- th:text="${question1.answerOption3}"> -->
-            <input type="checkbox">
-            <span class="checkmark2"></span>
-        </label>
-        <label class="container2">Four <!-- th:text="${question1.answerOption4}"> -->
-            <input type="checkbox">
+       <label class="container2">
+            <input type="checkbox" th:text="${question1.answerOption1}"/>
             <span class="checkmark2"></span>
         </label>
 
-        <!--
-        <input type="hidden" id="questionType" th:field="*{questionType}" th:value="*{questionType}" readonly>
-        <input type="hidden" id="surveyId" th:field="*{surveyId}" th:value="*{surveyId}" readonly>
-        <input type="hidden" id="questionId" th:field="*{questionId}" th:value="*{questionId}" readonly>
-        -->
+        <label class="container2">
+            <input type="checkbox" th:text="${question1.answerOption2}"/>
+            <span class="checkmark2"></span>
+        </label>
+        <label class="container2">
+            <input type="checkbox" th:text="${question1.answerOption3}"/>
+            <span class="checkmark2"></span>
+        </label>
+
+        <input type="hidden" id="questionType" th:field="*{questionType}" readonly>
+        <input type="hidden" id="surveyId" th:field="*{surveyId}" readonly>
+        <input type="hidden" id="questionId" th:field="*{questionId}" readonly>
+
     </form>
 
 </div>

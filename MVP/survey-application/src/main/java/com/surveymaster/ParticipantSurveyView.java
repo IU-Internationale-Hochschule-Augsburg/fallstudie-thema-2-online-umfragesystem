@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class QuestionsView {
-    private String title;
-
+public class ParticipantSurveyView {
     private Long surveyId;
 
+    private String title;
+
+    // counter
+    private int currentQuestion;
+
     private List<Question> questions = new ArrayList<>();
+
 }

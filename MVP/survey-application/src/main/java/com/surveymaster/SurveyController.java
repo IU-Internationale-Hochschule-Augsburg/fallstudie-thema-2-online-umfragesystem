@@ -4,6 +4,7 @@ import com.surveymaster.entity.Survey;
 import com.surveymaster.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -72,6 +73,7 @@ public class SurveyController {
 
     // Upon clicking the Save button in the survey-add view, we redirect to /survey-save,
     // where the data is saved accordingly in the database. Afterward, we return to the surveys view.
+    @Transactional
     @PostMapping("/survey-save")
     public String saveSurvey(@ModelAttribute SurveyForm surveyForm, Model model) {
         Survey survey;
