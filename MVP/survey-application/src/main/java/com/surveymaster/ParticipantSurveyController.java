@@ -25,7 +25,7 @@ public class ParticipantSurveyController {
 
         model.addAttribute("survey1", survey);
         model.addAttribute("question1", question1);
-        return "respondentCheckBoxView";
+        return "respondentRadioButtonView";
     }
 
     @Transactional

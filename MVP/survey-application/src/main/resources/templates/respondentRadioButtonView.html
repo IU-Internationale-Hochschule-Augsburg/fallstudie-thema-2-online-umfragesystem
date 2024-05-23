@@ -1,0 +1,61 @@
+<!-- Radiobutton View -->
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link th:href="@{/survey.css}" th:rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="../static/survey.css"> -->
+
+  <title>Befragter Check Box</title>
+</head>
+<body>
+
+
+<div class="header">
+  <form id="surveyTitle" style="padding: 6px" th:object="${survey1}" method="get">
+    <h3 th:text="${survey1.title}"></h3>
+  </form>
+</div>
+
+<div class="content" style="flex-direction: column;">
+  <div style="margin-bottom: 10px; padding: 6px; width: 100%">
+    <b style="font-size: 30px" th:text="${question1.questionText}"></b>
+  </div>
+
+
+  <form id="radiobuttonForm" style="padding: 6px" action="#" th:action="@{/save-response}" th:object="${question1}"  method="post">
+
+    <label class="container">
+      <input type="radio" name="radiobuttons" th:text="${question1.answerOption1}"/>
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">
+      <input type="radio" name="radiobuttons" th:text="${question1.answerOption2}"/>
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">
+      <input type="radio" name="radiobuttons" th:text="${question1.answerOption3}"/>
+      <span class="checkmark"></span>
+    </label>
+
+    <input type="hidden" id="questionType" th:field="*{questionType}" readonly>
+    <input type="hidden" id="surveyId" th:field="*{surveyId}" readonly>
+    <input type="hidden" id="questionId" th:field="*{questionId}" readonly>
+
+  </form>
+
+</div>
+
+
+<div class="footer">
+  <button form="radiobuttonForm" type="submit" class="formularabsenden">Weiter</button>
+</div>
+
+</body>
+</html>
