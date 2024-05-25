@@ -31,11 +31,11 @@
 <div class="content">
     <form action="#" th:action="@{/button-survey-handler}" th:object="${surveyView}" method="get" id="surveyViewForm"
           style="width: 100%">
-        <table class="tabelletext">
+        <table style="width: 100%">
             <!-- Projects heading -->
             <thead>
             <tr>
-                <th style="border-bottom: 0"><b style="font-size: 30px">Projekte</b></th>
+                <th style="border-bottom: 0; text-align: left"><b style="font-size: 30px">Projekte</b></th>
             </tr>
             </thead>
 
@@ -47,14 +47,20 @@
             <!-- dynamic loop over the surveys -->
             <tr style="width: 100%" th:each="survey, surveyStat : *{surveys}">
                 <!-- Survey title -->
-                <td th:text="${survey.title}"></td>
+                <td class="col-75" th:text="${survey.title}"></td>
 
 
                 <!-- buttons -->
-                <td class="col-75" style="text-align: right">
+                <td class="col-25" style="text-align: right">
                     <button type="submit" name="buttonHandler" th:value="'delete_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
+                    </button>
+
+                    <!--NEU BUTTON FÜR LINK-->
+                    <button name="buttonHandler"
+                            class="optbutton" onclick="alert('http://localhost:8080/participant-view')" value="">
+                        <span class="material-symbols-outlined">link</span>
                     </button>
                     <button type="submit" name="buttonHandler" th:value="'edit_' + ${survey.surveyId}"
                             class="optbutton">
