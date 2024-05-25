@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,15 +18,15 @@ public class ParticipantSurveyController {
     private final SurveyRepository surveyRepository;
 
     @GetMapping("/participant-view")
-    public String loadParticipantView(Model model) {
-        final var questions = questionRepository.findBySurveyId(10001L);
-        final var question1 = questions.get(2);
+    public String loadParticipantView(@RequestParam("surveyId") String surveyId, Model model) {
+        final var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
+        final var question1 = questions.get(0);
 
-        final var survey = surveyRepository.findById(10001L).orElseThrow();
+        final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
 
         model.addAttribute("survey1", survey);
         model.addAttribute("question1", question1);
-        return "respondentRadioButtonView";
+        return "respondentCheckBoxView";
     }
 
     @Transactional

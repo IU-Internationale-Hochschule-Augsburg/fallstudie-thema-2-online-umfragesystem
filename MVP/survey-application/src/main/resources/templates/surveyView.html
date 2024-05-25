@@ -49,6 +49,8 @@
                 <!-- Survey title -->
                 <td class="col-75" th:text="${survey.title}"></td>
 
+                <!-- hidden input field to store which button was clicked -->
+                <input type="hidden" id="surveyId" th:value="${survey.surveyId}"/>
 
                 <!-- buttons -->
                 <td class="col-25" style="text-align: right">
@@ -56,12 +58,11 @@
                             class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
-
-                    <!--NEU BUTTON FÜR LINK-->
-                    <button name="buttonHandler"
-                            class="optbutton" onclick="alert('http://localhost:8080/participant-view')" value="">
+                    <button name="buttonHandler" th:data-survey-id="${survey.surveyId}" value=""
+                            class="optbutton" onclick="showAlert(this.getAttribute('data-survey-id'))">
                         <span class="material-symbols-outlined">link</span>
                     </button>
+                    <!-- Ggf. für den Link-Button: th:value="'share_' + ${survey.surveyId}" -->
                     <button type="submit" name="buttonHandler" th:value="'edit_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">edit</span>
@@ -87,5 +88,14 @@
         <button class="formularabsenden">+ Umfrage hinzufügen</button>
     </form>
 </div>
+
+<script>
+    function showAlert(surveyId) {
+        var message = "http://localhost:8080/participant-view?surveyId=" + surveyId;
+        debugger;
+        alert(message);
+    }
+</script>
+
 </body>
 </html>
