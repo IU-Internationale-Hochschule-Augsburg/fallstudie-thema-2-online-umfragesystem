@@ -16,17 +16,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 
-public class WebApplicationTests {
+class WebApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
-     @Test
+    @Test
     void testLoadingSurveyView() throws Exception {
-         this.mockMvc.perform(get("/survey-admin")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("surveyView")));
-     }
+        this.mockMvc.perform(get("/survey-admin")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("surveyView")));
+    }
 
-     @Test
+    @Test
     void testLoadingAddSurvey() throws Exception {
-         this.mockMvc.perform(get("/add-survey")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("addSurvey")));
-     }
+        this.mockMvc.perform(get("/add-survey")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("addSurvey")));
+    }
 }

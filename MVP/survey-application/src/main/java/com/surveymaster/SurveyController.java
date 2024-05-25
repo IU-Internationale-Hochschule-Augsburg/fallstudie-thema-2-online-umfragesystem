@@ -23,7 +23,7 @@ public class SurveyController {
     // GetMapping method for the survey view, generating the screen on localhost:8080
     @GetMapping("/survey-admin")
     public String getSurveyAdmin(Model model) {
-        SurveyView surveys = new SurveyView();
+        final SurveyView surveys = new SurveyView();
         // retrieve all surveys from the surveyRepository and add each found survey to the collection.
         // This line is responsible for dynamically listing the surveys
         surveyRepository.findAll().forEach(survey -> surveys.getSurveys().add(survey));
@@ -35,7 +35,7 @@ public class SurveyController {
     // GetMapping method for the survey-add view, generating the screen on localhost:8080
     @GetMapping("/add-survey")
     public String loadAddSurveyView(Model model) {
-        SurveyForm surveyForm = new SurveyForm();
+        final SurveyForm surveyForm = new SurveyForm();
         model.addAttribute("survey", surveyForm);
         return "addSurvey";
     }
@@ -54,7 +54,7 @@ public class SurveyController {
         } else if (buttonHandler.startsWith(",edit_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
             surveyId = buttonHandler.substring(6);
-            QuestionsView questionsView = questionService.getQuestionsView(surveyId);
+            final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
             model.addAttribute("questionsView", questionsView);
             return "questionsView";
         } else if (buttonHandler.startsWith(",settings_")) {
@@ -62,7 +62,7 @@ public class SurveyController {
             surveyId = buttonHandler.substring(10);
             // With the surveyID, the corresponding survey is searched for.
             // If it exists, it is saved in the 'survey' variable; otherwise, a NoSuchElementException is thrown
-            var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+            final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
             model.addAttribute("survey", survey);
             // calling the HTML script for the survey settings
             return "surveySettings";

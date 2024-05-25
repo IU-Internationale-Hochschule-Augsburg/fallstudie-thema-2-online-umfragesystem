@@ -18,10 +18,10 @@ public class ParticipantSurveyController {
 
     @GetMapping("/participant-view")
     public String loadParticipantView(Model model) {
-        var questions = questionRepository.findBySurveyId(10001L);
-        var question1 = questions.get(2);
+        final var questions = questionRepository.findBySurveyId(10001L);
+        final var question1 = questions.get(2);
 
-        var survey = surveyRepository.findById(10001L).orElseThrow();
+        final var survey = surveyRepository.findById(10001L).orElseThrow();
 
         model.addAttribute("survey1", survey);
         model.addAttribute("question1", question1);

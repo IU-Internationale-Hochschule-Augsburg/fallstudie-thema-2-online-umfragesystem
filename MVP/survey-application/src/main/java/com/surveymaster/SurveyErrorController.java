@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SurveyErrorController implements ErrorController {
-    private final String PATH = "/error";
+    private static final String PATH = "/error";
 
     @RequestMapping(value = PATH)
     public String loadErrorPage() {
         return "error";
+    }
+
+    public SurveyErrorController() {
     }
 }

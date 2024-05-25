@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 
 public class SingleQuestionView {
-
     Long questionId;
 
     Long surveyId;
@@ -26,5 +25,4 @@ public class SingleQuestionView {
     String answerOption8;
     String answerOption9;
     String answerOption10;
-
 }

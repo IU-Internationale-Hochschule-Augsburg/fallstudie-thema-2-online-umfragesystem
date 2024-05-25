@@ -17,7 +17,7 @@ public class QuestionController {
     // GetMapping method for the Add-Question screen, loading the Add-Question view
     @PostMapping("/add-question")
     public String loadAddQuestion(@RequestParam("surveyId") String surveyId, Model model) {
-        SingleQuestionView singleQuestion = new SingleQuestionView();
+        final SingleQuestionView singleQuestion = new SingleQuestionView();
         singleQuestion.setSurveyId(Long.parseLong(surveyId));
         model.addAttribute("addQuestion", singleQuestion);
         return "addQuestion";
@@ -26,7 +26,7 @@ public class QuestionController {
     // GetMapping method for the question-view, to load the view after saving a new question
     @GetMapping("/questions-view")
     public String loadQuestionsView(@RequestParam("surveyId") String surveyId, Model model) {
-        QuestionsView questionsView = questionService.getQuestionsView(surveyId);
+        final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
         model.addAttribute("questionsView", questionsView);
         return "questionsView";
     }
@@ -46,7 +46,7 @@ public class QuestionController {
         } else if (buttonQuestionHandler.startsWith(",edit_")) {
             questionId = buttonQuestionHandler.substring(6);
             addQuestionViewToModel(model, questionId);
-            var question = questionRepository.findById(Long.parseLong((questionId))).orElseThrow();
+            final var question = questionRepository.findById(Long.parseLong((questionId))).orElseThrow();
             model.addAttribute("question", question);
             return "questionSettings";
         }

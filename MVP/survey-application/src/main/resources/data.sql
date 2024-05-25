@@ -5,6 +5,9 @@ VALUES ('2024-06-28', '2024-04-28', 10001, 'Das ist eine Testumfrage', 'Testumfr
 INSERT INTO SURVEY (END_DATE, START_DATE, SURVEY_ID, DESCRIPTION, TITLE)
 VALUES ('2024-06-30', '2024-05-03', 10002, 'Das ist eine weitere Testumfrage', 'Testumfrage 2');
 
+INSERT INTO SURVEY (END_DATE, START_DATE, SURVEY_ID, DESCRIPTION, TITLE)
+VALUES ('2024-06-30', '2024-05-23', 10003, 'Das ist eine weitere Testumfrage für Checkboxes', 'Checkbox-Test');
+
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, ANSWER_OPTION1, ANSWER_OPTION2)
 VALUES (10001, 10001, 'Wie alt bist Du?', 'radiobutton', '<18', '>=18');
 
@@ -17,3 +20,5 @@ VALUES (10003, 10001, 'Welche Farben sind Deine Lieblingsfarben?', 'checkbox', '
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, ANSWER_OPTION1, ANSWER_OPTION2, ANSWER_OPTION3, ANSWER_OPTION4)
 VALUES (10004, 10002, 'Wie lautet Deine Lieblingsprogrammiersprache?', 'checkbox', 'Java', 'C', 'OCaml', 'C++');
 
+INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, ANSWER_OPTION1, ANSWER_OPTION2, ANSWER_OPTION3, ANSWER_OPTION4)
+VALUES (10005, 10003, 'Welche Automarken kennst Du?', 'checkbox', 'Mercedes Benz', 'BMW', 'BYD', 'Renault');

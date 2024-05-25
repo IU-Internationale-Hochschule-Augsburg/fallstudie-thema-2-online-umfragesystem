@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 public class SurveyService {
     private final SurveyRepository surveyRepository;
     private final QuestionRepository questionRepository;
-    public void deleteSurvey(String id) {
-        surveyRepository.deleteById(Long.parseLong(id));
+    public void deleteSurvey(String surveyId) {
+        surveyRepository.deleteById(Long.parseLong(surveyId));
 
         // delete questions in loop
         // when a survey is deleted, its associated questions should also be deleted
-        var selectedQuestions = questionRepository.findBySurveyId(Long.parseLong(id));
-        for (Question selectedQuestion : selectedQuestions) {
+        final var selectedQuestions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
+        for (final Question selectedQuestion : selectedQuestions) {
             questionRepository.deleteById(selectedQuestion.getQuestionId());
         }
     }

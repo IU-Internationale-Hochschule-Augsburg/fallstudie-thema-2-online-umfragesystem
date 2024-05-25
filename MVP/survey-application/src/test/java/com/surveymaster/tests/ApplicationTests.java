@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class ApplicationTests {
+class ApplicationTests {
     @Autowired
     private SurveyController surveyController;
     @Autowired
@@ -23,7 +23,7 @@ public class ApplicationTests {
 
     // sanity check test
     @Test
-    void contextLoads() throws Exception {
+    void contextLoads() {
         // assertions for convincing ourselves that the context creates controller
         assertThat(surveyController).isNotNull();
         assertThat(questionController).isNotNull();
