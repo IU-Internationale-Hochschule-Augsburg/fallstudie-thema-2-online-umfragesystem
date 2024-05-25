@@ -2,9 +2,11 @@ package com.surveymaster;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 
-public class SingleQuestionView {
+public class SingleQuestionView implements Serializable {
     Long questionId;
 
     Long surveyId;

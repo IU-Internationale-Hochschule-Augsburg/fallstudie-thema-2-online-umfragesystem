@@ -2,6 +2,7 @@ package com.surveymaster.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 @Entity
 @Table
 @Data
@@ -30,5 +31,20 @@ public class Answer {
     private String textinput;
 
     public Answer() {
+    }
+
+    public Answer(Long questionId, char answerOption1, char answerOption2, char answerOption3, char answerOption4,
+                  char answerOption5, char answerOption6, char answerOption7, char answerOption8, char answerOption9, char answerOption10, String textinput) {
+        this.questionId = questionId;
+        this.answerOption1 = answerOption1;
+        this.answerOption2 = answerOption2;
+        this.answerOption3 = answerOption3;
+        this.answerOption4 = answerOption4;
+        this.answerOption5 = answerOption5;
+        this.answerOption6 = answerOption6;
+        this.answerOption7 = answerOption7;
+        this.answerOption8 = answerOption8;
+        this.answerOption9 = answerOption9;
+        this.answerOption10 = answerOption10;
     }
 }

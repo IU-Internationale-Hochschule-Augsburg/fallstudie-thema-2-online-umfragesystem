@@ -53,7 +53,7 @@ public class QuestionController {
         return "questionsView";
     }
 
-    // Not completed POST mapping function for saving question data
+    // POST mapping function for saving question data
     @Transactional
     @PostMapping("/question-save")
     public String saveQuestion(@ModelAttribute SingleQuestionView questionForm, Model model) {
