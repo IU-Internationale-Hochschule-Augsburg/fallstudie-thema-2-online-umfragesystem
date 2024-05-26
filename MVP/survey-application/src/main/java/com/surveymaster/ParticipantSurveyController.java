@@ -21,56 +21,42 @@ public class ParticipantSurveyController {
     private final SurveyRepository surveyRepository;
     private final AnswerRepository answerRepository;
 
+    // Model attributes are pre-initialized with the request parameters
     @GetMapping("/participant-view")
-    public String loadParticipantView(@RequestParam("surveyId") String surveyId, Model model) {
+    public String loadParticipantView(@RequestParam("surveyId") String surveyId, @RequestParam("currentQuestion") int currentQuestion, @ModelAttribute ParticipantSurveyView participantSurveyView, Model model) {
         final var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
-        final var question = questions.get(0);
 
-        final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+        if(currentQuestion == 0) {
+            participantSurveyView.nextUserId();
+        }
 
-        final Answer newAnswer = new Answer(question.getQuestionId(), 'N', 'N', 'N',
-                'N', 'N', 'N', 'N', 'N', 'N',
-                'N', "");
-        answerRepository.save(newAnswer);
-        final var answer = answerRepository.findById(newAnswer.getAnswerId());
+        if (participantSurveyView.getCurrentQuestion() < questions.size()) {
+            final var question = questions.get(participantSurveyView.getCurrentQuestion());
+            final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+            final Answer answer = new Answer(question.getQuestionId(), 'N', 'N', 'N',
+                    'N', 'N', 'N', 'N', 'N', 'N',
+                    'N', "");
 
-        model.addAttribute("survey", survey);
-        model.addAttribute("question", question);
-        model.addAttribute("answer", answer);
-        return "respondentRadioButtonView";
+            model.addAttribute("participantSurveyView", participantSurveyView);
+            model.addAttribute("survey", survey);
+            model.addAttribute("question", question);
+            model.addAttribute("answer", answer);
+
+            return "participantView";
+        } else {
+            //TODO: neuer Screen mit vielen Dank für die Teilnahme oder so!
+            return "redirect:/error";
+        }
     }
 
     @Transactional
     @PostMapping("/save-response")
-    public String saveResponse(@RequestParam("surveyId") String surveyId, @ModelAttribute AnswerView answerView, Model model) {
-        Answer answer;
-
-        if (answerView.getAnswerId() == null) {
-            answer = new Answer(answerView.getQuestionId(), answerView.getAnswerOption1(),
-                    answerView.getAnswerOption2(), answerView.getAnswerOption3(),
-                    answerView.getAnswerOption4(), answerView.getAnswerOption5(),
-                    answerView.getAnswerOption6(), answerView.getAnswerOption7(),
-                    answerView.getAnswerOption8(), answerView.getAnswerOption9(),
-                    answerView.getAnswerOption10(), answerView.getTextinput());
-        } else {
-            answer = answerRepository.findById(answerView.getAnswerId()).orElseThrow();
-
-            answer.setQuestionId(answerView.getQuestionId());
-            answer.setAnswerOption1(answerView.getAnswerOption1());
-            answer.setAnswerOption2(answerView.getAnswerOption2());
-            answer.setAnswerOption3(answerView.getAnswerOption3());
-            answer.setAnswerOption4(answerView.getAnswerOption4());
-            answer.setAnswerOption5(answerView.getAnswerOption5());
-            answer.setAnswerOption6(answerView.getAnswerOption6());
-            answer.setAnswerOption7(answerView.getAnswerOption7());
-            answer.setAnswerOption8(answerView.getAnswerOption8());
-            answer.setAnswerOption9(answerView.getAnswerOption9());
-            answer.setAnswerOption10(answerView.getAnswerOption10());
-            answer.setTextinput((answerView.getTextinput()));
-        }
-
+    public String saveResponse(@ModelAttribute("surveyId") String surveyId, @ModelAttribute ParticipantSurveyView participantSurveyView, @ModelAttribute Answer answer, Model model) {
+        participantSurveyView.setCurrentQuestion(participantSurveyView.getCurrentQuestion() + 1);
+        answer.setUserId(ParticipantSurveyView.getUserId());
         answerRepository.save(answer);
-        model.addAttribute("answerView", answerView);
-        return "redirect:/participant-view?surveyId=" + surveyId;
+        model.addAttribute("answer", answer);
+        model.addAttribute("participantSurveyView", participantSurveyView);
+        return "redirect:/participant-view?surveyId=" + surveyId + "&currentQuestion=" + participantSurveyView.getCurrentQuestion();
     }
 }

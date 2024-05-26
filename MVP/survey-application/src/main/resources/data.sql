@@ -9,10 +9,10 @@ INSERT INTO SURVEY (END_DATE, START_DATE, SURVEY_ID, DESCRIPTION, TITLE)
 VALUES ('2024-06-30', '2024-05-23', 10003, 'Das ist eine weitere Testumfrage für Checkboxes', 'Checkbox-Test');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, ANSWER_OPTION1, ANSWER_OPTION2)
-VALUES (10001, 10001, 'Wie alt bist Du?', 'radiobutton', '<18', '>=18');
+VALUES (10002, 10001, 'Wie alt bist Du?', 'radiobutton', '<18', '>=18');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE)
-VALUES (10002, 10001, 'Wie heißt Du?', 'open text response');
+VALUES (10001, 10001, 'Wie heißt Du?', 'open text response');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, ANSWER_OPTION1, ANSWER_OPTION2, ANSWER_OPTION3)
 VALUES (10003, 10001, 'Welche Farben sind Deine Lieblingsfarben?', 'checkbox', 'gelb', 'blau', 'rot');

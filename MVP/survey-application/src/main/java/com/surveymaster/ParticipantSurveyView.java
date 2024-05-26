@@ -8,6 +8,8 @@ import java.util.List;
 
 @Data
 public class ParticipantSurveyView {
+    private static Long userId = 1000L;
+
     private Long surveyId;
 
     private String title;
@@ -17,4 +19,11 @@ public class ParticipantSurveyView {
 
     private List<Question> questions = new ArrayList<>();
 
+    public void nextUserId() {
+        userId++;
+    }
+
+    public static Long getUserId() {
+        return userId;
+    }
 }

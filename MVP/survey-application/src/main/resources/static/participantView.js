@@ -1,6 +1,6 @@
 function handleCheckboxClick(optionId) {
     var checkbox = document.getElementById('checkbox' + optionId);
-    var antwortOption = document.getElementById('antwortOption' + optionId);
+    var antwortOption = document.getElementById('checkboxAntwortOption' + optionId);
 
     if (checkbox.checked) {
         antwortOption.value = 'Y';
@@ -11,7 +11,7 @@ function handleCheckboxClick(optionId) {
 
 function handleRadioButtonClick(clickedIndex) {
     for (var i = 1; i <= 10; i++) {
-        var input = document.getElementById('antwortOption' + i);
+        var input = document.getElementById('radiobuttonAntwortOption' + i);
         if (i === clickedIndex) {
             input.value = 'Y';
         } else {
