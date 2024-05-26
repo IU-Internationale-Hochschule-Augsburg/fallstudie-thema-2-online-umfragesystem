@@ -44,8 +44,7 @@ public class ParticipantSurveyController {
 
             return "participantView";
         } else {
-            //TODO: neuer Screen mit vielen Dank für die Teilnahme oder so!
-            return "redirect:/error";
+            return "surveyCompletionView";
         }
     }
 

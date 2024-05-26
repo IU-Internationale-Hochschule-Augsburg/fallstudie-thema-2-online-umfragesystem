@@ -12,8 +12,6 @@ public class ParticipantSurveyView {
 
     private Long surveyId;
 
-    private String title;
-
     // counter
     private int currentQuestion;
 
