@@ -14,101 +14,110 @@
     <!-- <link rel="stylesheet" href="../static/survey.css"> -->
 
     <title>Befragter Check Box</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-
 <div class="header">
-    <form id="surveyTitle" style="padding: 6px" th:object="${survey1}" method="get">
-        <h3 th:text="${survey1.title}"></h3>
+    <form id="surveyTitle" style="padding: 6px" th:object="${survey}" method="get">
+        <h3 th:text="${survey.title}"></h3>
     </form>
 </div>
 
 <div class="content" style="flex-direction: column;">
     <div style="margin-bottom: 10px; padding: 6px; width: 100%">
-        <b style="font-size: 30px" th:text="${question1.questionText}"></b>
+        <b style="font-size: 30px" th:text="${question.questionText}"></b>
     </div>
 
 
-    <form id="checkboxForm" style="padding: 6px" action="#" th:action="@{/save-response}" th:object="${answer1}"
-          method="post"> <!--th:object="${question1}"  method="post"> -->
+    <form id="checkboxForm" style="padding: 6px" action="#" th:action="@{/save-response}" th:object="${answer}"
+          method="post">
 
-        <label class="container2">
-            <input type="checkbox" id="checkbox1" th:text="${question1.answerOption1}"
+        <label id="label1" class="container2">
+            <input type="checkbox" id="checkbox1" th:text="${question.answerOption1}"
                    onclick="handleCheckboxClick(1)"/>
-            <input type="hidden" id="antwortOption1" name="antwortOption1" th:field="${answer1.answerOption1}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption1" name="antwortOption1" th:field="${answer.answerOption1}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox2" th:text="${question1.answerOption2}"
+        <label id="label2" class="container2">
+            <input type="checkbox" id="checkbox2" th:text="${question.answerOption2}"
                    onclick="handleCheckboxClick(2)"/>
-            <input type="hidden" id="antwortOption2" name="antwortOption2" th:field="${answer1.answerOption2}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption2" name="antwortOption2" th:field="${answer.answerOption2}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox3" th:text="${question1.answerOption3}"
+        <label id="label3" class="container2">
+            <input type="checkbox" id="checkbox3" th:text="${question.answerOption3}"
                    onclick="handleCheckboxClick(3)"/>
-            <input type="hidden" id="antwortOption3" name="antwortOption3" th:field="${answer1.answerOption3}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption3" name="antwortOption3" th:field="${answer.answerOption3}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox4" th:text="${question1.answerOption4}"
+        <label id="label4" class="container2">
+            <input type="checkbox" id="checkbox4" th:text="${question.answerOption4}"
                    onclick="handleCheckboxClick(4)"/>
-            <input type="hidden" id="antwortOption4" name="antwortOption4" th:field="${answer1.answerOption4}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption4" name="antwortOption4" th:field="${answer.answerOption4}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox5" th:text="${question1.answerOption5}"
+        <label id="label5" class="container2">
+            <input type="checkbox" id="checkbox5" th:text="${question.answerOption5}"
                    onclick="handleCheckboxClick(5)"/>
-            <input type="hidden" id="antwortOption5" name="antwortOption5" th:field="${answer1.answerOption5}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption5" name="antwortOption5" th:field="${answer.answerOption5}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox6" th:text="${question1.answerOption6}"
+        <label id="label6" class="container2">
+            <input type="checkbox" id="checkbox6" th:text="${question.answerOption6}"
                    onclick="handleCheckboxClick(6)"/>
-            <input type="hidden" id="antwortOption6" name="antwortOption6" th:field="${answer1.answerOption6}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption6" name="antwortOption6" th:field="${answer.answerOption6}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox7" th:text="${question1.answerOption7}"
+        <label id="label7" class="container2">
+            <input type="checkbox" id="checkbox7" th:text="${question.answerOption7}"
                    onclick="handleCheckboxClick(7)"/>
-            <input type="hidden" id="antwortOption7" name="antwortOption7" th:field="${answer1.answerOption7}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption7" name="antwortOption7" th:field="${answer.answerOption7}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox8" th:text="${question1.answerOption8}"
+        <label id="label8" class="container2">
+            <input type="checkbox" id="checkbox8" th:text="${question.answerOption8}"
                    onclick="handleCheckboxClick(8)"/>
-            <input type="hidden" id="antwortOption8" name="antwortOption8" th:field="${answer1.answerOption8}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption8" name="antwortOption8" th:field="${answer.answerOption8}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox9" th:text="${question1.answerOption9}"
+        <label id="label9" class="container2">
+            <input type="checkbox" id="checkbox9" th:text="${question.answerOption9}"
                    onclick="handleCheckboxClick(9)"/>
-            <input type="hidden" id="antwortOption9" name="antwortOption9" th:field="${answer1.answerOption9}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption9" name="antwortOption9" th:field="${answer.answerOption9}"/>
             <span class="checkmark2"></span>
         </label>
-        <label class="container2">
-            <input type="checkbox" id="checkbox10" th:text="${question1.answerOption10}"
+        <label id="label10" class="container2">
+            <input type="checkbox" id="checkbox10" th:text="${question.answerOption10}"
                    onclick="handleCheckboxClick(10)"/>
-            <input type="hidden" id="antwortOption10" name="antwortOption10" th:field="${answer1.answerOption10}"
-                   value="N"/>
+            <input type="hidden" id="antwortOption10" name="antwortOption10" th:field="${answer.answerOption10}"/>
             <span class="checkmark2"></span>
         </label>
 
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                for (var i = 1; i <= 10; i++) {
+                    var label = document.getElementById('label' + i);
+                    var content = label.textContent.trim();
 
-        <input type="hidden" id="questionType" th:field="${question1.questionType}" readonly>
-        <input type="hidden" id="surveyId" th:field="${question1.surveyId}" readonly>
-        <input type="hidden" id="questionId" th:field="${question1.questionId}" readonly>
-        <input type="hidden" id="answerId" th:field="${answer1.answerId}" readonly>
+                    if (content === "") {
+                        label.style.display = "none";
+                        //document.getElementById("answerOption" + i).value = "";
+                    } else {
+                        label.style.display = "block";
+                    }
+                }
+            });
+        </script>
+
+        <input type="hidden" id="questionType" th:field="${question.questionType}" readonly>
+        <input type="hidden" id="surveyId" th:field="${question.surveyId}" readonly>
+        <input type="hidden" id="questionId" th:field="${question.questionId}" readonly>
+        <input type="hidden" id="answerId" th:field="${answer.answerId}" readonly>
     </form>
 </div>
 

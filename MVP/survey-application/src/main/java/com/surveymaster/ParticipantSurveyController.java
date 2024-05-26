@@ -24,25 +24,26 @@ public class ParticipantSurveyController {
     @GetMapping("/participant-view")
     public String loadParticipantView(@RequestParam("surveyId") String surveyId, Model model) {
         final var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
-        final var question1 = questions.get(0);
+        final var question = questions.get(0);
 
         final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
 
-        final Answer answer = new Answer(question1.getQuestionId(), 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', "");
-        answerRepository.save(answer);
-        final var answer1 = answerRepository.findById(1L);
+        final Answer newAnswer = new Answer(question.getQuestionId(), 'N', 'N', 'N',
+                'N', 'N', 'N', 'N', 'N', 'N',
+                'N', "");
+        answerRepository.save(newAnswer);
+        final var answer = answerRepository.findById(newAnswer.getAnswerId());
 
-        model.addAttribute("survey1", survey);
-        model.addAttribute("question1", question1);
-        model.addAttribute("answer1", answer1);
-        return "respondentCheckBoxView";
+        model.addAttribute("survey", survey);
+        model.addAttribute("question", question);
+        model.addAttribute("answer", answer);
+        return "respondentOpenTextResponseView";
     }
 
     @Transactional
     @PostMapping("/save-response")
     public String saveResponse(@RequestParam("surveyId") String surveyId, @ModelAttribute AnswerView answerView, Model model) {
         Answer answer;
-        System.out.println(surveyId);
 
         if (answerView.getAnswerId() == null) {
             answer = new Answer(answerView.getQuestionId(), answerView.getAnswerOption1(),
@@ -65,6 +66,7 @@ public class ParticipantSurveyController {
             answer.setAnswerOption8(answerView.getAnswerOption8());
             answer.setAnswerOption9(answerView.getAnswerOption9());
             answer.setAnswerOption10(answerView.getAnswerOption10());
+            answer.setTextinput((answerView.getTextinput()));
         }
 
         answerRepository.save(answer);

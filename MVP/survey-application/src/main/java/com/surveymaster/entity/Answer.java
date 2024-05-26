@@ -46,5 +46,6 @@ public class Answer {
         this.answerOption8 = answerOption8;
         this.answerOption9 = answerOption9;
         this.answerOption10 = answerOption10;
+        this.textinput = textinput;
     }
 }
