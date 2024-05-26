@@ -37,7 +37,7 @@ public class ParticipantSurveyController {
         model.addAttribute("survey", survey);
         model.addAttribute("question", question);
         model.addAttribute("answer", answer);
-        return "respondentOpenTextResponseView";
+        return "respondentRadioButtonView";
     }
 
     @Transactional
