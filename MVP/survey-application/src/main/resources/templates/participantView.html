@@ -34,7 +34,7 @@
     </div>
 
 
-    <form id="checkboxForm" style="padding: 6px" action="#" th:action="@{/save-response}" th:object="${participantSurveyView}"
+    <form id="questionTypesForm" style="padding: 6px" action="#" th:action="@{/save-response}" th:object="${participantSurveyView}"
           method="post">
 
         <div id="checkboxes" class="col-75">
@@ -184,7 +184,7 @@
         </div>
 
         <div id="openTextResponse" class="col-75">
-            <input class="textfeld" style="padding: 12px;height: 42px;" type="text"
+            <input id="input field" class="textfeld" style="padding: 12px;height: 42px;" type="text"
                    placeholder="Geben Sie eine Antwort ein" th:field="${participantSurveyView.textinput}">
         </div>
 
@@ -196,7 +196,7 @@
 </div>
 
 <div class="footer">
-    <button form="checkboxForm" type="submit" class="formularabsenden">
+    <button id="submitButton" form="questionTypesForm" type="submit" class="formularabsenden">
         Weiter
     </button>
 </div>

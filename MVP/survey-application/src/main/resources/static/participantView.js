@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("radiobuttons").style.display = "block";
         } else if (questionType === "open text response") {
             document.getElementById("openTextResponse").style.display = "block";
+            addRequiredAttribute("input field");
         }
     }
     showQuestionType();
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
 // This function writes a 'Y' for checked answer options and 'N' for unchecked available options
 function handleCheckboxClick(optionId) {
     var checkbox = document.getElementById('checkbox' + optionId);
@@ -90,5 +92,15 @@ function handleRadioButtonClick(clickedIndex) {
             }
 
         }
+    }
+}
+
+// this function adds the 'required' attribute to an input field
+function addRequiredAttribute(inputId) {
+    var inputElement = document.getElementById(inputId);
+    if(inputElement) {
+        inputElement.setAttribute('required', 'true');
+    } else {
+        console.error('input element with id ' + inputId + ' not found.');
     }
 }
