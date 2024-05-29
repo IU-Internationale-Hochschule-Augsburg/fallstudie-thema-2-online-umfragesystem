@@ -34,7 +34,7 @@ public class Answer {
     }
 
     public Answer(Long questionId, char answerOption1, char answerOption2, char answerOption3, char answerOption4,
-                  char answerOption5, char answerOption6, char answerOption7, char answerOption8, char answerOption9, char answerOption10, String textinput) {
+                  char answerOption5, char answerOption6, char answerOption7, char answerOption8, char answerOption9, char answerOption10) {
         this.questionId = questionId;
         this.answerOption1 = answerOption1;
         this.answerOption2 = answerOption2;
@@ -46,6 +46,10 @@ public class Answer {
         this.answerOption8 = answerOption8;
         this.answerOption9 = answerOption9;
         this.answerOption10 = answerOption10;
+    }
+
+    public Answer(Long questionId, String textinput) {
+        this.questionId = questionId;
         this.textinput = textinput;
     }
 }
