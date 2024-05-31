@@ -14,16 +14,16 @@ public class ParticipantSurveyView {
     // counter
     private int currentQuestion;
 
-    private char radioButtonAnswerOption1;
-    private char radioButtonAnswerOption2;
-    private char radioButtonAnswerOption3;
-    private char radioButtonAnswerOption4;
-    private char radioButtonAnswerOption5;
-    private char radioButtonAnswerOption6;
-    private char radioButtonAnswerOption7;
-    private char radioButtonAnswerOption8;
-    private char radioButtonAnswerOption9;
-    private char radioButtonAnswerOption10;
+    private char radioButtonAnswerOption1 = 'N';
+    private char radioButtonAnswerOption2 = 'N';
+    private char radioButtonAnswerOption3 = 'N';
+    private char radioButtonAnswerOption4 = 'N';
+    private char radioButtonAnswerOption5 = 'N';
+    private char radioButtonAnswerOption6 = 'N';
+    private char radioButtonAnswerOption7 = 'N';
+    private char radioButtonAnswerOption8 = 'N';
+    private char radioButtonAnswerOption9 = 'N';
+    private char radioButtonAnswerOption10 = 'N';
 
     private char checkBoxAnswerOption1 = 'N';
     private char checkBoxAnswerOption2 = 'N';
