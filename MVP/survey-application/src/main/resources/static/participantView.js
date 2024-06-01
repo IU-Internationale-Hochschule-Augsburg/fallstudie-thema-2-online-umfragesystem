@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             type.style.display = "none";
         });
     }
+
     hideAllQuestionTypes();
 
     // This function displays the corresponding div based on the question type
@@ -13,18 +14,19 @@ document.addEventListener("DOMContentLoaded", function () {
         hideAllQuestionTypes();
         var questionType = document.getElementById("questionType").value;
 
-        if (questionType === "checkbox") {
+        if (questionType === 'checkbox') {
             document.getElementById("checkboxes").style.display = "block";
-        } else if (questionType === "radiobutton") {
+        } else if (questionType === 'radiobutton') {
             document.getElementById("radiobuttons").style.display = "block";
-        } else if (questionType === "open text response") {
+        } else if (questionType === 'open text response') {
             document.getElementById("openTextResponse").style.display = "block";
-            addRequiredAttribute("input field");
+            // das will irgendwie nicht mehr
+            //addRequiredAttribute('input field');
         }
     }
+
     showQuestionType();
 });
-
 
 // This function hides all answer options that the survey creator has not filled in for the checkbox question type
 document.addEventListener("DOMContentLoaded", function () {
@@ -58,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
 // This function writes a 'Y' for checked answer options and 'N' for unchecked available options
 function handleCheckboxClick(optionId) {
     var checkbox = document.getElementById('checkbox' + optionId);
@@ -70,7 +71,6 @@ function handleCheckboxClick(optionId) {
         antwortOption.value = 'N';
     }
 }
-
 
 /* The function writes a 'Y' for Yes into an answer option if it has been selected. For radio buttons, all other available
 answer options are filled with 'N' for No. Options that the Survey Creator has not filled are hidden and filled
@@ -85,7 +85,7 @@ function handleRadioButtonClick(clickedIndex) {
             input.value = 'Y';
         } else {
             // here we distinguish again between an empty answer option and not checked
-            if(text.trim() === '') {
+            if (text.trim() === '') {
                 input.value = ' ';
             } else {
                 input.value = 'N';
@@ -95,12 +95,77 @@ function handleRadioButtonClick(clickedIndex) {
     }
 }
 
-// this function adds the 'required' attribute to an input field
-function addRequiredAttribute(inputId) {
-    var inputElement = document.getElementById(inputId);
-    if(inputElement) {
-        inputElement.setAttribute('required', 'true');
-    } else {
-        console.error('input element with id ' + inputId + ' not found.');
+// New Code: Code for mandatory questions and displaying tooltips
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('questionTypesForm');
+    const submitButton = document.getElementById('submitButton');
+    const tooltip = document.getElementById('tooltip');
+    const currentQuestionType = document.getElementById('questionType').value;
+
+    submitButton.addEventListener('click', function () {
+        let isValid = true;
+        let message = '';
+
+        // questionType = checkbox => Tooltip, if no input has been provided
+        const checkboxQuestion = document.getElementById('checkboxes');
+        const checkboxes = checkboxQuestion.querySelectorAll('input[type="checkbox"]');
+        if (currentQuestionType === 'checkbox') {
+            if (![...checkboxes].some(checkbox => checkbox.checked)) {
+                isValid = false;
+                message = 'Bitte mindestens eine Checkbox auswählen.';
+            }
+        }
+
+        // questionType = radiobutton => Tooltip, if no input has been provided
+        const radiobuttonQuestion = document.getElementById('radiobuttons');
+        const radioButtons = radiobuttonQuestion.querySelectorAll('input[type="radio"]');
+        if (currentQuestionType === 'radiobutton') {
+            if (![...radioButtons].some(radio => radio.checked)) {
+                isValid = false;
+                message = 'Bitte eine Radiobutton-Option auswählen.';
+            }
+        }
+
+        // questionType = open text response => Tooltip, if no input has been provided
+        if (currentQuestionType === 'open text response') {
+            const inputElement = document.getElementById('input field'); // ID des Eingabefelds
+            if (inputElement) {
+                inputElement.setAttribute('required', 'true');
+                if (!inputElement.value.trim()) {
+                    isValid = false;
+                    message = 'Bitte geben Sie eine Antwort ein.';
+                }
+            } else {
+                console.error('Input field with id "input field" not found.');
+            }
+        }
+
+        // submitting form
+        if (isValid) {
+            console.log("Formular ist gültig und wird übermittelt.");
+            form.submit();
+        } else {
+            showTooltip(message, checkboxQuestion, radiobuttonQuestion);
+        }
+    });
+
+    // function for displaying tool tips
+    function showTooltip(message, submitButton) {
+        tooltip.textContent = message;
+
+        tooltip.style.display = 'block';
+        tooltip.style.width = 'auto';
+        tooltip.style.whiteSpace = 'nowrap';
+
+        const submitButtonRect = submitButton.getBoundingClientRect();
+        tooltip.style.top = `${submitButtonRect.bottom + window.scrollY + 5}px`;
+        tooltip.style.left = `${submitButtonRect.left}px`;
+
+        const tooltipWidth = tooltip.offsetWidth;
+        tooltip.style.width = `${tooltipWidth}px`;
+
+        setTimeout(() => {
+            tooltip.style.display = 'none';
+        }, 3000);
     }
-}
+});
