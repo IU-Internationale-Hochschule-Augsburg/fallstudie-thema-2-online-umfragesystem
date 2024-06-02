@@ -26,9 +26,10 @@
              text-align: center;
              border-radius: 6px;
              padding: 5px;
-             position: absolute;
+             position: absolute; /* relative;*/
              z-index: 1;
              max-width: 230px;
+             max-height: 16px;
              word-wrap: break-word;
              font-size: 12px;
          }
@@ -210,11 +211,13 @@
 </div>
 
 <div class="footer">
+    <div class="tooltip" id="tooltipDiv">
+        <span class="tooltiptext" id="tooltip"></span>
+    </div>
+
     <button id="submitButton" form="questionTypesForm" type="button" class="formularabsenden">
         Weiter
     </button>
-
-    <div class="tooltip" id="tooltip"></div>
 </div>
 
 </body>

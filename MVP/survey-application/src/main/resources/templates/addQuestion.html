@@ -51,7 +51,7 @@
                     <input type="radio" name="fragentyp" value="open text response" onchange="updateQuestionType(this.value)">
                     <span class="checkmark"></span>
                 </label>
-                <!--<input type="text" id="questionType" th:value="${questionType}">-->
+
                 <input type="hidden" id="questionType" th:field="*{questionType}" th:value="*{questionType}" readonly>
                 <input type="hidden" id="surveyId" th:field="*{surveyId}" th:value="*{surveyId}" readonly>
             </div>

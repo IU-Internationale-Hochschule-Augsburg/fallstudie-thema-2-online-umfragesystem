@@ -99,7 +99,7 @@ function handleRadioButtonClick(clickedIndex) {
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('questionTypesForm');
     const submitButton = document.getElementById('submitButton');
-    const tooltip = document.getElementById('tooltip');
+    const tooltip = document.getElementById('tooltipDiv');
     const currentQuestionType = document.getElementById('questionType').value;
 
     submitButton.addEventListener('click', function () {
