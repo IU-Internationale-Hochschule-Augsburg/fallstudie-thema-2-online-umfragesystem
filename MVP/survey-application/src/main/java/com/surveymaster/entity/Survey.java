@@ -17,6 +17,7 @@ public class Survey {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long surveyId;
 
+    @Column(length = 1024)
     private String title;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -25,6 +26,7 @@ public class Survey {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
+    @Column(length = 1024)
     private String description;
 
     public Survey() {

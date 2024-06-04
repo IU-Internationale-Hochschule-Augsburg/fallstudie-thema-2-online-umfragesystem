@@ -12,13 +12,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
+    @Column(length = 256)
     private String surname;
 
+    @Column(length = 256)
     private String firstname;
 
+    @Column(length = 256)
     private String email;
 
     // So far plaintext, still not certain
+    @Column(length = 256)
     private String password;
 
     public User(){}

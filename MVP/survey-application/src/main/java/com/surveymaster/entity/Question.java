@@ -13,22 +13,44 @@ public class Question {
 
     private Long surveyId;
 
+    @Column(length = 256)
     private String questionType;
 
+    @Column(length = 1024)
     private String questionText;
 
+    @Column(length = 1024)
     private String description;
 
     // Saving the answer options for the Radiobutton question type
+    @Column(length = 1024)
     private String answerOption1;
+
+    @Column(length = 1024)
     private String answerOption2;
+
+    @Column(length = 1024)
     private String answerOption3;
+
+    @Column(length = 1024)
     private String answerOption4;
+
+    @Column(length = 1024)
     private String answerOption5;
+
+    @Column(length = 1024)
     private String answerOption6;
+
+    @Column(length = 1024)
     private String answerOption7;
+
+    @Column(length = 1024)
     private String answerOption8;
+
+    @Column(length = 1024)
     private String answerOption9;
+
+    @Column(length = 1024)
     private String answerOption10;
 
     public Question() {

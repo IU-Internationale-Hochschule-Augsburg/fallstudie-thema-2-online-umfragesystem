@@ -28,6 +28,7 @@ public class Answer {
     private char answerOption9;
     private char answerOption10;
 
+    @Column(length = 1024)
     private String textinput;
 
     public Answer() {

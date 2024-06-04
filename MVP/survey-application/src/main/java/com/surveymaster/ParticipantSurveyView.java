@@ -2,8 +2,8 @@ package com.surveymaster;
 
 import lombok.Data;
 
-/* This is a wrapper to store the answer options for the radio button and checkbox question types separately
-in variables. The reason for the wrapper is that otherwise, in the HTML script, the same answer option objects
+/* This is a data transfer object to store the answer options for the radio button and checkbox question types separately
+in variables. The reason for the dto is that otherwise, in the HTML script, the same answer option objects
 are accessed twice (for radio button and checkbox), which leads to incorrect storage of options in the H2 database. */
 @Data
 public class ParticipantSurveyView {
