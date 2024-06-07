@@ -48,7 +48,7 @@ INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE)
 VALUES (10012, 10004, 'Probiere Mal Tab und/oder Leerzeichen abzuschicken:', 'open text response');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE, ANSWER_OPTION1, ANSWER_OPTION2, ANSWER_OPTION3, ANSWER_OPTION4)
-VALUES (10013, 10004, 'Was passiert mit einer Frage ohne Antwortoptionen/Texte?', 'checkbox', '  ', '   ', ' ', '            ');
+VALUES (10013, 10004, 'Was passiert mit einer Frage ohne Antwortoptionen/Texte?', 'checkbox', 'Leerzeichen', '   ', ' ', '            ');
 
 INSERT INTO QUESTION (QUESTION_ID, SURVEY_ID, QUESTION_TEXT, QUESTION_TYPE)
 VALUES (10014, 10004, 'Hier kannst Du einfach noch Eingaben testen:', 'open text response');
