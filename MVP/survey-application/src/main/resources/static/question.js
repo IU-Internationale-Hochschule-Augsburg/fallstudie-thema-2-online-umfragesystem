@@ -21,6 +21,7 @@ function updateQuestionType(qType) {
     } else {
         clearAnswerOptions()
         answerOptionsDiv.style.display = 'none';
+        deleteRequiredFlag();
     }
 }
 
@@ -184,20 +185,52 @@ function addRequiredFlag() {
     }
 }
 
-function validateForm(){
-    var fields = ["antwortOption1", "antwortOption2","antwortOption3","antwortOption4","antwortOption5","antwortOption6","antwortOption7","antwortOption8","antwortOption9","antwortOption10",];
-    var titel = document.getElementById("questionText").value;
-    var trimmedTitel = titel.trim()
-
-    for (var i = 0; i < fields.length; i++) {
-        var input = document.getElementById(fields[i]).value;
-        // Trim whitespace from both ends of the input
-        var trimmedInput = input.trim();
-        if (trimmedInput === "" || trimmedTitel === "") {
-            alert("Das Eingabefeld darf nicht nur Leerzeichen oder Tabs enthalten.");
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-
+function deleteRequiredFlag() {
+    const questionTypeElement = document.getElementById('questionType');
+    if (!questionTypeElement) {
+        console.error('Element with id "questionType" not found.');
+        return;
     }
+
+    const questionType = questionTypeElement.value;
+
+    if (questionType === "open text response") {
+        const antwortOption1 = document.getElementById('antwortOption1');
+        const antwortOption2 = document.getElementById('antwortOption2');
+
+        if (antwortOption1) {
+            antwortOption1.removeAttribute('required');
+        }
+        if (antwortOption2) {
+            antwortOption2.removeAttribute('required');
+        }
+    }
+}
+
+function validateForm() {
+    const fields = ["antwortOption1", "antwortOption2"];
+    const title = document.getElementById('questionText').value;
+    const trimmedTitle = title.trim();
+    let questionTypeElement = document.getElementById('questionType').value;
+
+    if (questionTypeElement === 'open text response') {
+        if (trimmedTitle === "") {
+            alert("Der Titel darf nicht nur Leerzeichen oder Tabs enthalten.");
+            return false;
+        }
+    } else if (questionTypeElement === 'radiobutton' || questionTypeElement === 'checkbox') {
+        for (let i = 0; i < fields.length; i++) {
+            const input = document.getElementById(fields[i]);
+            if (input) {
+                const trimmedInput = input.value.trim();
+                input.value = trimmedInput;
+                if (trimmedInput === "" || trimmedTitle === "") {
+                    alert("Das Eingabefeld darf nicht nur Leerzeichen oder Tabs enthalten.");
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
 }
