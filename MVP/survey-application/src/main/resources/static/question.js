@@ -1,6 +1,6 @@
 // function to hide the +Answer button and remember the question types
 // function to prepopulate the input fields with 'radiobutton'
-window.onload = function() {
+window.onload = function () {
     updateQuestionType('radiobutton');
 }
 
@@ -15,7 +15,7 @@ function updateQuestionType(qType) {
     document.getElementById('questionType').value = document.querySelector('input[type=radio]:checked').value;
 
     // hide the answeroptions if the type is open text response. Otherwise, by default, display all 10 options
-    if(qType === 'radiobutton' || qType === 'checkbox') {
+    if (qType === 'radiobutton' || qType === 'checkbox') {
         answerOptionsDiv.style.display = 'block';
         addRequiredFlag();
     } else {
@@ -181,5 +181,23 @@ function addRequiredFlag() {
         if (antwortOption2) {
             antwortOption2.setAttribute('required', 'true');
         }
+    }
+}
+
+function validateForm(){
+    var fields = ["antwortOption1", "antwortOption2","antwortOption3","antwortOption4","antwortOption5","antwortOption6","antwortOption7","antwortOption8","antwortOptio9","antwortOption10",];
+    var titel =document.getElementById("questionText").value;
+    var trimmedTitel = titel.trim()
+
+    for (var i = 0; i < fields.length; i++) {
+        var input = document.getElementById(fields[i]).value;
+        // Trim whitespace from both ends of the input
+        var trimmedInput = input.trim();
+        if (trimmedInput === "" || trimmedTitel === "") {
+            alert("Das Eingabefeld darf nicht nur Leerzeichen oder Tabs enthalten.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+
     }
 }

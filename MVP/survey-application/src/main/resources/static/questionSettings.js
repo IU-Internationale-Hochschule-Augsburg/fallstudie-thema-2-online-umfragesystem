@@ -172,3 +172,24 @@ function clearAnswerOptions() {
          `;
     }
 }
+
+//Timon Neu um Leerzeichen Eingabe zu verhindern
+
+function validateForm(){
+    var fields = ["antwortOption1", "antwortOption2","antwortOption3","antwortOption4","antwortOption5","antwortOption6","antwortOption7","antwortOption8","antwortOptio9","antwortOption10",];
+    var titel =document.getElementById("questionText").value;
+    var trimmedTitel = titel.trim()
+
+    for (var i = 0; i < fields.length; i++) {
+        var input = document.getElementById(fields[i]).value;
+        // Trim whitespace from both ends of the input
+        var trimmedInput = input.trim();
+        if (trimmedInput === "" || trimmedTitel === "") {
+            alert("Das Eingabefeld darf nicht nur Leerzeichen oder Tabs enthalten.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+
+    }
+}
+
