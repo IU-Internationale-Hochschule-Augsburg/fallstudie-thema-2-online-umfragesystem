@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
@@ -38,11 +39,17 @@ public class ParticipantSurveyController {
             final var question = questions.get(participantSurveyView.getCurrentQuestion());
             final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
 
-            model.addAttribute("participantSurveyView", participantSurveyView);
-            model.addAttribute("survey", survey);
-            model.addAttribute("question", question);
+            if(survey.getEndDate().isBefore(LocalDate.now())) {
+                model.addAttribute("participantSurveyView", participantSurveyView);
 
-            return "participantView";
+                return "surveyExpired";
+            } else {
+                model.addAttribute("participantSurveyView", participantSurveyView);
+                model.addAttribute("survey", survey);
+                model.addAttribute("question", question);
+
+                return "participantView";
+            }
         } else {
             return "surveyCompletionView";
         }

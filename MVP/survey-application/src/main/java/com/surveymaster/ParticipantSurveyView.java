@@ -14,29 +14,29 @@ public class ParticipantSurveyView {
     // counter
     private int currentQuestion;
 
-    private char radioButtonAnswerOption1 = 'N';
-    private char radioButtonAnswerOption2 = 'N';
-    private char radioButtonAnswerOption3 = 'N';
-    private char radioButtonAnswerOption4 = 'N';
-    private char radioButtonAnswerOption5 = 'N';
-    private char radioButtonAnswerOption6 = 'N';
-    private char radioButtonAnswerOption7 = 'N';
-    private char radioButtonAnswerOption8 = 'N';
-    private char radioButtonAnswerOption9 = 'N';
-    private char radioButtonAnswerOption10 = 'N';
+    private String radioButtonAnswerOption1 = "N";
+    private String radioButtonAnswerOption2 = "N";
+    private String radioButtonAnswerOption3 = "N";
+    private String radioButtonAnswerOption4 = "N";
+    private String radioButtonAnswerOption5 = "N";
+    private String radioButtonAnswerOption6 = "N";
+    private String radioButtonAnswerOption7 = "N";
+    private String radioButtonAnswerOption8 = "N";
+    private String radioButtonAnswerOption9 = "N";
+    private String radioButtonAnswerOption10 = "N";
 
-    private char checkBoxAnswerOption1 = 'N';
-    private char checkBoxAnswerOption2 = 'N';
-    private char checkBoxAnswerOption3 = 'N';
-    private char checkBoxAnswerOption4 = 'N';
-    private char checkBoxAnswerOption5 = 'N';
-    private char checkBoxAnswerOption6 = 'N';
-    private char checkBoxAnswerOption7 = 'N';
-    private char checkBoxAnswerOption8 = 'N';
-    private char checkBoxAnswerOption9 = 'N';
-    private char checkBoxAnswerOption10 = 'N';
+    private String checkBoxAnswerOption1 = "N";
+    private String checkBoxAnswerOption2 = "N";
+    private String checkBoxAnswerOption3 = "N";
+    private String checkBoxAnswerOption4 = "N";
+    private String checkBoxAnswerOption5 = "N";
+    private String checkBoxAnswerOption6 = "N";
+    private String checkBoxAnswerOption7 = "N";
+    private String checkBoxAnswerOption8 = "N";
+    private String checkBoxAnswerOption9 = "N";
+    private String checkBoxAnswerOption10 = "N";
 
-    private String textinput;
+    private String textinput = "";
 
     public void nextUserId() {
         userId++;

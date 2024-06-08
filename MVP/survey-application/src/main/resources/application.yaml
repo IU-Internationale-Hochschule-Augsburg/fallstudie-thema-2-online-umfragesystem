@@ -1,15 +1,12 @@
 spring:
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password: 1234
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://survey-master-pg-survey-master.e.aivencloud.com:25901/defaultdb?currentSchema=public
+    username: survey-master
+    password:
+    driverClassName: org.postgresql.Driver
   jpa:
     defer-datasource-initialization: true
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   banner:
     location: banner/banner.txt
 server:

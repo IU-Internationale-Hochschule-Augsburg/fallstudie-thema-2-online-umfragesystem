@@ -17,6 +17,7 @@ function updateQuestionType(qType) {
     // hide the answeroptions if the type is open text response. Otherwise, by default, display all 10 options
     if(qType === 'radiobutton' || qType === 'checkbox') {
         answerOptionsDiv.style.display = 'block';
+        addRequiredFlag();
     } else {
         clearAnswerOptions()
         answerOptionsDiv.style.display = 'none';
@@ -46,7 +47,7 @@ function clearAnswerOptions() {
                     <!-- Input field -->
                     <div class="col-75">
                         <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption1" th:field="*{answerOption1}"
-                               placeholder="Geben Sie eine Antwortoption ein" required>
+                               placeholder="Geben Sie eine Antwortoption ein">
                     </div>
                 </div>
             </div>
@@ -58,7 +59,7 @@ function clearAnswerOptions() {
                     <!-- Input field -->
                     <div class="col-75">
                         <input class="textfeld" style="padding: 12px;height: 42px;" type="text" id="antwortOption2" th:field="*{answerOption2}"
-                               placeholder="Geben Sie eine Antwortoption ein" required>
+                               placeholder="Geben Sie eine Antwortoption ein">
                     </div>
                 </div>
             </div>
@@ -158,5 +159,27 @@ function clearAnswerOptions() {
                 </div>
             </div>
         `;
+    }
+}
+
+function addRequiredFlag() {
+    let questionTypeElement = document.getElementById('questionType');
+    if (!questionTypeElement) {
+        console.error('Element with id "questionType" not found.');
+        return;
+    }
+
+    let questionType = questionTypeElement.value;
+
+    if (questionType === "radiobutton" || questionType === "checkbox") {
+        let antwortOption1 = document.getElementById('antwortOption1');
+        let antwortOption2 = document.getElementById('antwortOption2');
+
+        if (antwortOption1) {
+            antwortOption1.setAttribute('required', 'true');
+        }
+        if (antwortOption2) {
+            antwortOption2.setAttribute('required', 'true');
+        }
     }
 }
