@@ -5,6 +5,11 @@ import com.surveymaster.entity.Question;
 import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
+/* The class AnswerMapper is a mapper that handles DTO objects for storing the provided answers. If an answer with the
+answer ID already exists, it will be updated by overwriting it. If the answer ID is not yet present in the database,
+a new answer will be created. The DTOs help ensure that the correct answers are stored in the database according to
+the question type. */
+
 @Component
 public class AnswerMapper {
     public Answer updateAnswer(@NonNull ParticipantSurveyView participantSurveyView, @NonNull Answer optionalAnswer, @NonNull Question lastQuestion) {
