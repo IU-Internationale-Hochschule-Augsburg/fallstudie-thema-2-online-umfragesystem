@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (currentQuestionType === 'checkbox') {
             if (![...checkboxes].some(checkbox => checkbox.checked)) {
                 isValid = false;
-                message = 'Bitte mindestens eine Checkbox auswählen.';
+                alert('Bitte mindestens eine Checkbox auswählen.')
             }
         }
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (currentQuestionType === 'radiobutton') {
             if (![...radioButtons].some(radio => radio.checked)) {
                 isValid = false;
-                message = 'Bitte eine Radiobutton-Option auswählen.';
+                alert('Bitte eine Radiobutton-Option auswählen.')
             }
         }
 
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 inputElement.setAttribute('required', 'true');
                 if (!inputElement.value.trim()) {
                     isValid = false;
-                    message = 'Bitte geben Sie eine Antwort ein.';
+                    alert('Bitte geben Sie eine Antwort ein.')
                 }
             } else {
                 console.error('Input field with id "input field" not found.');

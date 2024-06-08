@@ -25,7 +25,7 @@
 <div class="content" style="flex-direction: column">
 
     <!-- Input field and label for the question -->
-    <form style="width: 100%" id="addQuestionForm" action="#" th:action="@{/question-save}" th:object="${addQuestion}" method="post">
+    <form style="width: 100%" id="addQuestionForm" action="#" th:action="@{/question-save}" th:object="${addQuestion}" method="post" onsubmit="return validateForm()">
         <div class="formularreihe">
             <div class="col-25">
                 <label for="questionText">Frage:</label>
