@@ -185,8 +185,8 @@ function addRequiredFlag() {
 }
 
 function validateForm(){
-    var fields = ["antwortOption1", "antwortOption2","antwortOption3","antwortOption4","antwortOption5","antwortOption6","antwortOption7","antwortOption8","antwortOptio9","antwortOption10",];
-    var titel =document.getElementById("questionText").value;
+    var fields = ["antwortOption1", "antwortOption2","antwortOption3","antwortOption4","antwortOption5","antwortOption6","antwortOption7","antwortOption8","antwortOption9","antwortOption10",];
+    var titel = document.getElementById("questionText").value;
     var trimmedTitel = titel.trim()
 
     for (var i = 0; i < fields.length; i++) {
