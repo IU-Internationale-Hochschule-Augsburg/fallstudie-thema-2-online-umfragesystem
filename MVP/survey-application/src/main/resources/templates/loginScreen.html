@@ -65,31 +65,33 @@
             <hr>
 
             <div class="input-box"><label for="user-ID"><b>Benutzername</b></label>
-                <input id="user-ID" type="text" required  placeholder="Enter Username">
+                <input id="user-ID" type="text" required placeholder="Enter Username" maxlength="256">
             </div>
 
             <div class="input-box"><label for="surname"><b>Name</b></label>
-                <input id="surname" type="text" required placeholder="Enter Surname">
+                <input id="surname" type="text" required placeholder="Enter Surname" maxlength="256">
             </div>
 
             <div class="input-box"><label for="firstname"><b>Vorname</b></label>
-                <input id="firstname" type="text" required placeholder="Enter Firstname">
+                <input id="firstname" type="text" required placeholder="Enter Firstname" maxlength="256">
             </div>
 
             <div class="input-box"><label for="email"><b>Email</b></label>
-                <input type="email" placeholder="Enter Email" id="email" required>
+                <input type="email" placeholder="Enter Email" id="email" required maxlength="256">
             </div>
 
-            <div class="input-box"><label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" id="psw" required>
+            <div class="input-box"><label for="psw"><b>Password (mindestens 8 Zeichen)</b></label>
+                <input type="password" placeholder="Enter Password" id="psw" required maxlength="256" minlength="8">
             </div>
 
             <div class="input-box"><label for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" id="psw-repeat" required>
+                <input type="password" placeholder="Repeat Password" id="psw-repeat" required maxlength="256"
+                       minlength="8">
             </div>
 
             <p style="margin-bottom: 16px">Durch die Erstellung eines Kontos erklären Sie sich mit unseren <a href="#"
                                                                                                               style="color:dodgerblue">Nutzungsbedingungen
+
                 und Datenschutz</a> einverstanden.</p>
 
             <div class="clearfix">
