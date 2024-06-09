@@ -42,11 +42,83 @@
 
         <button type="submit" class="optbutton">Login</button>
         <br>
-        <button class="optbutton">Sign Up</button>
+        <button class="optbutton" onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
 
 
     </form>
 
 </div>
+
+
+<!--Sign Up Form-->
+
+
+<div id="id01" class="signUp">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+          title="CloseSignUp">&times;</span>
+    <form id="formSignUp" class="signUp-content">
+        <div class="containerSignUp">
+            <h1>Sign Up</h1>
+            <br>
+            <p style="text-align: center">Bitte füllen Sie alle Felder aus um einen Account zu erstellen</p>
+            <br>
+            <hr>
+
+            <div class="input-box"><label for="user-ID"><b>Benutzername</b></label>
+                <input id="user-ID" type="text" required  placeholder="Enter Username">
+            </div>
+
+            <div class="input-box"><label for="surname"><b>Name</b></label>
+                <input id="surname" type="text" required placeholder="Enter Surname">
+            </div>
+
+            <div class="input-box"><label for="firstname"><b>Vorname</b></label>
+                <input id="firstname" type="text" required placeholder="Enter Firstname">
+            </div>
+
+            <div class="input-box"><label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" id="email" required>
+            </div>
+
+            <div class="input-box"><label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="psw" required>
+            </div>
+
+            <div class="input-box"><label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" id="psw-repeat" required>
+            </div>
+
+            <p style="margin-bottom: 16px">Durch die Erstellung eines Kontos erklären Sie sich mit unseren <a href="#"
+                                                                                                              style="color:dodgerblue">Nutzungsbedingungen
+                und Datenschutz</a> einverstanden.</p>
+
+            <div class="clearfix">
+                <button type="button"
+                        onclick="document.getElementById('id01').style.display='none';document.getElementById('formSignUp').reset()"
+                        class="cnlbutton"
+                        style="width: 49%; float: left;">Cancel
+                </button>
+                <button type="submit" class="optbutton" style="width: 49%; float: right">Sign Up</button>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+<script>
+
+    /*Source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_signup_form_modal*/
+
+    var signUp = document.getElementById('id01');
+
+    window.onclick = function (event) {
+        if (event.target == signUp) {
+            signUp.style.display = "none";
+        }
+    }
+
+</script>
+
 </body>
 </html>
