@@ -6,6 +6,8 @@ Baeldung (2024). Iteration in Thymeleaf. https://www.baeldung.com/thymeleaf-iter
 
 Injosoft (2024). ASCII Art Archive. Dragons. https://www.asciiart.eu/mythology/dragons .
 
+Obidiagha, S. (2020). Data Encryption on Spring Boot application.properties file. https://stanleyobi.medium.com/data-encryption-on-spring-boot-application-properties-file-bf6ecb644bfe.
+
 OpenAI (2024). ChatGPT3.5. https://chat.openai.com/.
 
 perplexity (2024). perplexity. https://www.perplexity.ai/.
@@ -26,7 +28,7 @@ stackoverflow (2017). How does flex-wrap work with align-self, align-items and a
 
 stackoverflow (2022). Use ThymeLeaf to create multiple text input boxes. https://stackoverflow.com/questions/73983451/use-thymeleaf-to-create-multiple-text-input-boxes.
 
-Obidiagha, S. (2020). Data Encryption on Spring Boot application.properties file. https://stanleyobi.medium.com/data-encryption-on-spring-boot-application-properties-file-bf6ecb644bfe.
+Techie, J. (2021). Spring Boot Password Encryption using Jasypt. https://medium.com/@javatechie/spring-boot-password-encryption-using-jasypt-e92eed7343ab.
 
 W3Schools (2024a). CSS Tutorial. https://www.w3schools.com/css/default.asp.
 
