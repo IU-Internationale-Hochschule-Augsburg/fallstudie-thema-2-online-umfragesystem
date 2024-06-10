@@ -19,7 +19,7 @@ function updateQuestionType(qType) {
         answerOptionsDiv.style.display = 'block';
         addRequiredFlag();
     } else {
-        clearAnswerOptions()
+        clearAnswerOptions();
         answerOptionsDiv.style.display = 'none';
         deleteRequiredFlag();
     }

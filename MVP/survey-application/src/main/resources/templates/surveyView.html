@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet"/>
 
-    <!-- <link rel="stylesheet" href="../static/survey.css" > -->
+     <link rel="stylesheet" href="../static/survey.css" >
 
     <title>Umfrageansicht</title>
 </head>
@@ -64,7 +64,7 @@
                     </button>
                     <!-- Ggf. für den Link-Button: th:value="'share_' + ${survey.surveyId}" -->
                     <button type="submit" name="buttonHandler" th:value="'edit_' + ${survey.surveyId}"
-                            class="optbutton">
+                            class="optbutton" title="Fragen bearbeiten">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button type="submit" name="buttonHandler" th:value="'monitoring_' + ${survey.surveyId}"

@@ -38,7 +38,6 @@ public class AnswerMapper {
         return optionalAnswer;
     }
 
-
     public Answer toAnswer(@NonNull ParticipantSurveyView participantSurveyView, @NonNull Question lastQuestion) {
         Answer answer;
         if (lastQuestion.getQuestionType().equals("checkbox")) {
