@@ -8,7 +8,7 @@ spring:
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   banner:
-    location: banner/banner.txt
+    location: static/banner/banner.txt
 server:
   error:
     whitelabel:
