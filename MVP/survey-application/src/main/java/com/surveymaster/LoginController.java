@@ -34,7 +34,7 @@ public class LoginController {
         var user = userRepository.findByUsername(registerForm.getUsername());
         var email = userRepository.findByEmail(registerForm.getEmail());
 
-        if (user == null || email == null) {
+        if (user == null && email == null) {
             User newUser = new User();
             newUser.setUsername(registerForm.getUsername());
             newUser.setFirstname(registerForm.getFirstname());
