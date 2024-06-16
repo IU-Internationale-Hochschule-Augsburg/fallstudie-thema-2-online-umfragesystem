@@ -43,10 +43,18 @@ public class LoginController {
             var encryptedPassword = BCrypt.hashpw(registerForm.getPassword(), BCrypt.gensalt());
             if (BCrypt.checkpw(registerForm.getConfirmPassword(), encryptedPassword)) {
                 newUser.setPassword(encryptedPassword);
-            } // TODO: else case/error handling is missing
+            } else {
+                model.addAttribute(registerForm);
+                model.addAttribute("errorMessage", "Die Passwörter stimmen nicht überein!");
+                return "filledRegisterScreen";
+            }
 
             userRepository.save(newUser);
             model.addAttribute(newUser);
+        } else {
+            model.addAttribute(registerForm);
+            model.addAttribute("errorMessage", "Benutzername oder E-Mail ist schon vergeben!");
+            return "filledRegisterScreen";
         }
 
         return "redirect:/login";

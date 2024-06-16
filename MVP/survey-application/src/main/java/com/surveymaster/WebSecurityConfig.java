@@ -32,7 +32,8 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/banner/**", "/register/**", "/save-registration", "participant-view/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/banner/**", "/register/**",
+                                "/save-registration", "participant-view/**", "/editRegistration").permitAll()
                         .anyRequest().authenticated()
 
                 )
