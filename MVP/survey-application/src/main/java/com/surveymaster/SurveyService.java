@@ -1,10 +1,14 @@
 package com.surveymaster;
 
 import com.surveymaster.entity.Question;
+import com.surveymaster.entity.User;
 import com.surveymaster.repository.AnswerRepository;
 import com.surveymaster.repository.QuestionRepository;
 import com.surveymaster.repository.SurveyRepository;
+import com.surveymaster.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +17,7 @@ public class SurveyService {
     private final SurveyRepository surveyRepository;
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
+    private final UserRepository userRepository;
 
     public void deleteSurvey(String surveyId) {
         // delete questions in loop
@@ -25,5 +30,12 @@ public class SurveyService {
 
 
         surveyRepository.deleteById(Long.parseLong(surveyId));
+    }
+
+    public User getCurrentUser() {
+        // Retrieve the current user from authentication and read their name.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return userRepository.getUserByUsername(username);
     }
 }

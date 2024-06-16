@@ -3,10 +3,7 @@ package com.surveymaster;
 import com.surveymaster.entity.Survey;
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.SurveyRepository;
-import com.surveymaster.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -21,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SurveyController {
 
     private final SurveyRepository surveyRepository;
-    private final UserRepository userRepository;
     private final QuestionService questionService;
     private final SurveyService surveyService;
 
@@ -29,11 +25,7 @@ public class SurveyController {
     @GetMapping("/survey-admin")
     public String getSurveyAdmin(Model model) {
         final SurveyView surveys = new SurveyView();
-
-        // Retrieve the current user from authentication and read their name.
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User currentUser = userRepository.getUserByUsername(username);
+        User currentUser = surveyService.getCurrentUser();
 
         // Retrieve all surveys from the surveyRepository (depending on the User ID) and add each found survey to the collection.
         // This line is responsible for dynamically listing the surveys
@@ -97,10 +89,12 @@ public class SurveyController {
             survey.setStartDate(surveyForm.getStartDate());
             survey.setEndDate(surveyForm.getEndDate());
             survey.setDescription(surveyForm.getDescription());
+            survey.setUserId(surveyService.getCurrentUser().getUserId());
         } else {
             // if the survey does not exist yet, it is newly created and saved
             // fetching the survey data from the SurveyForm
-            survey = new Survey(surveyForm.getTitle(), surveyForm.getStartDate(), surveyForm.getEndDate(), surveyForm.getDescription());
+            survey = new Survey(surveyService.getCurrentUser().getUserId(), surveyForm.getTitle(),
+                    surveyForm.getStartDate(), surveyForm.getEndDate(), surveyForm.getDescription());
         }
         // writing the data into the database
         surveyRepository.save(survey);
