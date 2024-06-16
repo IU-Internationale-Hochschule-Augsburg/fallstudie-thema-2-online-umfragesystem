@@ -1,14 +1,18 @@
 ### Resources
 
+Aamir, M. (2023). Spring Security Implementation With Basic Auth. https://medium.com/@aamir.zaidi5/spring-security-implementation-805520a297d5.
+
 Agarwal, C. (2021). How to encrypt secrets in a Spring boot application?. https://medium.com/javarevisited/how-to-encrypt-secrets-in-an-spring-boot-application-57a60c8abaa7. 
 
 Baeldung (2024). Iteration in Thymeleaf. https://www.baeldung.com/thymeleaf-iteration.
 
-Injosoft (2024). ASCII Art Archive. Dragons. https://www.asciiart.eu/mythology/dragons .
+Injosoft (2024). ASCII Art Archive. Dragons. https://www.asciiart.eu/mythology/dragons.
 
 Obidiagha, S. (2020). Data Encryption on Spring Boot application.properties file. https://stanleyobi.medium.com/data-encryption-on-spring-boot-application-properties-file-bf6ecb644bfe.
 
 OpenAI (2024). ChatGPT3.5. https://chat.openai.com/.
+
+Paraschiv, E. (2024). Spring Security Form Login. https://www.baeldung.com/spring-security-login.
 
 perplexity (2024). perplexity. https://www.perplexity.ai/.
 
@@ -23,6 +27,8 @@ Spring Community (2024c). Building a RESTful Web Service. https://spring.io/guid
 Spring Community (2024d). Accessing Data with JPA. https://spring.io/guides/gs/accessing-data-jpa.
 
 Spring Community (2024e). Testing the Web Layer. https://spring.io/guides/gs/testing-web.
+
+Spring Community (2024f). Securing a Web Application. https://spring.io/guides/gs/securing-web.
 
 stackoverflow (2017). How does flex-wrap work with align-self, align-items and align-content?. https://stackoverflow.com/questions/42613359/how-does-flex-wrap-work-with-align-self-align-items-and-align-content.
 
