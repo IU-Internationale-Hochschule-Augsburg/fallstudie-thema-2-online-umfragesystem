@@ -14,6 +14,8 @@ OpenAI (2024). ChatGPT3.5. https://chat.openai.com/.
 
 Paraschiv, E. (2024). Spring Security Form Login. https://www.baeldung.com/spring-security-login.
 
+Paraschiv, E. (2022). Spring Security Logout. https://www.baeldung.com/spring-security-logout.
+
 perplexity (2024). perplexity. https://www.perplexity.ai/.
 
 PMD Open Source Project (2024). Making rulesets. https://pmd.github.io/pmd/pmd_userdocs_making_rulesets.html.
@@ -29,6 +31,8 @@ Spring Community (2024d). Accessing Data with JPA. https://spring.io/guides/gs/a
 Spring Community (2024e). Testing the Web Layer. https://spring.io/guides/gs/testing-web.
 
 Spring Community (2024f). Securing a Web Application. https://spring.io/guides/gs/securing-web.
+
+Spring Community (2024g). Handling Logouts. https://docs.spring.io/spring-security/reference/servlet/authentication/logout.html.
 
 stackoverflow (2017). How does flex-wrap work with align-self, align-items and align-content?. https://stackoverflow.com/questions/42613359/how-does-flex-wrap-work-with-align-self-align-items-and-align-content.
 
