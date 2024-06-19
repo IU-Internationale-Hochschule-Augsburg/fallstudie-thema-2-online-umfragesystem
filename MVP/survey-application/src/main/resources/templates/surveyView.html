@@ -22,8 +22,14 @@
         <h3>Hello, <span th:remove="tag" sec:authentication="name">!</span> </h3>
     </div>
     <!-- Button for options/settings next to the username -->
-    <div class="col-25" style="text-align: right;padding: 6px">
-        <button class="optbutton"><span class="material-symbols-outlined">settings</span></button>
+    <div class="col-25" style="text-align: right">
+        <button class="optbutton">
+            <span class="material-symbols-outlined">logout</span>
+        </button>
+        <button class="optbutton">
+            <span class="material-symbols-outlined">settings</span>
+        </button>
+
     </div>
 </div>
 
@@ -53,7 +59,7 @@
                 <input type="hidden" id="surveyId" th:value="${survey.surveyId}"/>
 
                 <!-- buttons -->
-                <td class="col-25" style="text-align: right">
+                <td class="col-25" style="text-align: right; padding: 0">
                     <button type="submit" name="buttonHandler" th:value="'delete_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
