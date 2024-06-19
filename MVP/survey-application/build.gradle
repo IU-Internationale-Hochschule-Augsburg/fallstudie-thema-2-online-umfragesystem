@@ -10,6 +10,18 @@ sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://nexus.bedatadriven.com/content/groups/public/'
+	}
+}
+
+configurations {
+	all {
+		exclude group: 'ch.qos.logback', module: 'logback-classic'
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+		exclude group: 'org.slf4j', module: 'slf4j-jdk14'
+		exclude group: 'org.slf4j', module: 'slf4j-nop'
+	}
 }
 
 dependencies {
@@ -17,10 +29,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.session:spring-session-core'
-	// https://mvnrepository.com/artifact/org.jasypt/jasypt
-	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.2'
+	implementation 'org.renjin:renjin-script-engine:3.5-beta76'
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.2'
+	implementation 'org.slf4j:slf4j-api:2.0.0-alpha1'
+	implementation 'ch.qos.logback:logback-classic:1.2.11' // Neuere Version behalten
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compileOnly 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'

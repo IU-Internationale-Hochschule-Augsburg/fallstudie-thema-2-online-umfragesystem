@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://survey-master-pg-survey-master.e.aivencloud.com:25901/defaultdb?currentSchema=public
-    username: survey-master
-    password: ENC(RJBWFkQbGlEa7rptxut0QJdNBos5/9wTEcrn6p0v3dPNn0TVfDE/NBbBqnv2hJ8edbJTUXjm1aROVOfTyZ51XA==)
+    username: survey-report
+    password: ENC(b/XOalOHW/h8BDKD2mczxh58t3sQ3eexYaziJyNGxokkPoZOV6bnA74qluRD6wI2ukAW6/qRy/2mcxpuxD8QHg==)
     driverClassName: org.postgresql.Driver
   jpa:
     defer-datasource-initialization: true
@@ -18,3 +18,11 @@ jasypt:
     password: ${SECRET_ENCRYPTION_KEY}
     algorithm: PBEWITHHMACSHA512ANDAES_256
     iv-generator-classname: org.jasypt.iv.RandomIvGenerator
+logging:
+  level:
+    root: DEBUG
+    org.springframework: DEBUG
+    org.apache.catalina: DEBUG
+
+
+
