@@ -33,7 +33,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/banner/**", "/register/**",
-                                "/save-registration", "participant-view/**", "/editRegistration").permitAll()
+                                "/save-registration", "participant-view/**").permitAll()
                         .anyRequest().authenticated()
 
                 )
@@ -44,7 +44,11 @@ public class WebSecurityConfig {
                         .successForwardUrl("/survey-admin")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout
+                        .logoutSuccessUrl("/login")
+                        .logoutUrl("/logout")
+                        .invalidateHttpSession(true)
+                        .permitAll());
 
         return http.build();
     }

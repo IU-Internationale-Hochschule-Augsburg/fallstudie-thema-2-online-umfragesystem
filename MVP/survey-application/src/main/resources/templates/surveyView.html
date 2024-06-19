@@ -23,13 +23,17 @@
     </div>
     <!-- Button for options/settings next to the username -->
     <div class="col-25" style="text-align: right">
-        <button class="optbutton">
-            <span class="material-symbols-outlined">logout</span>
-        </button>
-        <button class="optbutton">
-            <span class="material-symbols-outlined">settings</span>
-        </button>
+        <form style="width: 100%" action="#" th:action="@{/user-actions}" method="get">
+            <button class="optbutton" name="userActions" th:value="'logout'">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
 
+            <button class="optbutton" name="userActions" th:value="'settings'">
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+
+            <input type="hidden" name="userActions" th:value="${userActions}"/>
+        </form>
     </div>
 </div>
 
