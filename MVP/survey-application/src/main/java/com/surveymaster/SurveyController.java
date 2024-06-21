@@ -1,6 +1,7 @@
 package com.surveymaster;
 
 import com.surveymaster.entity.Survey;
+import com.surveymaster.entity.User;
 import com.surveymaster.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,11 @@ public class SurveyController {
     @GetMapping("/survey-admin")
     public String getSurveyAdmin(Model model) {
         final SurveyView surveys = new SurveyView();
-        // retrieve all surveys from the surveyRepository and add each found survey to the collection.
+        User currentUser = surveyService.getCurrentUser();
+
+        // Retrieve all surveys from the surveyRepository (depending on the User ID) and add each found survey to the collection.
         // This line is responsible for dynamically listing the surveys
-        surveyRepository.findAll().forEach(survey -> surveys.getSurveys().add(survey));
+        surveyRepository.findAllByUserId(currentUser.getUserId()).forEach(survey -> surveys.getSurveys().add(survey));
 
         model.addAttribute("surveyView", surveys);
         return "surveyView";
@@ -86,10 +89,12 @@ public class SurveyController {
             survey.setStartDate(surveyForm.getStartDate());
             survey.setEndDate(surveyForm.getEndDate());
             survey.setDescription(surveyForm.getDescription());
+            survey.setUserId(surveyService.getCurrentUser().getUserId());
         } else {
             // if the survey does not exist yet, it is newly created and saved
             // fetching the survey data from the SurveyForm
-            survey = new Survey(surveyForm.getTitle(), surveyForm.getStartDate(), surveyForm.getEndDate(), surveyForm.getDescription());
+            survey = new Survey(surveyService.getCurrentUser().getUserId(), surveyForm.getTitle(),
+                    surveyForm.getStartDate(), surveyForm.getEndDate(), surveyForm.getDescription());
         }
         // writing the data into the database
         surveyRepository.save(survey);

@@ -19,6 +19,11 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-core'
 	// https://mvnrepository.com/artifact/org.jasypt/jasypt
 	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.2'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//Temporary explicit version to fix Thymeleaf bug
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+	implementation 'org.mindrot:jbcrypt:0.4'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'

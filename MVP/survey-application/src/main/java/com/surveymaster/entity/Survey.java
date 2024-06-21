@@ -32,7 +32,8 @@ public class Survey {
     public Survey() {
     }
 
-    public Survey(String title, LocalDate startDate, LocalDate endDate, String description) {
+    public Survey(Long userId, String title, LocalDate startDate, LocalDate endDate, String description) {
+        this.userId = userId;
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;

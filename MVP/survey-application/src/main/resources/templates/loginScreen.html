@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link th:href="@{/survey.css}" th:rel="stylesheet" type="text/css"/>
-    <link th:href="@{/login.css}" th:rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/login.css}" th:rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet"/>
+
+    <link rel="stylesheet" href="../static/css/login.css">
 
     <title>Login</title>
 
@@ -15,104 +16,37 @@
 <body>
 
 <div>
-    <img src="../images/surveyMaster.png" style="height: 150px;margin-bottom: 30px">
+    <!-- <img src="../static/images/surveyMaster.png" style="height: 150px;margin-bottom: 30px"> -->
+    <img th:src="@{/images/surveyMaster.png}" alt="Logo" style="height: 150px;margin-bottom: 30px">
 </div>
 
 <div class="wrapper">
-    <form action=""> <!--th:action="@{/login}"> -->
+    <form action="#" th:action="@{/login}" method="post" th:object="${loginForm}">
         <h1>Login</h1>
 
         <div class="input-box">
-            <input type="text" placeholder="Username" required autofocus>
+            <input type="text" placeholder="Benutzername"  id="username" th:field="${loginForm.username}" required autofocus>
             <i class="material-symbols-outlined">person</i>
         </div>
 
         <div class="input-box">
-            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Passwort" id="password" th:field="${loginForm.password}" required>
             <i class="material-symbols-outlined">lock</i>
         </div>
 
         <div class="forgot">
-            <a href="#">Forgot password?</a>
+            <a href="#">Passwort vergessen?</a>
         </div>
 
         <button type="submit" class="optbutton">Login</button>
         <br>
-        <button class="optbutton" onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
+    </form>
 
+    <form style="width: 100%" th:action="@{/register}" method="get">
+        <button type="submit" class="optbutton">Registrieren</button>
     </form>
 
 </div>
-
-
-<!--Sign Up Form-->
-<div id="id01" class="signUp">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-          title="CloseSignUp">&times;</span>
-    <form id="formSignUp" class="signUp-content">
-        <div class="containerSignUp">
-            <h1>Sign Up</h1>
-            <br>
-            <p style="text-align: center">Bitte füllen Sie alle Felder aus um einen Account zu erstellen</p>
-            <br>
-            <hr>
-
-            <div class="input-box"><label for="user-ID"><b>Benutzername</b></label>
-                <input id="user-ID" type="text" required placeholder="Enter Username" maxlength="256">
-            </div>
-
-            <div class="input-box"><label for="surname"><b>Name</b></label>
-                <input id="surname" type="text" required placeholder="Enter Surname" maxlength="256">
-            </div>
-
-            <div class="input-box"><label for="firstname"><b>Vorname</b></label>
-                <input id="firstname" type="text" required placeholder="Enter Firstname" maxlength="256">
-            </div>
-
-            <div class="input-box"><label for="email"><b>Email</b></label>
-                <input type="email" placeholder="Enter Email" id="email" required maxlength="256">
-            </div>
-
-            <div class="input-box"><label for="psw"><b>Password (mindestens 8 Zeichen)</b></label>
-                <input type="password" placeholder="Enter Password" id="psw" required maxlength="256" minlength="8">
-            </div>
-
-            <div class="input-box"><label for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" id="psw-repeat" required maxlength="256"
-                       minlength="8">
-            </div>
-
-            <p style="margin-bottom: 16px">Durch die Erstellung eines Kontos erklären Sie sich mit unseren
-                <a href="#" style="color:dodgerblue">
-                    Nutzungsbedingungen und Datenschutz
-                </a>
-                einverstanden.
-            </p>
-
-            <div class="clearfix">
-                <button type="button"
-                        onclick="document.getElementById('id01').style.display='none';document.getElementById('formSignUp').reset()"
-                        class="cnlbutton"
-                        style="width: 49%; float: left;">Cancel
-                </button>
-                <button type="submit" class="optbutton" style="width: 49%; float: right">Sign Up</button>
-            </div>
-
-        </div>
-    </form>
-</div>
-
-<script>
-    /*Source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_signup_form_modal*/
-
-    var signUp = document.getElementById('id01');
-
-    window.onclick = function (event) {
-        if (event.target == signUp) {
-            signUp.style.display = "none";
-        }
-    }
-</script>
 
 </body>
 </html>

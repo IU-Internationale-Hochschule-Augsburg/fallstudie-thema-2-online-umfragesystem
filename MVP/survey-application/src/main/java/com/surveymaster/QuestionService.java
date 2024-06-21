@@ -1,9 +1,11 @@
 package com.surveymaster;
 
+import com.surveymaster.repository.AnswerRepository;
 import com.surveymaster.repository.QuestionRepository;
 import com.surveymaster.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @RequiredArgsConstructor
@@ -11,9 +13,12 @@ import org.springframework.stereotype.Component;
 public class QuestionService {
     private final SurveyRepository surveyRepository;
     private final QuestionRepository questionRepository;
+    private final AnswerRepository answerRepository;
 
+    @Transactional
     public void deleteQuestion(String questionId) {
         final var selectedQuestion = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
+        answerRepository.deleteByQuestionId(selectedQuestion.getQuestionId());
         questionRepository.deleteById(selectedQuestion.getQuestionId());
     }
 
