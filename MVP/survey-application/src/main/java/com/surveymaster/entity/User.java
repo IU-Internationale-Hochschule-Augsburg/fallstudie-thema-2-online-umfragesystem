@@ -13,6 +13,9 @@ public class User {
     private Long userId;
 
     @Column(length = 256)
+    private String username;
+
+    @Column(length = 256)
     private String surname;
 
     @Column(length = 256)
@@ -25,5 +28,6 @@ public class User {
     @Column(length = 256)
     private String password;
 
-    public User(){}
+    public User() {
+    }
 }

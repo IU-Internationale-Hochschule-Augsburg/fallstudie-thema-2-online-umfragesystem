@@ -6,10 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link th:href="@{/survey.css}" th:rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/survey.css}" th:rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet">
-    <script type="text/javascript" th:src="@{/survey.js}"></script>
+    <script type="text/javascript" th:src="@{/js/survey.js}"></script>
 
     <!-- <link rel="stylesheet" href="../static/survey.css" > -->
 
@@ -89,7 +89,7 @@
 
 <!-- Cancel and Save buttons including actions -->
 <div class="footer">
-    <form method="post" action="/survey-admin">
+    <form method="post" th:action="@{/survey-admin}">
         <button type="submit" class="formularabsenden">Abbrechen</button>
     </form>
 

@@ -16,7 +16,7 @@ public class SurveyForm implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    private String description;
+    private String description = "";
 
     private Long surveyId;
 
