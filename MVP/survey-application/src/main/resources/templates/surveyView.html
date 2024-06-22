@@ -23,10 +23,10 @@
     </div>
     <!-- Button for options/settings next to the username -->
     <div class="col-25" style="text-align: right">
-        <button class="optbutton">
+        <button class="optbutton" title="Logout">
             <span class="material-symbols-outlined">logout</span>
         </button>
-        <button class="optbutton">
+        <button class="optbutton" title="Konto Einstellungen">
             <span class="material-symbols-outlined">settings</span>
         </button>
 
@@ -63,15 +63,18 @@
                     <button type="submit" name="buttonHandler" th:value="'delete_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
+                        <span class="tooltiptext">Umfrage löschen</span>
                     </button>
                     <button name="buttonHandler" th:data-survey-id="${survey.surveyId}" value=""
                             class="optbutton" onclick="showAlert(this.getAttribute('data-survey-id'))">
                         <span class="material-symbols-outlined">link</span>
+                        <span class="tooltiptext">URL</span>
                     </button>
                     <!-- Ggf. für den Link-Button: th:value="'share_' + ${survey.surveyId}" -->
                     <button type="submit" name="buttonHandler" th:value="'edit_' + ${survey.surveyId}"
                             class="optbutton" title="Fragen bearbeiten">
                         <span class="material-symbols-outlined">edit</span>
+                        <span class="tooltiptext">Fragen bearbeiten</span>
                     </button>
                     <button type="submit" name="buttonHandler" th:value="'monitoring_' + ${survey.surveyId}"
                             class="optbutton">
@@ -81,6 +84,7 @@
                     <button type="submit" name="buttonHandler" th:value="'settings_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">settings</span>
+                        <span class="tooltiptext">Umfrage Parameter</span>
                     </button>
                 </td>
             </tr>
