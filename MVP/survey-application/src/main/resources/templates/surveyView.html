@@ -19,7 +19,7 @@
 <div class="header">
     <!-- Username -->
     <div class="col-75">
-        <h3>Hello, <span th:remove="tag" sec:authentication="name">!</span></h3>
+        <h3>Hello, <span th:remove="tag" sec:authentication="name"></span></h3>
     </div>
     <!-- Button for options/settings next to the username -->
     <div class="col-25" style="text-align: right">
@@ -64,35 +64,42 @@
 
                 <!-- buttons -->
                 <td class="col-25" style="text-align: right; padding: 0">
+                    <!-- delete button -->
                     <button type="submit" name="buttonHandler" th:value="'delete_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">delete</span>
                         <span class="tooltiptext">Umfrage löschen</span>
 
                     </button>
+
+                    <!-- link button -->
                     <button name="buttonHandler" th:data-survey-id="${survey.surveyId}" value=""
                             class="optbutton" onclick="showAlert(this.getAttribute('data-survey-id'))">
                         <span class="material-symbols-outlined">link</span>
                         <span class="tooltiptext">URL</span>
 
                     </button>
-                    <!-- Ggf. für den Link-Button: th:value="'share_' + ${survey.surveyId}" -->
+
+                    <!-- edit button -->
                     <button type="submit" name="buttonHandler" th:value="'edit_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">edit</span>
                         <span class="tooltiptext">Fragen bearbeiten</span>
 
                     </button>
+
+                    <!-- monitoring button -->
                     <button type="submit" name="buttonHandler" th:value="'monitoring_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">monitoring</span>
                         <span class="tooltiptext">Analyse</span>
                     </button>
+
+                    <!-- survey settings button -->
                     <button type="submit" name="buttonHandler" th:value="'settings_' + ${survey.surveyId}"
                             class="optbutton">
                         <span class="material-symbols-outlined">settings</span>
                         <span class="tooltiptext">Umfrage Parameter</span>
-
                     </button>
                 </td>
             </tr>
@@ -103,6 +110,7 @@
 </div>
 
 <div class="footer">
+    <!-- add survey button -->
     <form method="get" action="/add-survey">
         <button class="formularabsenden">+ Umfrage hinzufügen</button>
     </form>

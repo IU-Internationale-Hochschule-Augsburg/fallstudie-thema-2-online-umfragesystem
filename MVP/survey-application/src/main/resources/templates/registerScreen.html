@@ -12,38 +12,59 @@
 
   <title>Registrierung</title>
 
+  <style>
+    .error-message {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-<form id="formSignUp" class="signUp-content" action="#" th:action="@{/save-registration}" method="post" th:object="${registerForm}">
+<form id="formFilledSignUp" class="signUp-content" action="#" th:action="@{/save-registration}" method="post" th:object="${registerForm}">
   <div class="containerSignUp">
+    <!-- Header -->
     <h1>Registrierung</h1>
     <br>
     <p style="text-align: center">Bitte füllen Sie alle Felder aus, um einen Account zu erstellen.</p>
     <br>
+
+    <!-- Error message -->
+    <div class="error-message">
+      <span th:text="${errorMessage}"></span>
+    </div>
+    <br>
     <hr>
 
+    <!-- Field: username -->
     <div class="input-box"><label for="user-ID"><b>Benutzername</b></label>
-      <input id="user-ID" type="text" required placeholder="Benutzername eingeben" th:field="${registerForm.username}" maxlength="256">
+      <input id="user-ID" type="text" required placeholder="Benutzername eingeben" th:field="${registerForm.username}" th:value="${registerForm.username}" maxlength="256">
     </div>
 
+    <!-- Field: surname -->
     <div class="input-box"><label for="surname"><b>Name</b></label>
-      <input id="surname" type="text" required placeholder="Name eingeben" th:field="${registerForm.surname}" maxlength="256">
+      <input id="surname" type="text" required placeholder="Name eingeben" th:field="${registerForm.surname}" th:value="${registerForm.surname}" maxlength="256">
     </div>
 
+    <!-- Field: firstname -->
     <div class="input-box"><label for="firstname"><b>Vorname</b></label>
-      <input id="firstname" type="text" required placeholder="Vorname eingeben" th:field="${registerForm.firstname}" maxlength="256">
+      <input id="firstname" type="text" required placeholder="Vorname eingeben" th:field="${registerForm.firstname}" th:value="${registerForm.firstname}" maxlength="256">
     </div>
 
+    <!-- Field: email -->
     <div class="input-box"><label for="email"><b>Email</b></label>
-      <input type="email" placeholder="E-Mail-Adresse eingeben" id="email" th:field="${registerForm.email}" required maxlength="256">
+      <input type="email" placeholder="E-Mail-Adresse eingeben" id="email" th:field="${registerForm.email}" th:value="${registerForm.email}" required maxlength="256">
     </div>
 
+    <!-- Field: password -->
     <div class="input-box"><label for="psw"><b>Passwort (mindestens 8 Zeichen)</b></label>
-      <input type="password" placeholder="Passwort eingeben" id="psw" th:field="${registerForm.password}" required maxlength="256" minlength="8">
+      <input type="password" placeholder="Passwort eingeben" id="psw" th:field="${registerForm.password}" th:value="${registerForm.password}" required maxlength="256" minlength="8">
     </div>
 
+    <!-- Field: confirm password -->
     <div class="input-box"><label for="psw-repeat"><b>Passwort wiederholen</b></label>
-      <input type="password" placeholder="Passwort wiederholen" id="psw-repeat" th:field="${registerForm.confirmPassword}" required maxlength="256"
+      <input type="password" placeholder="Passwort wiederholen" id="psw-repeat" th:field="${registerForm.confirmPassword}" th:value="${registerForm.confirmPassword}" required maxlength="256"
              minlength="8">
     </div>
 
@@ -55,13 +76,15 @@
     </p>
 
     <div class="clearfix">
+      <!-- Cancel Button in red -->
       <button type="button"
               onclick="goBack()"
               class="cnlbutton"
               style="width: 49%; float: left;">Abbrechen
       </button>
 
-    <button form="formSignUp" type="submit" class="optbutton" style="width: 49%; float: right">Registrieren</button>
+      <!-- Register button -->
+      <button form="formFilledSignUp" type="submit" class="optbutton" style="width: 49%; float: right">Registrieren</button>
     </div>
 
     <script>

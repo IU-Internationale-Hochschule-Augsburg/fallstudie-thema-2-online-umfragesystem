@@ -17,14 +17,22 @@
 
     <title>Konto Einstellungen</title>
 
-
+    <style>
+        .error-message {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
 </head>
+
 <body>
 
 <div class="header">
-    <!-- Username -->
+    <!-- Username in the header -->
     <div class="col-75">
-        <h3>Hello, <span th:remove="tag" sec:authentication="name">!</span></h3>
+        <h3>Hello, <span th:remove="tag" sec:authentication="name"></span></h3>
     </div>
     <div class="col-25" style="text-align: right; display: flex; justify-content: right; align-items: center">
         <div style="margin-right: 5px">
@@ -39,8 +47,8 @@
 
 
 <div class="content">
-
     <form style="width: 100%" id="userSettingsForm" method="post" th:object="${userSettingsForm}" th:action="@{/save-user-settings}">
+        <!-- Username -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
                 <label >Benutzername:</label>
@@ -52,6 +60,8 @@
         <div class="col-75">
             <input type="hidden" class="textfeld" th:field="${userSettingsForm.username}">
         </div>
+
+        <!-- Surname -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
                 <label >Name:</label>
@@ -60,6 +70,8 @@
                 <input type="text" class="textfeld" th:field="${userSettingsForm.surname}">
             </div>
         </div>
+
+        <!-- Firstname -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
                 <label >Vorname:</label>
@@ -68,6 +80,8 @@
                 <input type="text" class="textfeld" th:field="${userSettingsForm.firstname}">
             </div>
         </div>
+
+        <!-- Email -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
                 <label >Email:</label>
@@ -76,6 +90,8 @@
                 <input type="text" class="textfeld" th:field="${userSettingsForm.email}">
             </div>
         </div>
+
+        <!-- Old password -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
                 <label >Altes Passwort:</label>
@@ -84,6 +100,8 @@
                 <input type="password" class="textfeld" th:field="${userSettingsForm.oldPassword}">
             </div>
         </div>
+
+        <!-- New password -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
                 <label >Neues Passwort<br>(mindestens 8 Zeichen):</label>
@@ -92,21 +110,29 @@
                 <input type="password" class="textfeld" th:field="${userSettingsForm.password}">
             </div>
         </div>
+
+        <!-- Confirm password -->
         <div class="formularreihe" style="align-items: center">
             <div class="col-25" >
-                <label >Passwort wiederholen:</label>
+                <label >Neues Passwort<br>wiederholen:</label>
             </div>
             <div class="col-75">
-                <input type="text" class="textfeld" th:field="${userSettingsForm.confirmPassword}">
+                <input type="password" class="textfeld" th:field="${userSettingsForm.confirmPassword}">
             </div>
         </div>
+        <br>
+        <!-- Error message -->
+        <div class="error-message">
+            <span th:text="${errorMessage}"></span>
+        </div>
+        <br>
     </form>
 
 </div>
 
 
 <div class="footer">
-
+    <!-- Cancel button -->
     <div class="col-25">
         <form method="get" action="#" th:action="@{/survey-admin}">
             <button class="optbutton" title="Zurück">
@@ -115,6 +141,7 @@
         </form>
     </div>
 
+    <!-- Save button -->
     <form method="post" class="col-75" style="text-align: right;">
         <button type="submit" form="userSettingsForm" class="formularabsenden">Speichern</button>
     </form>
