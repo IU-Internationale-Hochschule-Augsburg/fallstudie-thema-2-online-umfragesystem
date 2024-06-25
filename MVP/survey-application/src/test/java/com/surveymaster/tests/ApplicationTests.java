@@ -1,9 +1,6 @@
 package com.surveymaster.tests;
 
-import com.surveymaster.ParticipantSurveyController;
-import com.surveymaster.QuestionController;
-import com.surveymaster.SurveyController;
-import com.surveymaster.SurveyErrorController;
+import com.surveymaster.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +17,8 @@ class ApplicationTests {
     private SurveyErrorController surveyErrorController;
     @Autowired
     private ParticipantSurveyController participantSurveyController;
-
+    @Autowired
+    private LoginController loginController;
     // sanity check test
     @Test
     void contextLoads() {
@@ -29,5 +27,6 @@ class ApplicationTests {
         assertThat(questionController).isNotNull();
         assertThat(surveyErrorController).isNotNull();
         assertThat(participantSurveyController).isNotNull();
+        assertThat(loginController).isNotNull();
     }
 }

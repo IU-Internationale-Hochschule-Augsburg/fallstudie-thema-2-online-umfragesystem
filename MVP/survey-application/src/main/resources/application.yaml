@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://survey-master-pg-survey-master.e.aivencloud.com:25901/defaultdb?currentSchema=public
     username: survey-master
-    password: ENC(RJBWFkQbGlEa7rptxut0QJdNBos5/9wTEcrn6p0v3dPNn0TVfDE/NBbBqnv2hJ8edbJTUXjm1aROVOfTyZ51XA==)
+    password: ENC(38D4NPeXgGDNg4WT3oWTw3Gda8T+kgOdooTu+Y9la8kfCWYREX8DSSVQnshukJgiVDUsQIaS/A2f1h0i9RsGBw==)
     driverClassName: org.postgresql.Driver
   jpa:
     defer-datasource-initialization: true
@@ -13,8 +13,3 @@ server:
   error:
     whitelabel:
       enabled: false
-jasypt:
-  encryptor:
-    password: ${SECRET_ENCRYPTION_KEY}
-    algorithm: PBEWITHHMACSHA512ANDAES_256
-    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
