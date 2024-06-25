@@ -57,6 +57,7 @@
                 <input type="text" class="textfeld" disabled th:field="${userSettingsForm.username}" style="cursor: not-allowed">
             </div>
         </div>
+        <!-- Hidden input field for username, as disabled fields cannot be submitted -->
         <div class="col-75">
             <input type="hidden" class="textfeld" th:field="${userSettingsForm.username}">
         </div>
@@ -97,7 +98,7 @@
                 <label >Altes Passwort:</label>
             </div>
             <div class="col-75">
-                <input type="password" class="textfeld" th:field="${userSettingsForm.oldPassword}">
+                <input id="oldPassword" type="password" class="textfeld" th:field="${userSettingsForm.oldPassword}">
             </div>
         </div>
 
@@ -146,6 +147,16 @@
         <button type="submit" form="userSettingsForm" class="formularabsenden">Speichern</button>
     </form>
 </div>
+
+
+<script>
+    <!-- Clearing the content of the old password field for security reasons -->
+    function clearOldPassword() {
+        document.getElementById('oldPassword').value = '';
+    }
+
+    window.onload = clearOldPassword;
+</script>
 
 </body>
 </html>
