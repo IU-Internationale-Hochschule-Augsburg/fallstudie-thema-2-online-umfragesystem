@@ -1,0 +1,162 @@
+<!-- Add-question-screen -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link th:href="@{/css/survey.css}" th:rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          rel="stylesheet">
+
+    <script type="text/javascript" th:src="@{/js/question.js}"></script>
+
+    <link rel="stylesheet" href="../static/css/survey.css">
+
+
+    <title>Konto Einstellungen</title>
+
+    <style>
+        .error-message {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <!-- Username in the header -->
+    <div class="col-75">
+        <h3>Hello, <span th:remove="tag" sec:authentication="name"></span></h3>
+    </div>
+    <div class="col-25" style="text-align: right; display: flex; justify-content: right; align-items: center">
+        <div style="margin-right: 5px">
+            <h3>Konto Einstellungen</h3>
+        </div>
+        <div style="background: transparent; padding: 0; ">
+            <span style="font-size: 45px;" class="material-symbols-outlined">person</span>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="content">
+    <form style="width: 100%" id="userSettingsForm" method="post" th:object="${userSettingsForm}" th:action="@{/save-user-settings}">
+        <!-- Username -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Benutzername:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" class="textfeld" disabled th:field="${userSettingsForm.username}" style="cursor: not-allowed">
+            </div>
+        </div>
+        <!-- Hidden input field for username, as disabled fields cannot be submitted -->
+        <div class="col-75">
+            <input type="hidden" class="textfeld" th:field="${userSettingsForm.username}">
+        </div>
+
+        <!-- Surname -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Name:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" class="textfeld" th:field="${userSettingsForm.surname}">
+            </div>
+        </div>
+
+        <!-- Firstname -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Vorname:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" class="textfeld" th:field="${userSettingsForm.firstname}">
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Email:</label>
+            </div>
+            <div class="col-75">
+                <input type="text" class="textfeld" th:field="${userSettingsForm.email}">
+            </div>
+        </div>
+
+        <!-- Old password -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Altes Passwort:</label>
+            </div>
+            <div class="col-75">
+                <input id="oldPassword" type="password" class="textfeld" th:field="${userSettingsForm.oldPassword}">
+            </div>
+        </div>
+
+        <!-- New password -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Neues Passwort<br>(mindestens 8 Zeichen):</label>
+            </div>
+            <div class="col-75">
+                <input type="password" class="textfeld" th:field="${userSettingsForm.password}">
+            </div>
+        </div>
+
+        <!-- Confirm password -->
+        <div class="formularreihe" style="align-items: center">
+            <div class="col-25" >
+                <label >Neues Passwort<br>wiederholen:</label>
+            </div>
+            <div class="col-75">
+                <input type="password" class="textfeld" th:field="${userSettingsForm.confirmPassword}">
+            </div>
+        </div>
+        <br>
+        <!-- Error message -->
+        <div class="error-message">
+            <span th:text="${errorMessage}"></span>
+        </div>
+        <br>
+    </form>
+
+</div>
+
+
+<div class="footer">
+    <!-- Cancel button -->
+    <div class="col-25">
+        <form method="get" action="#" th:action="@{/survey-admin}">
+            <button class="optbutton" title="Zurück">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Save button -->
+    <form method="post" class="col-75" style="text-align: right;">
+        <button type="submit" form="userSettingsForm" class="formularabsenden">Speichern</button>
+    </form>
+</div>
+
+
+<script>
+    <!-- Clearing the content of the old password field for security reasons -->
+    function clearOldPassword() {
+        document.getElementById('oldPassword').value = '';
+    }
+
+    window.onload = clearOldPassword;
+</script>
+
+</body>
+</html>
