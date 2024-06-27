@@ -15,9 +15,17 @@
 </head>
 
 <style>
-    .tabelle {
-        display: none;
+    .diagram {
+        border-collapse: collapse;
+        width: 100%;
+        display: block;
     }
+
+    .tabelle {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
 </style>
 
 <body>
@@ -32,31 +40,24 @@
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
         </form>
-
-        <form style="width: 100%; "action="#" th:action="@{/compare-questions}" method="get">
-            <button class="optbutton" title="Vergleiche">
-                <span>Vergleiche</span>
-            </button>
-
-
             <!-- hidden input field to store which button was clicked -->
             <input type="hidden" name="surveyId" id="surveyId" th:value="${survey.surveyId}"/>
-        </form>
-        <!-- Button zum Wechseln auf die Vergleich-Seite -->
-        <form action="#" th:action="@{/button-analysis-handler}" th:object="${survey}" method="get"
-              style="width: 100%">
-            <button type="submit" name="buttonHandler" th:value="'compare_' + ${survey.surveyId}"
-                    class="optbutton">
-                <span class="material-symbols-outlined">compare_arrows</span>
-            </button>
         </form>
     </div>
 </div>
 
 
-<div class="content">
+<div class="content" style="display: block">
+    <div style="width: 100%">
+    <!-- Button zum Wechseln auf die Vergleich-Seite -->
+    <form style="text-align:right; width: 100%; "action="#" th:action="@{/compare-questions}" method="get">
+        <button class="optbutton" title="Vergleiche">
+            <span>Vergleiche</span>
+        </button>
+    </form>
+    </div>
     <form action="#" th:object="${questionsView}" method="get"
-          style="width: 100%">
+          style="text-align:left; width: 100%">
         <table class="tabelletext">
 
             <tbody style="padding: 10px">
@@ -64,30 +65,29 @@
             <!-- dynamic loop over the questions -->
             <tr th:each="question, questionStat : *{questions}">
                 <td><details>
+
                     <!-- Question title -->
                     <summary th:text="${question.questionText}"></summary>
-                    <div th:action="@{/button-analysis-handler}">
-                        <button type="button" class="optbutton" title="Diagramm anzeigen"
-                                onclick="document.getElementById('diagram_' + document.getElementById('questionId').value).style.display ='block';
-                                document.getElementById('table_' + document.getElementById('questionId').value).style.display ='none'"
+                    <div style="width: 100%; text-indent: 25px" th:action="@{/button-analysis-handler}">
+                        <button th:id="${question.questionId}" type="button" class="optbutton" title="Diagramm anzeigen"
+                                onclick="toggleDisplay(this.id, 'diagram_', 'table_')"
                                 name="buttonHandler" th:value="'diagram_' + ${question.questionId}">
                             Diagramm
                         </button>
-                        <button type="button" class="optbutton" title="Tabelle anzeigen"
-                                onclick="document.getElementById('table_' + document.getElementById('questionId').value).style.display ='block';
-                                document.getElementById('diagram_' + document.getElementById('questionId').value).style.display ='none'"
+                        <button th:id="${question.questionId}" type="button" class="optbutton" title="Tabelle anzeigen"
+                                onclick="toggleDisplay(this.id, 'table_', 'diagram_')"
                                 name="buttonHandler" th:value="'table_'+ ${question.questionId}">
                             Tabelle
                         </button>
                     </div>
-                    <div>
-                        <!-- id durch hinzufügen der questionID eindeutig machen -->
-                        <div th:id="'diagram_' + ${question.questionId}">Diagramm</div>
-                        <div th:id="'table_'+ ${question.questionId}" class="tabelle">Tabelle</div>
+                    <div style="width: 100%; text-indent: 25px">
+                        <!-- Divs für Diagramm und Tabelle -->
+                        <div th:id="'diagram_'+${question.questionId}" class="diagram" style="display: block;">Diagramm für Frage [[${question.questionId}]]</div>
+                        <div th:id="'table_'+${question.questionId}" class="tabelle" style="display: none;">Tabelle für Frage [[${question.questionId}]]</div>
                     </div>
                     <td style="text-align: right">
                         <!-- hidden input field to store the questionId -->
-                        <input type="text" name="questionId" th:id="questionId" th:value="${question.questionId}"/>
+                        <input type="hidden" name="questionId" th:id="questionId" th:value="${question.questionId}"/>
                     </td>
                 </details></td>
 
@@ -102,6 +102,15 @@
 <div class="footer">
 
 </div>
+
+<!-- JavaScript Function to toggle display -->
+<script>
+    function toggleDisplay(buttonId, showId, hideId) {
+        // Das andere Div ausblenden
+        document.getElementById(''+hideId+buttonId).style.display = 'none';
+        document.getElementById(''+showId+buttonId).style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
