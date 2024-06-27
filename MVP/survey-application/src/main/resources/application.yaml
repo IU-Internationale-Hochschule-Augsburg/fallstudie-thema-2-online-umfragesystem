@@ -15,6 +15,6 @@ server:
       enabled: false
 jasypt:
   encryptor:
-    password: ${SECRET_ENCRYPTION_KEY}
+
     algorithm: PBEWITHHMACSHA512ANDAES_256
     iv-generator-classname: org.jasypt.iv.RandomIvGenerator
