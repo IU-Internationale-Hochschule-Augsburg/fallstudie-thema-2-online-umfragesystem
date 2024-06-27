@@ -1,5 +1,7 @@
 package com.surveymaster;
 
+import com.surveymaster.dataAnalysis.AnswerService;
+import com.surveymaster.dataAnalysis.AnswersView;
 import com.surveymaster.entity.Survey;
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.SurveyRepository;
@@ -19,6 +21,7 @@ public class SurveyController {
 
     private final SurveyRepository surveyRepository;
     private final QuestionService questionService;
+    private final AnswerService answerService;
     private final SurveyService surveyService;
 
     // GetMapping method for the survey view, generating the screen on localhost:8080
@@ -69,6 +72,14 @@ public class SurveyController {
             model.addAttribute("survey", survey);
             // calling the HTML script for the survey settings
             return "surveySettings";
+        } else if (buttonHandler.startsWith(",monitoring_")){
+            // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
+            surveyId = buttonHandler.substring(12);
+            final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
+            model.addAttribute("questionsView", questionsView);
+            final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
+            model.addAttribute("survey", survey);
+            return "analysisView";
         }
         return "redirect:/survey-admin";
     }
