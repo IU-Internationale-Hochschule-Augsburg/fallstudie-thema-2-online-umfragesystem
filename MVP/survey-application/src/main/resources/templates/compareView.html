@@ -21,11 +21,13 @@
       <h3 th:text="${survey.title}"></h3>
     </div>
     <div class="col-25" style="text-align: right">
-        <form style="width: 100%;" action="#" th:action="@{/survey-admin}" method="get" th:object="${survey}">
-            <button class="optbutton" title="Zurück">
-                <span class="material-symbols-outlined">arrow_back</span>
+        <form action="#" th:action="@{/button-analysis-handler}" th:object="${survey}" method="get" style="width: 100%">
+            <button type="submit" name="buttonHandler" th:value="'back_' + ${survey.surveyId}"
+                        class="optbutton">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <span class="tooltiptext">Zurück</span>
 
-                <!-- hidden input field to store which button was clicked -->
+                <!- hidden input field to store which button was clicked ->
                 <input type="hidden" name="surveyId" id="surveyId" th:value="${survey.surveyId}"/>
 
             </button>
@@ -35,7 +37,15 @@
 
 
 <div class="content">
-
+    <!-- <form action="#" th:object="${questionsView}" method="get"
+          style="text-align:left; width: 100%">
+         <label for="question1">Choose a Question:</label>
+             <select id="question1" th:field="*{questions}">
+                 <option th:each="question, questionStat : *{questions}"
+                         th:value="${question.questionId}"
+                         th:text="#{${'seedstarter.type.' + question.questionText}}">Frage 1</option>
+             </select>
+    </form> -->
 </div>
 
 <!-- Cancel and Save Buttons -->
