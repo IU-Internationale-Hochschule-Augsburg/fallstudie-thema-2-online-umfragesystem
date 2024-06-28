@@ -46,13 +46,17 @@
 
 <div class="content" style="display: block">
     <div style="width: 100%">
-    <!-- Button zum Wechseln auf die Vergleich-Seite -->
-    <form style="text-align:right; width: 100%; "action="#" th:action="@{/compare-questions}" method="get">
-        <button class="optbutton" title="Vergleiche">
-            <span>Vergleiche</span>
-        </button>
-    </form>
+        <!-- Button zum Wechseln auf die Vergleich-Seite -->
+        <form style="text-align:right; width: 100%; "action="#" th:action="@{/compare-questions}" method="get">
+            <button class="optbutton" title="Vergleiche">
+                <span>Vergleiche</span>
+            </button>
+
+            <!-- hidden input field to store which button was clicked -->
+            <input type="hidden" name="surveyId" id="surveyId" th:value="${survey.surveyId}"/>
+        </form>
     </div>
+
     <form action="#" th:object="${questionsView}" method="get"
           style="text-align:left; width: 100%">
         <table class="tabelletext">
