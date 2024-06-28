@@ -75,7 +75,7 @@ public class AnalysisController {
             var questionId = buttonHandler.substring(9);
         } else if (buttonHandler.startsWith(",back_")) {
             // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
-            surveyId = buttonHandler.substring(7);
+            surveyId = buttonHandler.substring(6);
             final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
             model.addAttribute("questionsView", questionsView);
             final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();

@@ -22,10 +22,15 @@
     </div>
     <div class="col-25" style="text-align: right">
         <form action="#" th:action="@{/button-analysis-handler}" th:object="${survey}" method="get" style="width: 100%">
+            <!-- hidden input field to store which button was clicked -->
+            <input type="hidden" name="buttonHandler" th:value="${buttonHandler}"/>
+
             <button type="submit" name="buttonHandler" th:value="'back_' + ${survey.surveyId}"
                         class="optbutton">
                     <span class="material-symbols-outlined">arrow_back</span>
                     <span class="tooltiptext">Zurück</span>
+
+
 
                 <!- hidden input field to store which button was clicked ->
                 <input type="hidden" name="surveyId" id="surveyId" th:value="${survey.surveyId}"/>
@@ -37,6 +42,7 @@
 
 
 <div class="content">
+    <p>Heatmap</p>
     <!-- <form action="#" th:object="${questionsView}" method="get"
           style="text-align:left; width: 100%">
          <label for="question1">Choose a Question:</label>
