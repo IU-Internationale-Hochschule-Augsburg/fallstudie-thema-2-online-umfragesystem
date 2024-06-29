@@ -1,11 +1,10 @@
-package com.surveymaster;
+package com.surveymaster.mapper;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-
 public class QuestionForm implements Serializable {
     private Long questionId;
 

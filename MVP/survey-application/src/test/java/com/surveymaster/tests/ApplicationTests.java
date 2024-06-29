@@ -1,9 +1,9 @@
 package com.surveymaster.tests;
 
-import com.surveymaster.ParticipantSurveyController;
-import com.surveymaster.QuestionController;
-import com.surveymaster.SurveyController;
-import com.surveymaster.SurveyErrorController;
+import com.surveymaster.controller.ParticipantSurveyController;
+import com.surveymaster.controller.QuestionController;
+import com.surveymaster.controller.SurveyController;
+import com.surveymaster.controller.SurveyErrorController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

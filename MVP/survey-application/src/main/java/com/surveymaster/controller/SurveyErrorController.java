@@ -1,4 +1,4 @@
-package com.surveymaster;
+package com.surveymaster.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

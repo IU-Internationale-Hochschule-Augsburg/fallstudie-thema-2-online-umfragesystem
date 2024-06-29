@@ -1,4 +1,4 @@
-package com.surveymaster;
+package com.surveymaster.mapper;
 
 import com.surveymaster.entity.Answer;
 import com.surveymaster.entity.Question;

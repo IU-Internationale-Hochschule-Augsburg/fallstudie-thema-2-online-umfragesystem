@@ -1,5 +1,9 @@
-package com.surveymaster;
+package com.surveymaster.controller;
 
+import com.surveymaster.mapper.LoginForm;
+import com.surveymaster.mapper.RegisterForm;
+import com.surveymaster.service.SurveyService;
+import com.surveymaster.mapper.UserSettingsForm;
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
