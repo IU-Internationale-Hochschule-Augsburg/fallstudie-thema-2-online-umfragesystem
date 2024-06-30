@@ -92,7 +92,7 @@ Wir haben uns bewusst für Spring Boot und dessen Model-View-Controller-Architek
 
 #### Infrastruktur und Abbildung der Model-View-Controller-Architektur:
 
-![Infrastruktur](https://github.com/IU-Internationale-Hochschule-Augsburg/fallstudie-thema-2-online-umfragesystem/assets/166111939/7dc36199-4d94-4a4e-b007-dfb503b8930a)
+![Architekturmodell](https://github.com/IU-Internationale-Hochschule-Augsburg/fallstudie-thema-2-online-umfragesystem/assets/166111939/69def030-969d-4bbd-9589-f272df4f3c8d)
 
 + **HTML** entspricht, gemeinsam mit JS, der View-Komponente (darüber hinaus verwenden wir auch CSS und Thymeleaf)
 + **Thymeleaf** ist eine serverseitige Java-Template-Engine und wird für die Erstellung dynamischer Webseiten (= Views) verwendet
