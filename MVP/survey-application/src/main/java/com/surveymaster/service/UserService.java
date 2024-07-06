@@ -1,4 +1,4 @@
-package com.surveymaster;
+package com.surveymaster.service;
 
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.UserRepository;

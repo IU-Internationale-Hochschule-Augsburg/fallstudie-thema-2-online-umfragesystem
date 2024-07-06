@@ -1,9 +1,9 @@
-package com.surveymaster;
+package com.surveymaster.mapper;
 
 import lombok.Data;
 
 @Data
-public class UserSettingsForm {
+public class RegisterForm {
     private String username;
 
     private String surname;
@@ -11,8 +11,6 @@ public class UserSettingsForm {
     private String firstname;
 
     private String email;
-
-    private String oldPassword;
 
     private String password;
 

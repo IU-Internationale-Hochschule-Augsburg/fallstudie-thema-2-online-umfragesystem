@@ -1,4 +1,4 @@
-package com.surveymaster;
+package com.surveymaster.mapper;
 
 import lombok.Data;
 

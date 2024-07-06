@@ -1,5 +1,8 @@
-package com.surveymaster;
+package com.surveymaster.controller;
 
+import com.surveymaster.service.QuestionService;
+import com.surveymaster.mapper.QuestionsView;
+import com.surveymaster.mapper.SingleQuestionView;
 import com.surveymaster.entity.Question;
 import com.surveymaster.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
@@ -85,7 +88,7 @@ public class QuestionController {
         }
         questionRepository.save(question);
         model.addAttribute("question", questionForm);
-        return "redirect:/questions-view?surveyId=" + questionForm.surveyId;
+        return "redirect:/questions-view?surveyId=" + questionForm.getSurveyId();
     }
 
     // Upon clicking the Cancel button, we redirect back to the questions view (without saving data)

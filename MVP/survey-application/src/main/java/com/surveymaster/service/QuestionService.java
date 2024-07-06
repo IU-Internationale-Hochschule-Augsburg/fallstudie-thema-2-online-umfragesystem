@@ -1,5 +1,6 @@
-package com.surveymaster;
+package com.surveymaster.service;
 
+import com.surveymaster.mapper.QuestionsView;
 import com.surveymaster.repository.AnswerRepository;
 import com.surveymaster.repository.QuestionRepository;
 import com.surveymaster.repository.SurveyRepository;
