@@ -5,8 +5,8 @@
 
 package com.surveymaster.tests;
 
-import com.surveymaster.QuestionService;
-import com.surveymaster.QuestionsView;
+import com.surveymaster.service.QuestionService;
+import com.surveymaster.mapper.QuestionsView;
 import com.surveymaster.entity.Question;
 import com.surveymaster.entity.Survey;
 import com.surveymaster.repository.AnswerRepository;

@@ -5,10 +5,10 @@
 
 package com.surveymaster.tests;
 
-import com.surveymaster.QuestionController;
-import com.surveymaster.QuestionService;
-import com.surveymaster.QuestionsView;
-import com.surveymaster.SingleQuestionView;
+import com.surveymaster.controller.QuestionController;
+import com.surveymaster.service.QuestionService;
+import com.surveymaster.mapper.QuestionsView;
+import com.surveymaster.mapper.SingleQuestionView;
 import com.surveymaster.entity.Question;
 import com.surveymaster.repository.QuestionRepository;
 import org.junit.jupiter.api.BeforeEach;

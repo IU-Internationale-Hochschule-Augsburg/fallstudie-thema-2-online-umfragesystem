@@ -4,12 +4,16 @@
 // zu testen: LoginController, ParticipantSurveyController, QuestionController, QuestionService, SurveyController, SurveyService, UserService, WebSecurityConfig
 
 package com.surveymaster.tests;
-import com.surveymaster.*;
+import com.surveymaster.controller.LoginController;
 import com.surveymaster.entity.User;
+import com.surveymaster.mapper.LoginForm;
+import com.surveymaster.mapper.RegisterForm;
+import com.surveymaster.mapper.UserSettingsForm;
 import com.surveymaster.repository.AnswerRepository;
 import com.surveymaster.repository.QuestionRepository;
 import com.surveymaster.repository.SurveyRepository;
 import com.surveymaster.repository.UserRepository;
+import com.surveymaster.service.SurveyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

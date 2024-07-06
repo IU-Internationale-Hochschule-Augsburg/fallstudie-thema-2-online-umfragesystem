@@ -5,9 +5,9 @@
 
 package com.surveymaster.tests;
 
-import com.surveymaster.AnswerMapper;
-import com.surveymaster.ParticipantSurveyController;
-import com.surveymaster.ParticipantSurveyView;
+import com.surveymaster.mapper.AnswerMapper;
+import com.surveymaster.controller.ParticipantSurveyController;
+import com.surveymaster.mapper.ParticipantSurveyView;
 import com.surveymaster.entity.Answer;
 import com.surveymaster.entity.Question;
 import com.surveymaster.entity.Survey;

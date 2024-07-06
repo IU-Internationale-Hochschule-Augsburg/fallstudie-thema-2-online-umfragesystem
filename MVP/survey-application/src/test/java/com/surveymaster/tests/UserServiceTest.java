@@ -5,7 +5,7 @@
 
 package com.surveymaster.tests;
 
-import com.surveymaster.UserService;
+import com.surveymaster.service.UserService;
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;

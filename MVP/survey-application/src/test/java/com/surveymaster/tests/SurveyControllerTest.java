@@ -5,10 +5,15 @@
 
 package com.surveymaster.tests;
 
-import com.surveymaster.*;
+import com.surveymaster.controller.SurveyController;
 import com.surveymaster.entity.Survey;
 import com.surveymaster.entity.User;
+import com.surveymaster.mapper.QuestionsView;
+import com.surveymaster.mapper.SurveyForm;
+import com.surveymaster.mapper.SurveyView;
 import com.surveymaster.repository.SurveyRepository;
+import com.surveymaster.service.QuestionService;
+import com.surveymaster.service.SurveyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

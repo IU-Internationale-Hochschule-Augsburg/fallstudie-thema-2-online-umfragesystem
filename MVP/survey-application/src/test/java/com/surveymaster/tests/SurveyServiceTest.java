@@ -6,7 +6,7 @@
 package com.surveymaster.tests;
 
 import com.surveymaster.entity.Question;
-import com.surveymaster.SurveyService;
+import com.surveymaster.service.SurveyService;
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.AnswerRepository;
 import com.surveymaster.repository.QuestionRepository;
