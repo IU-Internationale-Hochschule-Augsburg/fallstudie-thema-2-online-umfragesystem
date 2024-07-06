@@ -19,10 +19,10 @@ class ApplicationTests {
     private ParticipantSurveyController participantSurveyController;
     @Autowired
     private LoginController loginController;
+
     // sanity check test
     @Test
     void contextLoads() {
-        // assertions for convincing ourselves that the context creates controller
         assertThat(surveyController).isNotNull();
         assertThat(questionController).isNotNull();
         assertThat(surveyErrorController).isNotNull();
