@@ -191,6 +191,9 @@ Wir haben uns bewusst für Spring Boot und dessen Model-View-Controller-Architek
 
 ![jar file](https://github.com/IU-Internationale-Hochschule-Augsburg/fallstudie-thema-2-online-umfragesystem/assets/166111939/b873cd4d-96ad-4d68-a34a-bc9921714d13)
 
+**Hinweis: Eigentlich sollte jeder den gleichen Schlüssel decrypten können. Heißt, die nachfolgenden Schritte sind nur notwendig, falls es nicht funktioniert.**
+
+**Beschreibung der Encryption:**
 + Nun geht man mit dem Command **cd [Downloads]** in der Kommandozeile in den Ordner, wo man das .jar-file gespeichert hat (Bei mir ist es Downloads)
 + Dann führt man einen weiteren Command wie folgt aus: **java -cp jasypt-1.9.3.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI "input=[plain database-password/data to be encrypted]" "password=[secret key used in encrypting data, new, self-devised password]" "algorithm=PBEWITHHMACSHA512ANDAES_256" "ivGeneratorClassName=org.jasypt.iv.RandomIvGenerator"**
 + Das sollte dann der Output sein:
