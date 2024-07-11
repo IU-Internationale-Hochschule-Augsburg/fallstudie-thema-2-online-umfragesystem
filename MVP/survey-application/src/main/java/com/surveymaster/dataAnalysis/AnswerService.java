@@ -27,7 +27,7 @@ public class AnswerService {
 
         // The questionId is also used to search in the answersRepository, as the questionId is also present in the
         // Answer table. Then, the Answer is set accordingly
-        final var answers = answerRepository.findByQuestionId(Long.parseLong(questionId));
+        final var answers = answerRepository.findAll();
         answersView.setAnswers(answers);
         return answersView;
     }

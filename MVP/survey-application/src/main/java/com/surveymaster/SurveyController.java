@@ -2,10 +2,14 @@ package com.surveymaster;
 
 import com.surveymaster.dataAnalysis.AnswerService;
 import com.surveymaster.dataAnalysis.AnswersView;
+import com.surveymaster.entity.Question;
 import com.surveymaster.entity.Survey;
 import com.surveymaster.entity.User;
 import com.surveymaster.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -77,6 +81,11 @@ public class SurveyController {
             surveyId = buttonHandler.substring(12);
             final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
             model.addAttribute("questionsView", questionsView);
+            final List<Question> questions = questionsView.getQuestions();
+            for (Question question : questions) {
+                final AnswersView answersView = answerService.getAnswersView(Long.toString(question.getQuestionId()));
+                model.addAttribute("answersView", answersView);
+            }
             final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
             model.addAttribute("survey", survey);
             return "analysisView";

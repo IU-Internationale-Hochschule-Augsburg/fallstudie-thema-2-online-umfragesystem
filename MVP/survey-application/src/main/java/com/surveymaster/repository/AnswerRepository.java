@@ -11,4 +11,6 @@ public interface AnswerRepository extends CrudRepository<Answer, Long> {
     void deleteByQuestionId(Long questionId);
 
     List<Answer> findByQuestionId(Long questionId);
+
+    List<Answer> findAll();
 }
