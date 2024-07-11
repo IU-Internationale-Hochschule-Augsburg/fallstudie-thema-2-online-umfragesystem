@@ -18,12 +18,13 @@
     .diagram {
         border-collapse: collapse;
         width: 100%;
-        display: block;
+        display: none;
     }
 
     .tabelle {
         border-collapse: collapse;
         width: 100%;
+        display: block;
     }
 
 </style>
@@ -72,28 +73,29 @@
                     <div style="width: 100%; text-indent: 25px" th:action="@{/button-analysis-handler}">
                         <button th:id="${question.questionId}" type="button" class="optbutton" title="Diagramm anzeigen"
                                 onclick="toggleDisplay(this.id, 'diagram_', 'table_')"
-                                name="buttonHandler" th:value="'diagram_' + ${question.questionId}">
+                                name="buttonHandler" th:value="'diagram_' + ${question.questionId}"
+                                th:unless="${question.questionType=='open text response'}">
                             Diagramm
                         </button>
                         <button th:id="${question.questionId}" type="button" class="optbutton" title="Tabelle anzeigen"
                                 onclick="toggleDisplay(this.id, 'table_', 'diagram_')"
-                                name="buttonHandler" th:value="'table_'+ ${question.questionId}">
+                                name="buttonHandler" th:value="'table_'+ ${question.questionId}" 
+                                th:unless="${question.questionType=='open text response'}">
                             Tabelle
                         </button>
                     </div>
                     <div style="width: 100%; text-indent: 25px">
                         <!-- Divs für Diagramm und Tabelle -->
-                        <div th:id="'diagram_'+${question.questionId}" class="diagram" style="display: block;">
-                            Diagramm für Frage [[${question.questionId}]]
+                        <div th:id="'diagram_'+${question.questionId}" class="diagram" style="display: none;">
+                            <img src="/images/30001.png" th:id="'chart_'+${question.questionId}" alt="Beschreibung des Bildes" width="600" height="600">
                         </div>
-                        <div th:id="'table_'+${question.questionId}" class="tabelle" style="display: none;">
-                            
+                        <div th:id="'table_'+${question.questionId}" class="tabelle" style="display: block;">
                             <form action="#" th:object="${answersView}" method="get"
                             style="text-align:left; width: fit-content">
                             <table>
 
                                 <tr style="width: fit-content">
-                                    <td th:text="${question.questionId}"></td>
+                                    <!--<td th:text="Antwort"></td>-->
                                     <td th:if="${!(question.getAnswerOption1()=='') && (question.questionType=='checkbox' ||  question.questionType=='radiobutton')}" th:text="${question.getAnswerOption1()}"></td>
                                     <td th:if="${!(question.getAnswerOption2()=='') && (question.questionType=='checkbox' ||  question.questionType=='radiobutton')}" th:text="${question.getAnswerOption2()}"></td>
                                     <td th:if="${!(question.getAnswerOption3()=='') && question.questionType=='checkbox'}" th:text="${question.getAnswerOption3()}"></td>
@@ -106,10 +108,9 @@
                                     <td th:if="${!(question.getAnswerOption10()=='') && question.questionType=='checkbox'}" th:text="${question.getAnswerOption10()}"></td>
                                 </tr>
 
-                                <!-- dynamic loop over the surveys -->
+                                <!-- dynamic loop over the answers -->
                                 <tr style="width: fit-content; height: fit-content" th:each="answer, answerStat : *{answers}" th:if="${question.questionId == answer.questionId}">
-                                    <!-- Survey title -->
-                                    <td th:if="${!(answer.getAnswerId()=='') }" th:text="${answer.getAnswerId()}"></td>
+                                    <!--<td th:if="${!(answer.getAnswerId()=='') }" th:text="${answer.getAnswerId()}"></td>-->
                                     <td th:if="${!(answer.getAnswerOption1()=='') && (question.questionType=='checkbox' ||  question.questionType=='radiobutton')}" th:text="${answer.getAnswerOption1()}"></td>
                                     <td class="col-75" th:if="${!(answer.getAnswerOption2()=='') && (question.questionType=='checkbox' ||  question.questionType=='radiobutton')}" th:text="${answer.getAnswerOption2()}"></td>
                                     <td class="col-75" th:if="${!(answer.getAnswerOption3()=='') && question.questionType=='checkbox'}" th:text="${answer.getAnswerOption3()}"></td>
@@ -124,7 +125,6 @@
                                 </tr>
                             </table>
                             </form>
-                        
                         </div>
                     </div>
                     <td style="text-align: right">
@@ -151,8 +151,11 @@
         // Das andere Div ausblenden
         document.getElementById(''+hideId+buttonId).style.display = 'none';
         document.getElementById(''+showId+buttonId).style.display = 'block';
+        var imageElement = document.getElementById('chart_'+buttonId);
+        imageElement.src = "/images/" + buttonId + ".png";
     }
 </script>
+
 
 </body>
 </html>

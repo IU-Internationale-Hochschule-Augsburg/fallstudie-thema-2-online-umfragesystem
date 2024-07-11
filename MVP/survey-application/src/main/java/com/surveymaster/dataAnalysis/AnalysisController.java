@@ -1,9 +1,7 @@
 package com.surveymaster.dataAnalysis;
 
-
 import com.surveymaster.QuestionService;
 import com.surveymaster.QuestionsView;
-import com.surveymaster.entity.Answer;
 import com.surveymaster.entity.Question;
 import com.surveymaster.entity.Survey;
 import com.surveymaster.repository.AnswerRepository;
@@ -45,42 +43,59 @@ public class AnalysisController {
 
     @GetMapping("/compare-questions")
     public String loadCompareQuestions(@RequestParam("surveyId") String surveyId, Model model) {
-        final var questions = questionRepository.findBySurveyId(Long.parseLong(surveyId));
+        // final var questions =
+        // questionRepository.findBySurveyId(Long.parseLong(surveyId));
         final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
         model.addAttribute("survey", survey);
-
-        for (int i = 0; i < questions.size(); i++) {
-            final var answers = answerRepository.findByQuestionId(questions.get(i).getQuestionId());
-            final var question = questions.get(i);
-            model.addAttribute("answers" + i, answers);
-            model.addAttribute("question" + i, question);
-        }
+        final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
+        model.addAttribute("questionsView", questionsView);
         return "compareView";
     }
 
-    @GetMapping("button-analysis-handler")
+    @GetMapping("/heatmap")
+    public String loadCompareHeatmap(@RequestParam("document") String document, Model model) {
+        String[] parts = document.split("_");
+        String question1 = parts[0];
+        String question2 = parts[1];
+
+        long question1Long = Long.parseLong(question1);
+        long question2Long = Long.parseLong(question2);
+
+        try {
+            AnalysisAlgorithm.compareAnswersChart(question1Long, question2Long);
+        } catch (NumberFormatException e) {
+            System.err.println("Fehler beim Umwandeln des Strings in einen long-Wert: " + e.getMessage());
+        }
+
+        var questionTitle1 = questionRepository.findByQuestionId(question1Long);
+        var questionTitle2 = questionRepository.findByQuestionId(question2Long);
+        var surveyId = questionTitle1.getSurveyId();
+
+        model.addAttribute("survey", surveyId);
+        model.addAttribute("title1", questionTitle1.getQuestionText());
+        model.addAttribute("title2", questionTitle2.getQuestionText());
+        model.addAttribute("filename", question1 + question2);
+        return "heatmapView";
+    }
+
+    @GetMapping("/button-analysis-handler")
     public String buttonHandler(@RequestParam("buttonHandler") String buttonHandler, Model model) {
         String surveyId;
-        if (buttonHandler.startsWith(",compare_")) {
-            // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
-            surveyId = buttonHandler.substring(9);
-            final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
-            model.addAttribute("questionsView", questionsView);
-            final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
-            model.addAttribute("survey", survey);
-            return "compareView";
-        } else if(buttonHandler.startsWith(",diagram_")) {
-            var questionId = buttonHandler.substring(9);
-        } else if(buttonHandler.startsWith(",table_")) {
-            var questionId = buttonHandler.substring(9);
-        } else if (buttonHandler.startsWith(",back_")) {
-            // the ID in HTML is appended with an underscore to the button name. Using substring, the ID is split from the label
+        if (buttonHandler.startsWith(",back_")) {
+            // the ID in HTML is appended with an underscore to the button name. Using
+            // substring, the ID is split from the label
             surveyId = buttonHandler.substring(6);
             final QuestionsView questionsView = questionService.getQuestionsView(surveyId);
             model.addAttribute("questionsView", questionsView);
+            final List<Question> questions = questionsView.getQuestions();
+            for (Question question : questions) {
+                final AnswersView answersView = answerService.getAnswersView(Long.toString(question.getQuestionId()));
+                model.addAttribute("answersView", answersView);
+            }
             final var survey = surveyRepository.findById(Long.parseLong(surveyId)).orElseThrow();
             model.addAttribute("survey", survey);
-            return "analysisView";}
+            return "analysisView";
+        }
         return "redirect:/analysisView";
     }
 }

@@ -1,12 +1,9 @@
 package com.surveymaster.dataAnalysis;
 
-import com.surveymaster.QuestionsView;
 import com.surveymaster.repository.AnswerRepository;
 import com.surveymaster.repository.QuestionRepository;
-import com.surveymaster.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @RequiredArgsConstructor
@@ -17,7 +14,8 @@ public class AnswerService {
 
     public AnswersView getAnswersView(String questionId) {
         // With the questionId, the corresponding question is searched for.
-        // If it exists, it is saved in the 'question' variable; otherwise, a NoSuchElementException is thrown
+        // If it exists, it is saved in the 'question' variable; otherwise, a
+        // NoSuchElementException is thrown
         final var question = questionRepository.findById(Long.parseLong(questionId)).orElseThrow();
 
         // Setting the ID and title of the question in answerView
@@ -25,7 +23,8 @@ public class AnswerService {
         answersView.setQuestionId(question.getQuestionId());
         answersView.setTitle(question.getQuestionText());
 
-        // The questionId is also used to search in the answersRepository, as the questionId is also present in the
+        // The questionId is also used to search in the answersRepository, as the
+        // questionId is also present in the
         // Answer table. Then, the Answer is set accordingly
         final var answers = answerRepository.findAll();
         answersView.setAnswers(answers);
