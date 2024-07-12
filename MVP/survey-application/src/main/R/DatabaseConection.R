@@ -16,8 +16,8 @@ dsn_database <- "defaultdb" # Spezifischer Name der Database
 # Spezifischer hostname ist z.b:"Gar-keine-Lust-1-portal.4.aivencloud.com"
 dsn_hostname <- "survey-master-pg-survey-master.e.aivencloud.com"
 dsn_port <- 25901 # port nummer von Team 1 z.b 98939
-dsn_uid <- "survey-report" # Persönlicher benutzername z.b "admin"
-dsn_pwd <- "g2X%DcO9!=*D4gWmQ" # Wichtig Verschlüsseltes Passwort beim Hochladen "xxx"
+dsn_uid <- "xxxx" # Persönlicher benutzername z.b "admin"
+dsn_pwd <- "xxxxxx" # Wichtig Verschlüsseltes Passwort beim Hochladen "xxx"
 
 # connect to Database
 database_connection <- function() {
